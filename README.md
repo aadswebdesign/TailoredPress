@@ -1,5 +1,7 @@
 
-# TailoredPress
+# TailoredPress 
+
+### Intro
 
 **First this:** This is by no way a replacement of wordpress.
 
@@ -15,6 +17,24 @@
 
 **For who?** For those who know of how to create php classes or are willing to learn that!
 
-**About me** My knowledge about php is limited too but got better since I'm working on this. I have learned lot the last 6 months.
+**My knowledge** As I learn a lot with this, still there is more I don't - as I do know.
 
-##### More to come!
+- php: reasonable but it is getting better while working on this project.
+- js:  basic but I'm sure it will improve when I start working with it for this project.
+- html/css/svg: good , I have a good grasp on that.
+- git: limited: have to grow into it.
+
+### Root
+**Subscription:** the root of this.
+
+**Note:** For what it is now and subject to change.
+
+**sub folders:**
+- TP_Admin.
+- TP_Content.
+- TP_Core.
+
+**Files:** 
+- README.md
+- index.php
+- tp_autoload.php this is a class and can be used at any endpoint
