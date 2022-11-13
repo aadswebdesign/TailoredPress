@@ -5,8 +5,9 @@
 
 **Sub folders:** Each of those sub folders will have their own readme with more info.
 
+**Folders:** 
+- Actions.
+
 **Files:** 
 - README.md
-- TP_Comment_Form.php  
-- TP_Default_Search_Form.php
 
