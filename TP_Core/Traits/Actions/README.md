@@ -6,16 +6,17 @@
 - README.md
 
 **Files/Methods:** Each Trait has about 10 methods
-- _action_01.php: 	- _add_action(hook_name, $callback, $priority),ra
-					- _has_action(hook_name, $callback),v
-					- _do_action($hook_name, $arg),v
-					- _get_action($hook_name, $arg),ra
-					- _do_action_ref_array($hook_name, $args),v
-					- _remove_action($hook_name, $callback, $priority),
-					- _remove_all_actions($hook_name, $priority),
-					- _current_action(),
-					- _doing_action($hook_name),rs
-					- _did_action($hook_name), ri
+- _action_01.php: 	
+	* _add_action(hook_name, $callback, $priority),ra
+	* _has_action(hook_name, $callback),v
+	* _do_action($hook_name, $arg),v
+	* _get_action($hook_name, $arg),ra
+	* _do_action_ref_array($hook_name, $args),v
+	* _remove_action($hook_name, $callback, $priority),
+	* _remove_all_actions($hook_name, $priority),
+	* _current_action(),
+	* _doing_action($hook_name),rs
+	* _did_action($hook_name), ri
 
 
 
