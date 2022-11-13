@@ -6,7 +6,7 @@
 **Sub folders:** Each of those sub folders will have their own readme with more info.
 
 **Folders:** 
-- Actions.
+
 
 **Files:** 
 - README.md
