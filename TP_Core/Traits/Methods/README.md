@@ -1,0 +1,266 @@
+### TP_Core/Traits/
+
+**Note:** For what it is now and subject to change. 
+
+**Files:** 
+- README.md
+
+**Files/Methods:** 
+- _methods_01.php: 	
+	* _mysql2date( $format, $date, $translate = true ) -> bool|int|string 
+	* _current_time( $type,$gmt = 0 ) -> int|string  
+	* _current_datetime():\DateTimeImmutable 
+	* _tp_timezone_string():string  
+	* _tp_timezone():\DateTimeZone  
+	* _date_i18n( $format, $timestamp_with_offset = false, $gmt = false ) -> int|string 
+	* _tp_date( $format, $timestamp = null, $timezone = null ) -> bool|string   
+	* _tp_maybe_decline_date( $date, $format = '' ) -> mixed 
+	* _number_format_i18n( $number, $decimals = 0 ) -> mixed  
+	* _size_format( $bytes, $decimals = 0 ) -> bool|string  
+
+- _methods_02.php: 	
+	* _human_readable_duration( $duration = '' ) -> bool|string 
+	* _get_week_start_end( $mysql_string, $start_of_week = '' ):array  
+	* _maybe_serialize( $data ):string  
+	* _maybe_unserialize( $data, ...$classes ) -> mixed   
+	* _is_serialized( $data, $strict = true ):bool 
+	* _is_serialized_string( $data ):bool  
+	* _xml_rpc_get_post_title( $content ) -> mixed   
+	* _xml_rpc_get_post_category( $content ) -> array|string 
+	* _xml_rpc_remove_post_data( $content )   
+	* _tp_extract_urls( $content ):array 
+
+- _methods_03.php: 	
+	* _do_enclose( $content, $post ):bool 
+	* _tp_get_http_headers( $url):bool 
+	* _is_new_day():int 
+	* _build_query( $data ) -> mixed 
+	* _http_build_query( $data, $prefix = null, $sep = null, $key = '', $url_encode = true ):string 
+	* _add_query_arg( ...$args ) -> mixed 
+	* _remove_query_arg( $key, $query = false ) -> mixed 
+	* _tp_removable_query_args() -> mixed 
+	* _add_magic_quotes( $array ) -> mixed 
+	* _tp_remote_fopen( $uri ):bool 
+
+- _methods_04.php: 	
+	* _tp_method( $query_vars = '' ):void 
+	* _get_status_header_desc( $code ) -> mixed 
+	* _status_header( $code, $description = '' ):void 
+	* _tp_get_nocache_headers():array 
+	* _nocache_headers() ?
+	* _cache_javascript_headers():void 
+	* _get_num_queries():int 
+	* _bool_from_yes_no( $yes_no ):bool 
+	* _do_feed():void 
+	* _do_feed_rdf():void 
+
+- _methods_05.php: 	
+	* _do_feed_rss():void 
+	* _do_feed_rss2( $for_comments ):void 
+	* _do_feed_atom( $for_comments ):void 
+	* _do_robots():void 
+	* _do_favicon():void 
+	* _is_blog_installed():bool 
+	* _tp_nonce_url( $action_url, $action = -1, $name = '_tp_nonce' ) -> mixed 
+	* _tp_get_nonce_field( $action = -1, $name = '_tp_nonce', $referer = true):string 
+	* _tp_nonce_field( $action = -1, $name = '_tp_nonce', $referer = true):void 
+	* _tp_get_referer_field():string 
+
+- _methods_06.php: 	
+	* _tp_get_raw_referer():bool 
+	* _tp_get_original_referer():bool 
+	* _tp_mkdir_p( $target ):bool 
+	* _path_is_absolute( $path ):bool 
+	* _path_join( $base, $path ):string 
+	* _tp_normalize_path( $path ):string 
+	* _get_temp_dir():string 
+	* _tp_is_writable( $path ):bool 
+	* _win_is_writable( $path ):bool 
+	* _tp_get_upload_dir() -> mixed 
+
+- _methods_07.php: 	
+	* _tp_upload_dir($time = null, $create_dir = true, $refresh_cache = false) -> mixed 
+	* _raw_upload_dir($time = null):array 
+	* _tp_unique_filename($dir, $filename, $unique_filename_callback = null) -> mixed 
+	* _tp_check_alternate_file_names( $file_names, $dir, $files ):bool  
+	* _tp_check_existing_file_names( $filename, $files ):bool 
+	* _tp_upload_bits( $name, $bits, $time = null ) -> mixed  
+	* _tp_ext2type( $ext ) -> int|null|string 
+	* _tp_get_default_extension_for_mime_type( $mime_type ):bool 
+	* _tp_check_file_type( $filename, $mimes = null ):array  
+	* _tp_check_file_type_and_ext( $file, $filename, $mimes = null ):array 
+
+- _methods_08.php: 	
+	* _tp_get_image_mime( $file ) -> bool|string
+	* _tp_get_mime_types() -> mixed
+	* _tp_get_ext_types() -> mixed  
+	* _get_allowed_mime_types( $user = null ) -> mixed 
+	* _tp_nonce_ays( $action ):void 
+	* _tp_get_die( $message = '', $title = '', ...$args):string 
+	* _tp_die( $message = '', $title = '', ...$args):void 
+	* _tp_die_default_handler( $message, $title = '', ...$args ):void 
+	* _tp_async_die_handler( $message,  ...$args ):void 
+	* _tp_json_die_handler( $message, $title = '',  ...$args ):void 
+
+- _methods_09.php: 	
+	* _tp_xml_rpc_die_handler( $message, $title = '', ...$args):void  
+	* _tp_get_xml_die_handler( $message, $title = '', ...$args):string  
+	* tp_xml_die_handler( $message, $title = '', ...$args):void 
+	* _tp_scalar_die_handler( $message = '', $title = '', ...$args ):void 
+	* _tp_die_process_input( $message, $title = '', $args = [] ):array 
+	* _tp_json_encode( $data, $options = 0, $depth = 512 ) -> mixed  
+	* _tp_json_sanity_check( $data, $depth ):mixed 
+	* _tp_json_convert_string( $string ):string 
+	* _tp_send_json( $response, $status_code = null, $options = 0 ):void 
+	* _tp_send_json_success( $data = null, $status_code = null, $options = 0 ):void 
+	* _tp_send_json_error(TP_Error $data = null, $status_code = null, $options = 0 ):void 
+
+- _methods_10.php: 	
+	* _tp_jsonp_check_callback( $callback ):bool 
+	* _tp_json_file_decode( $filename, $options = array() ) 
+	* _tp_config_home( $url = '' ):string 
+	* _tp_config_siteurl( $url = '' ):string 
+	* _delete_option_fresh_site():void 
+	* _mce_set_direction( $mce_init )
+    * //todo might not use this @description Convert smiley code to the icon graphic file equivalent.
+    * //protected function _smilies_init(){}//4616
+	* _tp_parse_args( $defaults = [],array ...$args ): array 
+	* _tp_parse_list( $list ):array 
+	* _tp_parse_id_list( $list ):array 
+
+- _methods_11.php: 	
+	* _tp_parse_slug_list( $list ):array 
+	* _tp_array_slice_assoc( $array, $keys ):array 
+	* _tp_array_get( $array, $path, $default = null ):string 
+	* _tp_array_set( &$array, $path, $value = null ):void 
+	* _tp_to_kebab_case( $string ):string 
+	* _tp_is_numeric_array( $data ):bool 
+	* _tp_filter_object_list( $list, $args = [], $operator = 'and', $field = false ):array 
+	* _tp_list_filter( $list, $args = [], $operator = 'AND' ):array 
+	* _tp_list_pluck( $list, $field, $index_key = null ):array 
+	* _tp_list_sort( $list, $orderby = [], $order = 'ASC', $preserve_keys = false ):array 
+
+- _methods_12.php: 	
+	* //protected function _tp_maybe_load_widgets(){}//5163 
+	* //protected function _tp_widgets_add_menu(){}//5191 
+	* _tp_ob_end_flush_all():void 
+	* _dead_db():void 
+	* _abs_int( $maybe_int ) -> mixed  
+	* _deprecated_function( $function, $version, $replacement = '' ):void 
+	* _deprecated_argument($function, $version, $message = ''):void 
+	* _deprecated_hook( $hook, $version, $replacement = '', $message = '' ):void 
+	* _doing_it_wrong( $function, $message, $version ):void 
+	* _apache_mod_loaded( $mod, $default = false ):bool 
+	* _validate_file( $file, $allowed_files = [] ):int 
+
+- _methods_13.php: 	
+	* _iis7_supports_permalinks() -> mixed  
+	* _force_ssl_admin( $force = null ):bool 
+	* _tp_guess_url():string 
+	* _tp_suspend_cache_addition( $suspend = null ):bool 
+	* _tp_suspend_cache_invalidation( $suspend = true ) -> mixed  
+	* _is_main_site( $site_id = null, $network_id = null ):bool 
+	* _get_main_site_id( $network_id = null ):int 
+	* _is_main_network( $network_id = null ):bool 
+	* _get_main_network_id():int 
+	* _global_terms_enabled():bool 
+
+- _methods_14.php: 	
+	* _is_site_meta_supported():bool 
+	* _tp_timezone_override_offset() -> mixed  
+	* _tp_timezone_choice_u_sort_callback( $a, $b ):int 
+	* _tp_timezone_choice( $selected_zone, $locale = null ):string 
+	* _cleanup_header_comment( $str ):string 
+	* _tp_scheduled_delete():void 
+	* _get_file_data( $file, $default_headers, $context = '' ):array 
+	* _return_true():bool 
+	* _return_false():bool 
+	* _return_zero():bool 
+
+- _methods_15.php: 	
+	* _return_empty_array():array 
+	* _return_null():bool 
+	* _return_empty_string():string 
+	* _send_no_sniff_header():void 
+	* _tp_mysql_week( $column ):string 
+	* _tp_find_hierarchy_loop( $callback, $start, $start_parent, $callback_args = [] ) -> mixed 
+	* _tp_find_hierarchy_loop_tortoise_hare( $callback, $start, $override = [], $callback_args = [], $_return_loop = false ) -> array|bool 
+	* _send_frame_options_header():void 
+	* _tp_allowed_protocols():array 
+	* _tp_debug_backtrace_summary( $ignore_class = null, $skip_frames = 0, $pretty = true ) -> array|string 
+
+- _methods_16.php: 	
+	* _get_non_cached_ids( $object_ids, $cache_key ):array 
+	* _device_can_upload():bool 
+	* _tp_is_stream( $path ):bool 
+	* _tp_check_date( $month, $day, $year, $source_date ) 
+	* _tp_auth_check_load():void 
+	* _get_auth_check_html():auth_check_html_view 
+	* tp_auth_check_html():void 
+	* _tp_auth_check( $response ) -> mixed 
+	* _get_tag_regex( $tag ):string 
+	* _canonical_charset( $charset ):string 
+	* _mb_string_binary_safe_encoding( $reset = false ):void 
+
+- _methods_17.php: 	
+	* _reset_mb_string_encoding():void 
+	* _tp_validate_boolean( $var ):bool 
+	* _tp_delete_file( $file ):void 
+	* _tp_delete_file_from_directory( $file, $directory ):bool 
+	* _tp_post_preview_js():void //todo make it a return method
+	* _mysql_to_rfc3339( $date_string ) -> mixed  
+	* _tp_raise_memory_limit( $context = 'admin' ) 
+	* _tp_generate_uuid4():string 
+	* _tp_is_uuid( $uuid, $version = null ):bool 
+	* _tp_unique_id( $prefix = '' ):string 
+
+- _methods_18.php: 	
+	* _tp_cache_get_last_changed( $group ) 
+	* _tp_site_admin_email_change_notification( $old_email, $new_email, $option_name = null ):void 
+	* _tp_privacy_anonymize_ip( $ip_addr, $ipv6_fallback = false ):string 
+	* _tp_privacy_anonymize_data( $type, $data = '' ) 
+	* _tp_privacy_exports_dir() 
+	* _tp_privacy_exports_url() 
+	* _tp_schedule_delete_old_privacy_export_files():void 
+	* _tp_get_update_php_url():string 
+	* _tp_get_default_update_php_url() 
+	* //protected function _tp_unique_id( $prefix = '' ) 
+
+- _methods_19.php: 	
+	* _tp_update_php_annotation( $before = "<p class='description'>", $after = '</p>' ):void //todo, make it return
+	* _tp_get_update_php_annotation():string 
+	* _tp_get_direct_php_update_url():string 
+	* _tp_get_direct_php_update_button():string 
+	* _tp_direct_php_update_button():void 
+	* _tp_get_update_https_url():string 
+	* _tp_get_default_update_https_url():string 
+	* _tp_get_direct_update_https_url():string 
+	* _get_dir_size( $directory, $max_execution_time = null ) -> bool|int|null 
+	* _recurse_dir_size( $directory, $exclude = null, $max_execution_time = null, &$directory_cache = null ) -> bool|int|null 
+
+- _methods_20.php: 	
+	* _tp_is_version_compatible( $required ): bool 
+	* _is_php_version_compatible( $required ): bool 
+	* _tp_fuzzy_number_match( $expected, $actual, $precision = 1 ): bool 
+	* _is_light_tpd_before_150(): bool 
+	* _strip_namespace_from_classname($obj) 
+	* _tp_array_merge(...$merges): array 
+	* _tp_array_merge_recursive(...$merges): array 
+	* _tp_array_key_last( array $arr ) 
+	* _tp_str_starts_with($haystack, $needle):string //todo testing
+	* _tp_str_ends_with($hay_stack, $needle ): bool  //todo testing
+	* _compat_microtime($get_as_float = false) 
+	* _tp_microtime($get_as_float = false):mixed 
+
+- _methods_21.php: 	
+	* _tp_loading_dynamic_classes($namespace,$class_dir, ...$args):string 
+	* _tp_load_class($class_name,$namespace,$class, $class_args = null) -> mixed  
+	* _tp_unserialize($serializedData, ...$classes) 
+	* _tp_str_contains($haystack, $needle):string 
+	* _tp_call_user_func_array($func, $args) 
+	* _get_php_console_log($id, $log):string 
+	* _php_console_log($id, $log):void  
+	* _tp_array_replace_recursive($data, $new_data):array 
+	* _tp_get_basename_path( $file ) -> mixed 
+	* add_asset($hook,$callback,$hook_suffix = null,$args = null) 
+	* get_module_class($class_name,$class_args = null) -> bool|object
