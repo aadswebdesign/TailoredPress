@@ -1,4 +1,4 @@
-### TP_Core/Traits
+### TP_Core/Traits/Actions
 
 **Note:** For what it is now and subject to change. Also one of my habbits is to give classes/methods a name that speaks for itself.
 
