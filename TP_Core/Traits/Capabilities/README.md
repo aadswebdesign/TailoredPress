@@ -1,4 +1,4 @@
-### TP_Core/Traits/
+### TP_Core/Traits/Capabilities
 
 **Note:** For what it is now and subject to change. 
 
