@@ -1,0 +1,180 @@
+### TP_Core/Traits/Posts
+
+**Note:** For what it is now and subject to change. 
+
+**Files:** 
+- README.md
+
+**Files/Methods:** 
+- _post_01.php: 	
+	* _create_initial_post_types():void 
+	* _get_attached_file( $attachment_id, $unfiltered = false ):string 
+	* _update_attached_file( $attachment_id, $file ):bool 
+	* _tp_relative_upload_path( $path ) -> mixed  
+	* _get_children($output = OBJECT,TP_Post ...$args ):array 
+	* _get_extended( $post ):array 
+	* _get_post($output = OBJECT, $filter = 'raw',object $post=null ) -> mixed 
+	* _get_post_ancestors( $post ):array 
+	* _get_post_field( $field, $post = null, $context = 'display' ):string 
+	* _get_post_mime_type( $post = null ) -> bool|string 
+
+- _post_02.php: 	
+	* _get_post_status( $post = null ):bool 
+	* _get_post_statuses():array 
+	* _get_page_statuses():array 
+	* _tp_privacy_statuses():array 
+	* _register_post_status( $post_status, array ...$args) -> mixed todo
+	* _get_post_status_object( $post_status ):bool 
+	* _get_post_stati( $output = 'names', $operator = 'and', array ...$args ) 
+	* _is_post_type_hierarchical( $post_type ):bool 
+	* _post_type_exists( $post_type ) -> mixed 
+	* _get_post_type( $post = null ):bool 
+
+- _post_03.php: 	
+	* _get_post_type_object( $post_type ) -> mixed  
+	* _get_post_types( $args = [], $output = 'names', $operator = 'and' ) -> mixed  
+	* _register_post_type( $post_type, array ...$args) -> TP_Error|TP_Post_Type 
+	* _unregister_post_type($post_type ) -> bool|TP_Error 
+	* _get_post_type_capabilities( $args ) -> object 
+	* _post_type_meta_capabilities( $capabilities = null ):void 
+	* _get_post_type_labels( $post_type_object ) -> object 
+	* _get_custom_object_labels( $object, $post_versus_page_defaults ) -> object 
+	* _add_post_type_sub_menus():void 
+	* _add_post_type_support( $post_type, $feature, ...$args ):void 
+
+- _post_04.php: 	
+	* _remove_post_type_support( $post_type, $feature ):void 
+	* _get_all_post_type_supports( $post_type ):array 
+	* _post_type_supports( $post_type, $feature ):bool 
+	* _get_post_types_by_support( $feature, $operator = 'and' ):array 
+	* _set_post_type( $post_id = 0,$post_type = 'post' ):string 
+	* _is_post_type_viewable( $post_type ):bool 
+	* _is_post_status_viewable( $post_status ):bool 
+	* _is_post_publicly_viewable( $post = null ):bool 
+	* _get_posts( $args = null ) -> mixed  
+	* _add_post_meta( $post_id, $meta_key, $meta_value, $unique = false ) -> mixed  
+
+- _post_05.php: 	
+	* _delete_post_meta( $post_id, $meta_key, $meta_value = '' ) -> mixed 
+	* _get_post_meta($post_id,$key='',$single = false) -> mixed 
+	* _update_post_meta( $post_id, $meta_key, $meta_value, $prev_value = '' ) -> mixed 
+	* _delete_post_meta_by_key( $post_meta_key ) -> mixed 
+	* _register_post_meta( $post_type, $meta_key, array $args ) -> mixed 
+	* _unregister_post_meta( $post_type, $meta_key ) -> mixed 
+	* _get_post_custom($post_id = 0 ) -> mixed 
+	* _get_post_custom_keys( $post_id = 0 ) -> mixed 
+	* _get_post_custom_values( $key = '', $post_id = 0 ) -> mixed 
+	* _is_sticky($post_id = 0 ) -> mixed 
+
+- _post_06.php: 	
+	* _sanitize_post( $post, $context = 'display' ) -> mixed 
+	* _sanitize_post_field($field, $value, $post_id, $context = 'display' ) -> array|int 
+	* _stick_post( $post_id ):void 
+	* _unstick_post( $post_id ):void 
+	* _count_posts_cache_key( $type = 'post', $perm = '' ):string 
+	* _tp_count_posts( $type = 'post', $perm = '' ):\stdClass 
+	* _tp_count_attachments( $mime_type = '' ) -> mixed //dummi 
+	* _get_post_mime_types() -> mixed 
+	* _tp_match_mime_types( $wildcard_mime_types, $real_mime_types ):array 
+	* _tp_post_mime_type_where( $post_mime_types, $table_alias = '' ):string 
+	* _tp_delete_post( $postid = 0, $force_delete = false ) -> array|bool|null
+
+- _post_07.php: 	
+	* _reset_front_page_settings_for_post( $post_id ):void 
+	* _tp_trash_post( $post_id = 0 ):string 
+	* _tp_untrash_post( $post_id = 0 ):bool 
+	* _tp_trash_post_comments( $post = null ):bool  
+	* _tp_untrash_post_comments( $post = null ):bool 
+	* _tp_get_post_categories( $post_id = 0, ...$args) -> mixed 
+	* _tp_get_post_tags( $post_id = 0, ...$args):string 
+	* _tp_get_post_terms( $post_id = 0, $taxonomy = 'post_tag', $args = [] ) -> mixed 
+	* _tp_get_recent_posts( ...$args):bool 
+	* _tp_insert_post( $postarr, $tp_error = false, $fire_after_hooks = true ):int 
+	* _tp_update_post($postarr = [], $tp_error = false, $fire_after_hooks = true ):int 
+
+- _post_08.php: 	
+	* _tp_publish_post( $post ):void 
+	* _check_and_publish_future_post( $post_id ):void 
+	* _tp_resolve_post_date( $post_date = '', $post_date_gmt = '' ) -> mixed  
+	* _tp_unique_post_slug( $slug, $post_ID, $post_status, $post_type, $post_parent ):string 
+	* _truncate_post_slug( $slug, $length = 200 ):string 
+	* _tp_add_post_tags( $post_id = 0, $tags = '' ):string 
+	* _tp_set_post_tags( $post_id = 0, $tags = '', $append = false ):string 
+	* _tp_set_post_terms( $post_id = 0, $tags = '', $taxonomy = 'post_tag', $append = false ):bool 
+	* _tp_set_post_categories( $post_ID = 0, $post_categories = [], $append = false ):bool 
+	* _tp_transition_post_status( $new_status, $old_status, $post ):void 
+	* _tp_after_insert_post( $post, $update, $post_before ):void 
+
+- _post_09.php: 	
+	* _add_ping( $post_id, $uri ):bool 
+	* _get_enclosed( $post_id ):array 
+	* _get_pung( $post_id ):bool 
+	* _get_to_ping( $post_id ):bool 
+	* _trackback_url_list( $tb_list, $post_id ):void 
+	* _get_all_page_ids():array 
+	* _get_page_by_path( $page_path, $output = OBJECT, $post_type = 'page' ) -> mixed 
+	* _get_page_by_title( $page_title, $output = OBJECT, $post_type = 'page' ) -> mixed 
+	* _get_page_children( $page_id, $pages ):array 
+	* _get_page_hierarchy( &$pages, $page_id = 0 ):array 
+
+- _post_10.php: 	
+	* _page_traverse_name( $page_id, &$children, &$result ):void 
+	* _get_page_uri( $page = 0 ):bool 
+	* _get_pages( $args = [] )  -> mixed
+	* _is_local_attachment( $url ):bool 
+	* _tp_insert_attachment( $args, $file = false, $parent = 0, $tp_error = false, $fire_after_hooks = true ) -> mixed 
+	* _tp_delete_attachment( $post_id, $force_delete = false ) -> array|bool|null 
+	* _tp_delete_attachment_files( $post_id, $meta, $backup_sizes, $file ):bool 
+	* _tp_get_attachment_metadata( $attachment_id = 0, $unfiltered = false ):bool 
+	* _tp_update_attachment_metadata( $attachment_id, $data ):bool 
+	* _tp_get_attachment_url( $attachment_id = 0 ) -> mixed 
+	* _tp_get_attachment_caption( $post_id = 0 ):bool 
+
+- _post_11.php: 	
+	* _tp_get_attachment_thumb_file( $post_id = 0 ):bool 
+	* _tp_get_attachment_thumb_url( $post_id = 0 ):bool 
+	* _tp_attachment_is( $type, $post = null ):bool 
+	* _tp_attachment_is_image( $post = null ):bool 
+	* _tp_mime_type_icon( $mime = 0 ) -> mixed  
+	* _tp_check_for_changed_slugs( $post_id, $post, $post_before ):void 
+	* _tp_check_for_changed_dates( $post_id, $post, $post_before ):void 
+	* _get_private_posts_cap_sql( $post_type ):string 
+	* _get_posts_by_author_sql( $post_type, $full = true, $post_author = null, $public_only = false ):string 
+	* _get_last_postdate( $timezone = 'server', $post_type = 'any' ) -> mixed  
+	* _get_last_post_modified( $timezone = 'server', $post_type = 'any' ) -> mixed   
+
+- _post_12.php: 	
+	* _get_last_post_time( $timezone, $field, $post_type = 'any' ):bool 
+	* _update_post_cache( &$posts ):void 
+	* _clean_post_cache( $post ):void 
+	* _update_post_caches( &$posts, $post_type = 'post', $update_term_cache = true, $update_meta_cache = true ) -> mixed  
+	* _update_post_meta_cache( $post_ids ) -> mixed  
+	* _clean_attachment_cache( $id, $clean_terms = false ):void 
+	* _transition_post_status( $new_status, $old_status, $post ):void 
+	* _future_post_hook( $post ):void 
+	* _publish_post_hook( $post_id ):void 
+	* _tp_get_post_parent_id( $post = null ) -> mixed  
+	* _tp_check_post_hierarchy_for_loops( $post_parent, $post_ID ):int 
+
+- _post_13.php: 	
+	* _set_post_thumbnail( $post, $thumbnail_id ):bool 
+	* _delete_post_thumbnail( $post ):bool 
+	* _tp_delete_auto_drafts():void 
+	* _tp_queue_posts_for_term_meta_lazy_load( $posts ):void 
+	* _update_term_count_on_transition_post_status( $post ):void 
+	* _prime_post_caches( $ids, $update_term_cache = true, $update_meta_cache = true ):void 
+	* _tp_add_trashed_suffix_to_post_name_for_trashed_posts( $post_name, $post_ID = 0 ):void 
+	* _tp_add_trashed_suffix_to_post_name_for_post( $post ):string 
+	* _filter_query_attachment_file_names( $clauses ) -> mixed 
+	* _tp_cache_set_posts_last_changed():void 
+	* _get_available_post_mime_types( $type = 'attachment' ):array 
+
+- _post_14.php: 	
+	* _tp_get_original_image_path( $attachment_id, $unfiltered = false ):bool 
+	* _tp_get_original_image_url( $attachment_id ):bool 
+	* _tp_untrash_post_set_previous_status($previous_status ) -> mixed  
+
+- _post_objects.php: 	
+	* _post_types() -> ?
+	* _post_status_levels() -> ? 
+	* _post_type_objects() -> ? 
