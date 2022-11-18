@@ -1,0 +1,102 @@
+### TP_Core/Traits/Taxonomy
+
+**Note:** For what it is now and subject to change. 
+
+**Files:** 
+- README.md
+
+**Files/Methods:** 
+- _taxonomy_01.php: 	
+	* _create_initial_taxonomies():void 
+	* _get_taxonomies( $args = [], $output = 'names', $operator = 'and' ) -> mixed 
+	* _get_object_taxonomies( $object, $output = 'names' ) -> mixed  
+	* _get_taxonomy($taxonomy) -> mixed  
+	* _taxonomy_exists( $taxonomy ) -> mixed  
+	* taxonomy_exists( $taxonomy ) -> mixed  
+	* _is_taxonomy_hierarchical( $taxonomy ):bool 
+	* _register_taxonomy( $taxonomy, $object_type, $args = [] ) -> TP_Error|TP_Taxonomy 
+	* _unregister_taxonomy( $taxonomy ) -> bool|TP_Error
+	* _get_taxonomy_labels( $tax ) -> object 
+	* _register_taxonomy_for_object_type( $taxonomy, $object_type ):bool 
+
+- _taxonomy_02.php: 	
+	* _unregister_taxonomy_for_object_type( $taxonomy, $object_type ):bool 
+	* _get_objects_in_term( $term_ids, $taxonomies, $args = array() ) -> array|TP_Error
+	* _get_tax_sql( $tax_query, $primary_table, $primary_id_column ):array 
+	* _get_term( $term, $taxonomy = '', $output = OBJECT, $filter = 'raw' ) -> mixed 
+	* _get_term_by( $field, $value, $taxonomy = '', $output = OBJECT, $filter = 'raw' ) -> mixed  
+	* _get_term_tax_children( $term_id, $taxonomy ) -> array|TP_Error 
+	* _get_term_field( $field, $term, $taxonomy = '', $context = 'display' ) -> mixed  
+	* _get_term_to_edit( $id, $taxonomy ) -> mixed  
+	* _get_terms(array ...$args) -> mixed  
+	* //protected function _get_taxonomy_terms(array ...$args) //todo
+
+- _taxonomy_03.php: 	
+	* _add_term_meta( $term_id, $meta_key, $meta_value, $unique = false ):TP_Error 
+	* _delete_term_meta( $term_id, $meta_key, $meta_value = '' ) -> mixed 
+	* _get_term_meta( $term_id, $key = '', $single = false ) -> mixed 
+	* _update_term_meta( $term_id, $meta_key, $meta_value, $prev_value = '' ):TP_Error 
+	* _update_term_meta_cache( $term_ids ) -> mixed 
+	* _has_term_meta( $term_id ):array 
+	* _register_term_meta( $taxonomy, $meta_key, array $args ):string 
+	* _unregister_term_meta( $taxonomy, $meta_key ) -> mixed 
+	* _term_exists($term, $taxonomy = '', $parent = null ):array 
+	* _term_is_ancestor_of( $term1, $term2, $taxonomy ):bool 
+
+- _taxonomy_04.php: 	
+	* _sanitize_term( $term, $taxonomy, $context = 'display' ) 
+	* _sanitize_term_field( $field, $value, $term_id, $taxonomy, $context ):int 
+	* _tp_count_terms(array ...$args) -> array| TP_Error  
+	* _tp_delete_object_term_relationships( $object_id, $taxonomies ):bool 
+	* _tp_delete_term( $term, $taxonomy, ...$args):bool 
+	* _tp_delete_category( $cat_ID ):bool 
+	* _tp_get_object_terms( $object_ids, $taxonomies, ...$args):string 
+	* _tp_insert_term( $term, $taxonomy, array ...$args) -> array| TP_Error 
+	* _tp_set_object_terms( $object_id, $terms, $taxonomy, $append = false ) -> array| TP_Error  
+	* _tp_add_object_terms( $object_id, $terms, $taxonomy ) -> array| TP_Error  
+
+- _taxonomy_05.php: 	
+	* _tp_remove_object_terms( $object_id, $terms, $taxonomy ) -> array| TP_Error  
+	* _tp_unique_term_slug( $slug, $term ) -> mixed 
+	* _tp_update_term( $term_id, $taxonomy,array ...$args) -> array| TP_Error  
+	* _tp_defer_term_counting( $defer = null ):bool 
+	* _tp_update_term_count( $terms, $taxonomy, $do_deferred = false ) -> bool|string
+	* _tp_update_term_count_now( $terms, $taxonomy ):bool 
+	* _clean_object_term_cache( $object_ids, $object_type ):void 
+	* _clean_term_cache( $ids, $taxonomy = '', $clean_taxonomy = true ):void 
+	* _clean_taxonomy_cache( $taxonomy ):void 
+	* _get_object_term_cache( $id, $taxonomy ) -> array|bool
+
+- _taxonomy_06.php: 	
+	* _update_object_term_cache( $object_ids, $object_type ):bool 
+	* _update_term_cache(...$terms):void 
+	* _get_term_hierarchy( $taxonomy ):array 
+	* _get_term_children( $term_id, $terms, $taxonomy, &$ancestors = [] ):array 
+	* _pad_term_counts( &$terms, $taxonomy ):void 
+	* _prime_term_caches( $term_ids, $update_meta_cache = true ):void 
+	* _update_post_term_count( $terms, $taxonomy ):void 
+	* _update_generic_term_count( $terms, $taxonomy ):void  
+	* _split_shared_term($term_id,$term_taxonomy_id, $record = true ) -> int|TP_Term|TP_Error 
+	* _tp_batch_split_terms():void 
+
+- _taxonomy_07.php: 	
+	* _tp_check_for_scheduled_split_terms():void 
+	* _tp_check_split_default_terms( $term_id, $new_term_id, $taxonomy ):void 
+	* _tp_check_split_terms_in_menus( $term_id, $new_term_id, $taxonomy ):void 
+	* _tp_check_split_nav_menu_terms( $term_id, $new_term_id, $taxonomy ):void 
+	* _tp_get_split_term( $old_term_id ):array 
+	* _tp_term_is_shared( $term_id ):bool 
+	* _get_term_link( $term, $taxonomy = '' ):TP_Error 
+	* _the_taxonomies(array ...$args):void 
+	* _get_the_taxonomies( $post = 0, ...$args):array 
+	* _get_post_taxonomies( $post = 0 ) -> mixed 
+
+- _taxonomy_08.php: 	
+	* _is_object_in_term( $object_id, $taxonomy, $terms = null ) -> mixed 
+	* _is_object_in_taxonomy( $object_type, $taxonomy ):bool 
+	* _get_ancestors( $object_id = 0, $object_type = '', $resource_type = '' ) -> mixed 
+	* _tp_get_term_taxonomy_parent_id( $term_id, $taxonomy ) -> mixed 
+	* _tp_check_term_hierarchy_for_loops( $parent, $term_id, $taxonomy ):int 
+	* _is_taxonomy_viewable( $taxonomy ):bool 
+	* _tp_cache_set_terms_last_changed():void 
+	* _tp_check_term_meta_support_pre_filter( $check ):bool 
