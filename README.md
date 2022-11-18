@@ -5,6 +5,8 @@
 
 **First this:** This is by no way a replacement of wordpress.
 
+**Disclaimer:** I don't take any liability for the use of this package, that is solely for yourself. Aside of that this package is in development stage and most isn't working or has to be tested/adjusted whatever.
+
 **Also:** I have a great respect for the people who are working on it, just I have different ideas of how to do certain things.
 
 **Aim:** Creating a package that exists of php objects (oop), is namespaced, lighter and safer.
