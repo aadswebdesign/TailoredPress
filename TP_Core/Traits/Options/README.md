@@ -1,4 +1,4 @@
-### TP_Core/Traits/
+### TP_Core/Traits/Options
 
 **Note:** For what it is now and subject to change. The most methods in here are dummy methods and will be replaced by their real methods when the time is right.
 
