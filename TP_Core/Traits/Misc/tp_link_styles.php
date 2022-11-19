@@ -6,7 +6,7 @@
  * Time: 17:02
  */
 namespace TP_Core\Traits\Misc;
-use TP_Core\Libs\AssetsTools\TP_LinkStyle;
+use TP_Core\Libs\AssetsTools\TP_Styles;
 use TP_Core\Traits\Inits\_init_assets;
 if(ABSPATH){
     trait tp_link_styles{
@@ -64,7 +64,7 @@ if(ABSPATH){
         public function tp_deregister_style( $handle ){
             $this->_tp_scripts_maybe_doing_it_wrong( __FUNCTION__,$handle );
             $link_style = null;
-            if($this->_tp_styles instanceof TP_LinkStyle)
+            if($this->_tp_styles instanceof TP_Styles)
                 $link_style = $this->_tp_styles;
             return $link_style->remove( $handle );
         }
