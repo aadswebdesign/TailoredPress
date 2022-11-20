@@ -1,7 +1,8 @@
 ### TP_Core/Libs/Customs
 
 **Note:** For what it is now and subject to change. 
-**TODO** This whole package is a mess and needs an overhaul 'methods prefixed, an interface and more'.
+
+**TODO:** This whole package is a mess and needs an overhaul 'methods prefixed, an interface and more'.
 
 **Files:** 
 - README.md
