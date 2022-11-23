@@ -1,0 +1,198 @@
+### TP_Core/Libs/
+
+**Note:** For what it is now and subject to change. 
+
+**TODO:** Make this based on abstracts/interfaces
+
+**Files:** 
+- README.md
+
+**Files/ClassMethods and Vars:**  
+
+- Query_Base.php: 	
+	* protected $_fields, $_limits, $_orderby, $_groupby, $_where, $_join, $_from 
+	* public $comment, $comment_count, $comments, $current_comment, $current_post, $date_query, $found_comments
+	* public $found_networks, $found_posts, $found_sites, $in_the_loop, $is_404, $is_admin, $is_archive 
+	* public $is_attachment, $is_author, $is_category, $is_comment_feed, $is_date, $is_day, $is_embed, $is_favicon, $is_feed 
+	* public $is_home, $is_month, $is_page, $is_paged, $is_posts_page, $is_post_type_archive, $is_preview, $is_privacy_policy 
+	* public $is_search, $is_single, $is_singular, $is_robots, $is_tag, $is_tax, $is_time, $is_trackback,$is_year 
+	* public $max_num_comment_pages, $max_num_pages, $meta_query, $post, $post_count, $posts, $queried_object 
+	* public $queried_object_id, $query, $query_var_defaults, $query_vars, $request, $sites, $tax_query, $terms 
+	* protected $_array_keys, $_filtered_where_clause, $_meta_query_clauses, $_names, $_query_keys 
+	* protected $_query_vars_changed, $_query_vars_hash, $_results, $_total_users, $_tp_taxonomy 
+	* public $meta_key, $meta_value, $networks 
+
+- TP_Comment_Query.php: extends Query_Base 	
+	* protected $_sql_clauses 
+	* __construct( $query = '' ) 
+	* parse_query( $query = '' ): void 
+	* query_comment( $query ) 
+	* get_comments() 
+	* _get_comment_ids() 
+	* __set_found_comments(): void 
+	* _fill_descendants( $comments ) 
+	* _get_search_sql( $search, $columns ): string 
+	* _parse_orderby( $orderby ) 
+	* _parse_order( $order ): ?string 
+
+- TP_Date_Query.php: extends Query_Base 	
+	* private $__parent_query 
+	* public $column, $compare, $queries, $relation, $time_keys 
+	* __construct( $date_query, $default_column = 'post_date' ) 
+	* sanitize_query( $queries, $parent_query = null ): array 
+	* _is_first_order_clause( $query ): bool 
+	* get_compare( $query ): string 
+	* validate_date_values( $date_query = array()): bool 
+	* validate_column( $column ) 
+	* get_sql() 
+	* _get_sql_clauses(): array 
+	* _get_sql_for_query( $query, $depth = 0 ): array 
+	* _get_sql_for_sub_query( $query ): array 
+	* _get_sql_for_clause( $query, $parent_query ): array 
+	* build_value( $compare, $value ) 
+	* build_mysql_datetime( $datetime, $default_to_max = false ): string 
+	* build_time_query( $column, $compare, $hour = null, $minute = null, $second = null ) 
+
+- TP_Meta_Query.php: extends Query_Base 	
+	* protected $_clauses, $_has_or_relation, $_table_aliases, $_meta_compare, $_meta_value 
+	* protected  $_non_numeric_operators, $_numeric_operators, $_string, $_sub_query_alias, $_where 
+	* public $meta_id_column, $meta_table, $primary_id_column, $primary_table, $queries, $relation 
+	* __construct( $meta_query = false ) 
+	* sanitize_query( $queries ): array 
+	* _is_first_order_clause( $query ): bool 
+	* parse_query_vars( $qv ): void 
+	* get_cast_for_type( $type = '' ) 
+	* get_sql( $type, $primary_table, $primary_id_column, $context = null ) 
+	* _get_sql_clauses() 
+	* _get_sql_for_query( &$query, $depth = 0 ): array 
+	* get_sql_for_clause( &$clause, $parent_query, $clause_key = '' ): array 
+	* get_clauses(): array 
+	* _find_compatible_table_alias( $clause, $parent_query ) 
+	* has_or_relation(): bool 
+
+- TP_Network_Query.php: extends Query_Base 	
+	* protected $_sql_clauses 
+	* __construct( $query = '' ) 
+	* parse_query( $query = '' ): void 
+	* query_network( $query ) 
+	* get_networks() 
+	* _get_network_ids() 
+	* __set_found_networks(): void 
+	* _get_search_sql( $search, $columns ): string 
+	* _parse_orderby( $orderby ) 
+	* _parse_order( $order ): ?string 
+
+- TP_Query.php: extends Query_Base 	
+	* __init_query_flags(): void
+	* init(): void 
+	* parse_query_vars(): void 
+	* fill_query_vars( $array ) 
+	* parse_query( $query = '' ): void 
+	* parse_tax_query( &$q ): void 
+	* _parse_search( &$q ): string 
+	* _parse_search_terms( $terms ): array 
+	* _get_search_stop_words() 
+	* _parse_search_order( &$q ): string 
+	* _parse_orderby( $orderby ) 
+	* _parse_order( $order ): ?string 
+	* set_404(): void 
+	* get( $query_var, $default = '' ): string 
+	* set( $query_var, $value ): void 
+	* get_posts() 
+	* __set_found_posts( $q, $limits ): void 
+	* next_post() //todo
+	* the_post(): void 
+	* have_posts(): bool 
+	* rewind_posts(): void 
+	* next_comment() 
+	* the_comment(): void 
+	* have_comments(): bool 
+	* rewind_comments(): void 
+	* query_main( $query ) //original $query
+	* get_queried_object() 
+	* get_queried_object_id(): int 
+	* __construct( $query = '' ) 
+	* is_archive(): bool 
+	* is_post_type_archive( $post_types = '' ) 
+	* is_attachment( ...$attachment): bool 
+	* is_author( ...$author): bool 
+	* is_category( ...$category ): bool 
+	* is_tag( ...$tag): bool 
+	* is_tax( $taxonomy = '', $term = '' ): bool 
+	* is_date(): bool 
+	* is_day(): bool 
+	* is_feed( $feeds = '' ) 
+	* is_comment_feed(): bool 
+	* is_front_page(): bool 
+	* is_home(): bool 
+	* is_privacy_policy(): bool 
+	* is_month(): bool 
+	* is_page( $page = '' ): bool 
+	* is_paged(): bool 
+	* is_preview(): bool 
+	* is_robots(): bool 
+	* is_favicon(): bool 
+	* is_search(): bool 
+	* is_single( $post = '' ): bool 
+	* is_singular( $post_types = '' ) 
+	* is_time(): bool 
+	* is_trackback(): bool 
+	* is_year(): bool 
+	* is_404(): bool 
+	* is_embed(): bool 
+	* is_main_query(): bool 
+	* setup_postdata( $post ): bool 
+	* generate_postdata($post ) 
+	* reset_postdata(): void 
+
+- TP_Site_Query.php: extends Query_Base 	
+	* protected $_sql_clauses 
+	* parse_query( $query = '' ): void 
+	* query_site( $query ) 
+	* get_sites() 
+	* _get_site_ids() 
+	* __set_found_sites(): void 
+	* _get_search_sql( $search, $columns ): string 
+	* _parse_orderby( $orderby ) 
+	* _parse_order( $order ): ?string 
+
+- TP_Tax_Query.php: extends Query_Base 	
+	* private static $__no_results 
+	* protected $_table_aliases 
+	* public $primary_id_column, $primary_table, $queries, $queried_terms, $relation 
+	* __construct( $tax_query ) 
+	* sanitize_query( $queries ): array 
+	* sanitize_relation( $relation ): ?string 
+	* get_sql( $primary_table, $primary_id_column ): array 
+	* get_sql_for_clause( &$clause, $parent_query ): array 
+	* transform_query( &$query, $resulting_field ): void 
+	* _is_first_order_clause( $query ): bool static 
+	* _get_sql_clauses(): array 
+	* _get_sql_for_query( &$query, $depth = 0 ): array 
+	* _find_compatible_table_alias( $clause, $parent_query ) 
+	* __clean_query( &$query ): void 
+
+- TP_Term_Query.php: extends Query_Base 	
+	* protected $_sql_clauses 
+	* __construct( $query = '' ) 
+	* parse_query( ...$query): void 
+	* query_term( $query ) 
+	* get_terms() 
+	* _parse_orderby( $orderby_raw ): string 
+	* _parse_orderby_meta( $orderby_raw ): string 
+	* _parse_order( $order ): ?string 
+	* _get_search_sql( $string ): ?string 
+	* _populate_terms( $term_ids ): array 
+
+- TP_User_Query.php: extends Query_Base 	
+	* __construct( $query = null ) 
+	* fill_query_vars(array ...$args ) static 
+	* prepare_query(array ...$query): void 
+	* query_user(): void 
+	* get( $query_var ) 
+	* set( $query_var, $value ): void 
+	* _get_search_sql( $string, $cols, $wild = false ):string 
+	* get_results() 
+	* get_total(): int 
+	* _parse_orderby( $orderby ) 
+	* _parse_order( $order ): ?string 
