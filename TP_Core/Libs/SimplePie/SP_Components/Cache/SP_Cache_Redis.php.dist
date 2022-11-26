@@ -1,0 +1,80 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Aad Pouw
+ * Date: 15-3-2022
+ * Time: 16:37
+ */
+namespace TP_Managers\SimplePie_Manager\Disciplines\_cache;
+if(ABSPATH){
+    class _SimplePie_Cache_Redis  implements _SimplePie_Cache_Base{
+        protected $_sp_cache;
+        protected $_sp_options;
+        protected $_sp_name;
+        protected $_sp_data;
+        //todo @description
+        public function __construct($location, $name, $options = null){
+            //$this->cache = \flow\simple\cache\Redis::getRedisClientInstance();
+            $parsed = SimplePie_Cache::parse_URL($location);
+            $redis = ''; //todo new Redis();
+            $redis->connect($parsed['host'], $parsed['port']);
+            if (isset($parsed['pass'])) {
+                $redis->auth($parsed['pass']);
+            }
+            if (isset($parsed['path'])) {
+                $redis->select((int)substr($parsed['path'], 1));
+            }
+            $this->_sp_cache = $redis;
+
+            if (!is_null($options) && is_array($options)) {
+                $this->_sp_options = $options;
+            } else {
+                $this->_sp_options = array (
+                    'prefix' => 'rss:simple_primary:',
+                    'expire' => 0,
+                );
+            }
+            $this->_sp_name = $this->_sp_options['prefix'] . $name;
+        }
+        //todo @description
+        public function setRedisClient(\Redis $cache) {
+            $this->_sp_cache = $cache;
+        }
+        //todo @description
+        public function save($data){
+            if ($data instanceof SimplePie)
+                $data = $data->_sp_data;
+            $response = $this->_sp_cache->set($this->_sp_name, serialize($data));
+            if ($this->_sp_options['expire'])
+                $this->_sp_cache->expire($this->_sp_name, $this->_sp_options['expire']);
+            return $response;
+        }
+        //todo @description
+        public function load(){
+            $data = $this->_sp_cache->get($this->_sp_name);
+            if ($data !== false) return unserialize($data);
+            return false;
+        }
+        //@todo description
+        public function m_time(){
+            $data = $this->_sp_cache->get($this->_sp_name);
+            if ($data !== false) return time();
+            return false;
+        }
+        //@todo description
+        public function touch(){
+            $data = $this->_sp_cache->get($this->_sp_name);
+            if ($data !== false) {
+                $return = $this->_sp_cache->set($this->_sp_name, $data);
+                if ($this->_sp_options['expire'])
+                    return $this->_sp_cache->expire($this->_sp_name, $this->_sp_options['expire']);
+                return $return;
+            }
+            return false;
+        }
+        //@todo description
+        public function unlink(){
+            return $this->_sp_cache->set($this->_sp_name, null);
+        }
+    }
+}else die;
