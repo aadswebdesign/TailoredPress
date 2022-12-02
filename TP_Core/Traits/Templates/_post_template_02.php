@@ -7,13 +7,13 @@
  */
 namespace TP_Core\Traits\Templates;
 use TP_Core\Traits\Inits\_init_error;
-use TP_Core\Traits\Inits\_init_pages;
+//use TP_Core\Traits\Inits\_init_pages;
 use TP_Core\Traits\Inits\_init_queries;
 use TP_Core\Traits\Inits\_init_rewrite;
 use TP_Core\Libs\TP_PasswordHash;
 if(ABSPATH){
     trait _post_template_02 {
-        use _init_error, _init_queries,_init_pages,_init_rewrite;
+        use _init_error, _init_queries,_init_rewrite;//,_init_pages
         /**
          * @description Retrieves the post excerpt.
          * @param null $post

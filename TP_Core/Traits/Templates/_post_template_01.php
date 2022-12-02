@@ -6,11 +6,11 @@
  * Time: 04:24
  */
 namespace TP_Core\Traits\Templates;
-use TP_Core\Traits\Inits\_init_pages;
+//use TP_Core\Traits\Inits\_init_pages;
 use TP_Core\Libs\Post\TP_Post;
 if(ABSPATH){
     trait _post_template_01 {
-        use _init_pages;
+        //use _init_pages;
         /**
          * @description Display the ID of the current item in the WordPress Loop.
          */
