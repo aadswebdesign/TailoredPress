@@ -9,10 +9,10 @@ namespace TP_Core\Traits\AssetsLoaders;
 use TP_Core\Libs\Block\TP_Block_Type_Registry;
 use TP_Core\Libs\Block\TP_Block_Styles_Registry;
 use TP_Core\Traits\Inits\_init_assets;
-use TP_Core\Traits\Inits\_init_pages;
+//use TP_Core\Traits\Inits\_init_pages;
 if(ABSPATH){
     trait _assets_loader_05{
-        use _init_pages;
+        //use _init_pages;
         use _init_assets;
         /**
          * @description Inject the block editor assets that need to be loaded into the editor's iframe as an inline script.
