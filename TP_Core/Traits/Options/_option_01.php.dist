@@ -1,0 +1,239 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Aad Pouw
+ * Date: 5-3-2022
+ * Time: 18:34
+ */
+namespace TP_Includes\Factory\Options;
+use TP_Includes\Factory\Inits\_init_db;
+if(ABSPATH){
+    trait _option_01 {
+        use _init_db;
+        protected function _get_option($option, $default = false){
+            $tpdb = $this->__init_db();
+            if ( is_scalar( $option ) ) $option = trim( $option );
+            if ( empty( $option ) ) return false;
+            $pre = $this->apply_filters( "pre_option_{$option}", false, $option, $default );
+            if ( false !== $pre ) return $pre;
+            if ( defined( 'TP_SETUP_CONFIG' ) ) return false;
+            $passed_default = func_num_args() > 1;
+            if ( ! $this->_tp_installing() ) {
+                $not_options = $this->_tp_cache_get( 'not_options', 'options' );
+                if ( isset( $notoptions[ $option ] ) )
+                    return $this->apply_filters( "default_option_{$option}", $default, $option, $passed_default );
+                $all_options = $this->_tp_load_all_options();
+                if ( isset( $all_options[ $option ] ) ) $value = $all_options[ $option ];
+                else{
+                    $value = $this->_tp_cache_get( $option, 'options' );
+                    if ( false === $value ) {
+                        $row = $tpdb->get_row( $tpdb->prepare( TP_SELECT . " option_value FROM $tpdb->options WHERE option_name = %s LIMIT 1", $option ) );
+                        if($row instanceof \stdClass );
+                        if ( is_object( $row ) ) {
+                            $value = $row->option_value;
+                            $this->_tp_cache_add( $option, $value, 'options' );
+                        }else{
+                            if ( ! is_array( $not_options ) ) $not_options = [];
+                            $not_options[ $option ] = true;
+                            $this->_tp_cache_set( 'not_options', $not_options, 'options' );
+                            return $this->apply_filters( "default_option_{$option}", $default, $option, $passed_default );
+                        }
+                    }
+                }
+            }else{
+                $suppress = $tpdb->suppress_errors();
+                $row      = $tpdb->get_row( $tpdb->prepare( TP_SELECT . " option_value FROM $tpdb->options WHERE option_name = %s LIMIT 1", $option ) );
+                if($row instanceof \stdClass );
+                $tpdb->suppress_errors( $suppress );
+                if ( is_object( $row ) )  $value = $row->option_value;
+                else return $this->apply_filters( "default_option_{$option}", $default, $option, $passed_default );
+            }
+            if ( 'home' === $option && '' === $value ) return $this->_get_option('siteurl');
+            if ( in_array( $option, array( 'siteurl', 'home', 'category_base', 'tag_base' ), true ) )
+                $value = $this->_untrailingslashit( $value );
+            return $this->apply_filters( "option_{$option}", $this->_maybe_unserialize( $value ), $option );
+        }//77
+        protected function _tp_protect_special_option( $option ){
+            if ( 'all_options' === $option || 'not_options' === $option )
+                $this->_tp_die( sprintf($this->__( '%s is a protected TP option and may not be modified' ),
+                        $this->_esc_html( $option )));/* translators: %s: Option name. */
+        }//241
+        protected function _form_option( $option ) {
+            echo $this->_esc_attr( $this->_get_option( $option ) );
+        }//262
+        protected function _tp_load_all_options( $force_cache = false ){
+            $tpdb = $this->__init_db();
+            if ( !  $this->_tp_installing() || !  $this->_is_multisite() )
+                $all_options =  $this->_tp_cache_get( 'all_options', 'options', $force_cache );
+            else $all_options = false;
+            if ( ! $all_options ) {
+                $suppress      = $tpdb->suppress_errors();
+                $all_options_db = $tpdb->get_results( TP_SELECT . " option_name, option_value FROM $tpdb->options WHERE autoload = 'yes'" );
+                if ( ! $all_options_db ) {
+                    $all_options_db = $tpdb->get_results(TP_SELECT . " option_name, option_value FROM $tpdb->options" );
+                }
+                $tpdb->suppress_errors( $suppress );
+                $all_options = [];
+                foreach ( (array) $all_options_db as $o ) $all_options[ $o->option_name ] = $o->option_value;
+                if ( ! $this->_tp_installing() || ! $this->_is_multisite() ) {
+                    $all_options = $this->apply_filters( 'pre_cache_all_options', $all_options );
+                    $this->_tp_cache_add( 'all_options', $all_options, 'options' );
+                }
+            }
+            return $this->apply_filters( 'all_options', $all_options );
+        }//276
+        protected function _tp_load_core_site_options( $network_id = null ){
+            $tpdb = $this->__init_db();
+            if ( ! $this->_is_multisite() || $this->_tp_using_ext_object_cache() || $this->_tp_installing() )
+                return;
+            if ( empty( $network_id ) ) $network_id = $this->_get_current_network_id();
+            $core_options = array( 'site_name', 'siteurl', '_site_transient_timeout_theme_roots', '_site_transient_theme_roots', 'site_admins', 'can_compress_scripts', 'global_terms_enabled', 'ms_files_rewriting' );
+            $core_options_in = "'" . implode( "', '", $core_options ) . "'";
+            $options         = $tpdb->get_results( $tpdb->prepare( TP_SELECT . " meta_key, meta_value FROM $tpdb->site_meta WHERE meta_key IN ($core_options_in) AND site_id = %d", $network_id ) );
+            foreach ( $options as $option ) {
+                $key                = $option->meta_key;
+                $cache_key          = "{$network_id}:$key";
+                $option->meta_value = $this->_maybe_unserialize( $option->meta_value );
+                $this->_tp_cache_set( $cache_key, $option->meta_value, 'site-options' );
+            }
+        }//331
+        protected function _update_option( $option, $value, $autoload = 'yes'){
+            $tpdb = $this->__init_db();
+            if ( is_scalar( $option ) )$option = trim( $option );
+            if ( empty( $option ) ) return false;
+            if(! $this->_tp_installing()) return $this->_update_option( $option, $value, $autoload );
+            $this->_tp_protect_special_option( $option );
+            if ( is_object( $value ) ) $value = clone $value;
+            $value     = $this->_sanitize_option( $option, $value );
+            $old_value = $this->_get_option( $option );
+            $value = $this->apply_filters( "pre_update_option_{$option}", $value, $old_value, $option );
+            $value = $this->apply_filters( 'pre_update_option', $value, $option, $old_value );
+            if ( $this->apply_filters( "default_option_{$option}", false, $option, false ) === $old_value ) {
+                // Default setting for new options is 'yes'.
+                if ( null === $autoload ) {
+                    $autoload = 'yes';
+                }
+                return $this->_add_option( $option, $value, $autoload );
+            }
+            $serialized_value = $this->_maybe_serialize( $value );
+            $this->do_action( 'update_option', $option, $old_value, $value );
+            $update_args = ['option_value' => $serialized_value,];
+            if ( null !== $autoload )
+                $update_args['autoload'] = ( 'no' === $autoload || false === $autoload ) ? 'no' : 'yes';
+            $result = $tpdb->update( $tpdb->options, $update_args, array( 'option_name' => $option ) );
+            if ( ! $result ) return false;
+            $not_options = $this->_tp_cache_get( 'not_options', 'options' );
+            if ( is_array( $not_options ) && isset( $not_options[ $option ] ) ) {
+                unset( $not_options[ $option ] );
+                $this->_tp_cache_set( 'not_options', $not_options, 'options' );
+            }
+            if ( ! $this->_tp_installing() ) {
+                $all_options = $this->_tp_load_all_options( true );
+                if ( isset( $all_options[ $option ] ) ) {
+                    $all_options[ $option ] = $serialized_value;
+                    $this->_tp_cache_set( 'all_options', $all_options, 'options' );
+                } else $this->_tp_cache_set( $option, $serialized_value, 'options' );
+            }
+            $this->do_action( "update_option_{$option}", $old_value, $value, $option );
+            $this->do_action( 'updated_option', $option, $old_value, $value );
+            return true;
+        }//381
+        protected function _add_option( $option, $value, $autoload = 'yes'){
+            $tpdb = $this->__init_db();
+            if ( is_scalar( $option ) ) $option = trim( $option );
+            if ( empty( $option ) ) return false;
+            $this->_tp_protect_special_option( $option );
+            if ( is_object( $value ) ) $value = clone $value;
+            $value = $this->_sanitize_option( $option, $value );
+            $not_options = $this->_tp_cache_get( 'not_options', 'options' );
+            if ( ! is_array( $not_options ) || ! isset( $not_options[ $option ] ) ) {
+                if ( $this->apply_filters( "default_option_{$option}", false, $option, false ) !== $this->_get_option( $option ) )
+                    return false;
+            }
+            $serialized_value = $this->_maybe_serialize( $value );
+            $autoload         = ( 'no' === $autoload || false === $autoload ) ? 'no' : 'yes';
+            $this->do_action( 'add_option', $option, $value );
+            $result = $tpdb->query( $tpdb->prepare( TP_INSERT . " INTO `$tpdb->options` (`option_name`, `option_value`, `autoload`) VALUES (%s, %s, %s) ON DUPLICATE KEY UPDATE `option_name` = VALUES(`option_name`), `option_value` = VALUES(`option_value`), `autoload` = VALUES(`autoload`)", $option, $serialized_value, $autoload ) );
+            if ( ! $result ) return false;
+            if ( ! $this->_tp_installing() ) {
+                if ( 'yes' === $autoload ) {
+                    $all_options            = $this->_tp_load_all_options( true );
+                    $all_options[ $option ] = $serialized_value;
+                    $this->_tp_cache_set( 'all_options', $all_options, 'options' );
+                } else $this->_tp_cache_set( $option, $serialized_value, 'options' );
+            }
+            $not_options = $this->_tp_cache_get( 'not_options', 'options' );
+            if ( is_array( $not_options ) && isset( $not_options[ $option ] ) ) {
+                unset( $not_options[ $option ] );
+                $this->_tp_cache_set( 'notoptions', $not_options, 'options' );
+            }
+            $this->do_action( "add_option_{$option}", $option, $value );
+            $this->do_action( 'added_option', $option, $value );
+            return true;
+        }//567
+        protected function _delete_option( $option ) {
+            $tpdb = $this->__init_db();
+            if ( is_scalar( $option ) ) $option = trim( $option );
+            if ( empty( $option ) ) return false;
+            $this->_tp_protect_special_option( $option );
+            $row = $tpdb->get_row( $tpdb->prepare(TP_SELECT . " autoload FROM $tpdb->options WHERE option_name = %s", $option ) );
+            if($row  instanceof \stdClass );//todo let see or it is working this way???
+            if ( is_null( $row ) ) return false;
+            $this->do_action( 'delete_option', $option );
+            $result = $tpdb->delete( $tpdb->options, array( 'option_name' => $option ) );
+            if ( ! $this->_tp_installing() ) {
+                if ( 'yes' === $row->autoload ) {
+                    $all_options = $this->_tp_load_all_options( true );
+                    if ( is_array( $all_options ) && isset( $all_options[ $option ] ) ) {
+                        unset( $all_options[ $option ] );
+                        $this->_tp_cache_set( 'all_options', $all_options, 'options' );
+                    }
+                } else $this->_tp_cache_delete( $option, 'options' );
+            }
+            if ( $result ) {
+                $this->do_action( "delete_option_{$option}", $option );
+                $this->do_action( 'deleted_option', $option );
+                return true;
+            }
+            return false;
+        }//696
+        protected function _delete_transient( $transient ){
+            $this->do_action( "delete_transient_{$transient}", $transient );
+            if ( $this->_tp_using_ext_object_cache() || $this->_tp_installing() )
+                $result = $this->_tp_cache_delete( $transient, 'transient' );
+            else {
+                $option_timeout = '_transient_timeout_' . $transient;
+                $option         = '_transient_' . $transient;
+                $result         = $this->_delete_option( $option );
+                if ( $result ) $this->_delete_option( $option_timeout );
+            }
+            if ( $result ) $this->do_action( 'deleted_transient', $transient );
+            return $result;
+        }//774
+        protected function _get_transient( $transient ){
+            $pre = $this->apply_filters( "pre_transient_{$transient}", false, $transient );
+            if ( false !== $pre ) return $pre;
+            if ( $this->_tp_using_ext_object_cache() || $this->_tp_installing() ) {
+                $value = $this->_tp_cache_get( $transient, 'transient' );
+            } else {
+                $transient_option = '_transient_' . $transient;
+                if ( ! $this->_tp_installing() ) {
+                    $all_options = $this->_tp_load_all_options();
+                    if ( ! isset( $all_options[ $transient_option ] ) ) {
+                        $transient_timeout = '_transient_timeout_' . $transient;
+                        $timeout           = $this->_get_option( $transient_timeout );
+                        if ( false !== $timeout && $timeout < time() ) {
+                            $this->_delete_option( $transient_option );
+                            $this->_delete_option( $transient_timeout );
+                            $value = false;
+                        }
+                    }
+                }
+                if ( ! isset( $value ) ) {
+                    $value = $this->_get_option( $transient_option );
+                }
+            }
+            return $this->apply_filters( "transient_{$transient}", $value, $transient );
+        }//825
+    }
+}else die;
