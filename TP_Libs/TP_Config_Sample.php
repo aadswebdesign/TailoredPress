@@ -5,7 +5,7 @@
  * Date: 27-8-2022
  * Time: 14:39
  */
-namespace Libs; 
+namespace TP_Libs; 
 if(ABSPATH){
     class TP_Config_Sample{
         public $table_prefix;
