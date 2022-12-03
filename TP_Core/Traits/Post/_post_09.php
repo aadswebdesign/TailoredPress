@@ -160,7 +160,7 @@ if(ABSPATH){
          * @param $page_title
          * @param string $output
          * @param mixed $post_type
-         * @return mixed
+         * @return null
          */
         protected function _get_page_by_title( $page_title, $output = OBJECT, $post_type = 'page' ){
             $this->tpdb = $this->_init_db();

@@ -108,7 +108,7 @@ if(ABSPATH){
         /**
          * @description Retrieves an array of the latest posts, or posts matching the given criteria.
          * @param null $args
-         * @return mixed
+         * @return array|mixed|null
          */
         protected function _get_posts( $args = null ){
             $defaults = ['numberposts' => 5,'category' => 0,'orderby' => 'date', 'order' => 'DESC','include' => [],

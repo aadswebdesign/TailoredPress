@@ -70,10 +70,10 @@ if(ABSPATH){
         private $__screen_settings;
         private static $__old_compat_help = [];
         private static $__registry = [];
-        protected $in_admin;
         public $action;
         public $base;
         public $id;
+        protected $in_admin;
         public $is_block_editor = false;
         public $is_network;
         public $is_user;
@@ -376,6 +376,9 @@ if(ABSPATH){
             $output .= new screen_meta_links($link_args);
             return $output;
         }//787
+        public function render_screen_meta(): void{
+            echo $this->get_render_screen_meta();
+        }
         public function show_screen_options(){
             if ( is_bool( $this->__show_screen_options ) ) return $this->__show_screen_options;
             $columns = $this->_get_column_headers( $this );
@@ -422,11 +425,17 @@ if(ABSPATH){
             $html .= $form_end.$wrapper_end;
             return $html;
         }//1046
+        public function render_screen_options(array ...$options): void{
+            echo $this->get_render_screen_options($options);
+        }
         public function get_render_meta_boxes_preferences(){
             if ( ! isset( $this->tp_meta_boxes[ $this->id ] ) ) return '';
             $args['meta_is'] = $this->id;
             return new render_meta_boxes_preferences(...$args);
         }//1105
+        public function render_meta_boxes_preferences(): void{
+            echo $this->get_render_meta_boxes_preferences();
+        }
         public function get_render_list_table_columns_preferences(){
             $columns = $this->_get_column_headers( $this );
             $hidden  = $this->_get_hidden_columns( $this );
@@ -436,13 +445,19 @@ if(ABSPATH){
             $args['hidden'] = $hidden;
             return new render_list_table_columns_preferences(...$args);
         }//1146
+        public function render_list_table_columns_preferences(): void{
+            echo $this->get_render_list_table_columns_preferences();
+        }
         public function get_render_screen_layout(){
             if ( ! $this->get_screen_option( 'layout_columns' ) ) return '';
             $args['screen_layout_columns'] = $this->get_columns();
             $args['num']                   = $this->get_screen_option( 'layout_columns', 'max' );
             return new render_screen_layout(...$args);
         }//1194
-        public function get_render_per_page_options(){
+        public function render_screen_layout(): void{
+            echo $this->get_render_screen_layout();
+        }
+        public function get_render_per_page_options(): mixed{
             if ( null === $this->get_screen_option( 'per_page' ) ) return '';
             $per_page_label = $this->get_screen_option( 'per_page', 'label' );
             if ( null === $per_page_label ) $per_page_label = $this->__( 'Number of items per page:' );
@@ -465,6 +480,9 @@ if(ABSPATH){
             $args['screen_option'] = $screen_option;
             return new render_per_page_options(...$args);
         }//1226
+        public function render_per_page_options(): void{
+            echo $this->get_render_per_page_options();
+        }
         public function get_render_view_mode(){
             $get_screen = $this->_get_current_screen();
             $screen = null;
@@ -480,9 +498,15 @@ if(ABSPATH){
             $args['tp_mode'] = $this->__tp_mode;
             return new render_view_mode(...$args);
         }//1292
+        public function render_view_mode(): void{
+            echo $this->get_render_view_mode();
+        }
         public function get_render_screen_reader_content( $key = '', $tag = 'h2' ): string{
             if ( ! isset( $this->__screen_reader_content[ $key ] ) ) return '';
             return "<$tag class='screen-reader-text'>{$this->__screen_reader_content[ $key ]}</$tag>";
         }//1347
+        public function render_screen_reader_content( $key = '', $tag = 'h2' ): void{
+            echo $this->get_render_screen_reader_content( $key, $tag);
+        }
     }
 }else die;

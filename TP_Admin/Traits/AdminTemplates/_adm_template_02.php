@@ -27,6 +27,9 @@ if(ABSPATH){
             }
             return $output;
         }//876
+        protected function _page_template_dropdown( $default = '', $post_type = 'page' ):void{
+            echo $this->_get_page_template_dropdown( $default, $post_type);
+        }//876
         /**
          * @description Print out option HTML elements for the page parents drop-down.
          * @param int $default
@@ -53,6 +56,9 @@ if(ABSPATH){
             }
             return $output;
         }//901
+        protected function _parent_dropdown( $default = 0, $parent = 0, $level = 0, $post = null ):void{
+            echo $this->_get_parent_dropdown( $default, $parent, $level, $post);
+        }//901
         /**
          * @description Print out option HTML elements for role selectors.
          * @param string $selected
@@ -69,6 +75,9 @@ if(ABSPATH){
                 }else{ $output .= "\n\t<option value='{$this->_esc_attr( $role )}'>$name</option>";}
             }
             return $output;
+        }//932
+        protected function _tp_dropdown_roles( $selected = '' ):void{
+            echo $this->_tp_get_dropdown_roles( $selected);
         }//932
         /**
          * @description Outputs the form used by the importers to accept the data to be imported
@@ -95,6 +104,9 @@ if(ABSPATH){
                 $output .= "</li></ul></form>";
             }
             return $output;
+        }//957
+        protected function _tp_import_upload_form( $action ):void{
+            echo $this->_tp_get_import_upload_form( $action );
         }//957
         /**
          * @description Adds a meta box to one or more screens.
@@ -285,6 +297,9 @@ if(ABSPATH){
             $output .= "</div>\n";
             return $output;
         }//1253
+        protected function _do_meta_boxes( $screen, $context, $object ):void{
+            echo $this->_get_meta_boxes( $screen, $context, $object );
+        }//1253
         /**
          * @description Removes a meta box from one or more screens.
          * @param $id
@@ -351,6 +366,9 @@ if(ABSPATH){
             $output .= "</ul></div>";
             //$output .= $i; //might not be needed?
             return $output;
+        }//1477
+        protected function _do_accordion_sections( $screen, $context, $object ):void{
+            echo $this->_get_accordion_sections( $screen, $context, $object );
         }//1477
         /**
          * @description Add a new section to a settings page.

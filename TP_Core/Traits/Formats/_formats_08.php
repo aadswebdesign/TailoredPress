@@ -12,7 +12,7 @@ if(ABSPATH){
          * @description Performs esc_url() for database or redirect usage.
          * @param $url
          * @param null $protocols
-         * @return mixed
+         * @return mixed|string
          */
         protected function _esc_url_raw( $url, $protocols = null ){
             return $this->_esc_url( $url, $protocols, 'db' );
@@ -21,7 +21,7 @@ if(ABSPATH){
          * @description Performs esc_url() for database or redirect usage.
          * @param $url
          * @param null $protocols
-         * @return mixed
+         * @return mixed|string
          */
         protected function _sanitize_url( $url, $protocols = null ){
             return $this->_esc_url_raw( $url, $protocols );

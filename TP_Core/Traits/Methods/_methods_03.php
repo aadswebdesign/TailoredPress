@@ -125,7 +125,7 @@ if(ABSPATH){
         /**
          * @description Retrieves a modified URL query string.
          * @param array ...$args
-         * @return mixed
+         * @return mixed|string|void
          */
         protected function _add_query_arg( ...$args ){
             if ( is_array( $args[0] ) ) {
@@ -176,7 +176,7 @@ if(ABSPATH){
          * @description Removes an item or items from a query string.
          * @param $key
          * @param bool $query
-         * @return mixed
+         * @return bool|mixed|string|void
          */
         protected function _remove_query_arg( $key, $query = false ){
             if ( is_array( $key ) ) { // Removing multiple keys.

@@ -44,7 +44,7 @@ if(ABSPATH){
          * @param $user
          * @param $username
          * @param $password
-         * @return TP_Error|TP_User
+         * @return TP_Error | TP_User
          */
         protected function _tp_authenticate_username_password($user, $username, $password ){
             if ( empty( $username ) || empty( $password ) ) {
@@ -120,7 +120,7 @@ if(ABSPATH){
          * @param $input_user
          * @param $username
          * @param $password
-         * @return mixed
+         * @return null|TP_Error|TP_User
          */
         protected function _tp_authenticate_application_password( $input_user, $username, $password ){
             if ( ! TP_Application_Passwords::is_in_use() ) return $input_user;

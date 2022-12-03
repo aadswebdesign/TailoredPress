@@ -71,6 +71,9 @@ if(ABSPATH){
             }
             return $output;
         }//76
+        protected function _print_media_upload_tabs():void{
+            echo $this->_get_media_upload_tabs();
+        }
         /**
          * @param $id
          * @param $caption
@@ -148,6 +151,9 @@ if(ABSPATH){
             <?php
             return ob_get_clean();
         }//270
+        protected function _media_send_to_editor( $html ):void{
+            echo $this->_get_media_send_to_editor( $html );
+        }
         /**
          * @description Saves a file submitted from a POST request and create an attachment post for it.
          * @param $file_id
@@ -298,5 +304,6 @@ if(ABSPATH){
             $output .= "</body>";
             return $output;
         }//519
+        protected function _tp_iframe( $content_func, ...$args ):void{}//519
     }
 }else die;

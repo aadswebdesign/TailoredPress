@@ -31,6 +31,7 @@ if(ABSPATH){
         //protected static $_default_labels = [];
         public $tp_post_type_features; //added
         public $post_type_meta_caps; //added
+
         public $builtin = false;
         public $can_export = true;
         public $cap;

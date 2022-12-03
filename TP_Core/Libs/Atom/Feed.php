@@ -10,6 +10,6 @@ if(ABSPATH){
     class Feed{
         public $links = [];
         public $categories = [];
-        public $entries = [];
+        public  $entries = [];
     }
 }else die;

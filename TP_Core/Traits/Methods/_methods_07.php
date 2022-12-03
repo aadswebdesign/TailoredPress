@@ -223,7 +223,7 @@ if(ABSPATH){
          * @param $name
          * @param $bits
          * @param null $time
-         * @return mixed
+         * @return array|mixed
          */
         protected function _tp_upload_bits( $name, $bits, $time = null ){
             if ( empty( $name ) ) return array( 'error' => $this->__( 'Empty filename' ) );

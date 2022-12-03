@@ -15,8 +15,8 @@ if(ABSPATH){
             'disable_html_ns' => false,
         );
         private $__eof;
-        
-		protected $_xpath;
+        private $_xpath;
+
         protected $_carry_on = true;
         protected $_current;
         protected $_doc;
@@ -25,7 +25,7 @@ if(ABSPATH){
         protected $_errors;
         protected $_events;
         protected $_frag;
-        protected $_has_html_5 = false;
+        private $_has_html_5 = false;
         protected $_implicit_namespaces;
         protected $_insert_mode = 0;
         protected $_mode;

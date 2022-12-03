@@ -838,7 +838,7 @@ if(ABSPATH){
          * @param $table
          * @param $data
          * @param $format
-         * @return mixed
+         * @return bool|mixed
          */
         protected function _process_fields( $table, $data, $format ){
             $data = $this->_process_field_formats( $data, $format );
@@ -1025,7 +1025,7 @@ if(ABSPATH){
         /**
          * @description Retrieves the character set for the given table.
          * @param $table
-         * @return mixed
+         * @return bool|mixed|string|TP_Error
          */
         protected function _get_table_charset( $table ){
             $table_key = strtolower( $table );
@@ -1113,7 +1113,7 @@ if(ABSPATH){
          * @description Retrieves the character set for the given column.
          * @param $table
          * @param $column
-         * @return mixed
+         * @return bool|mixed|string|TP_Error
          */
         public function get_col_charset( $table, $column ){
             $table_key  = strtolower( $table );
@@ -1179,7 +1179,7 @@ if(ABSPATH){
          * @param $table
          * @param $column
          * @param $value
-         * @return mixed
+         * @return array|bool|mixed|string|TP_Error
          */
         public function strip_invalid_text_for_column( $table, $column, $value ){
             if ( ! is_string( $value ) ) return $value;
@@ -1297,7 +1297,7 @@ if(ABSPATH){
         /**
          * @description Strips any invalid characters from the query.
          * @param $query
-         * @return mixed
+         * @return array|bool|mixed|string|TP_Error
          */
         protected function _strip_invalid_text_from_query( $query ){
             $trimmed_query = ltrim( $query, "\r\n\t (" );
@@ -1320,7 +1320,7 @@ if(ABSPATH){
          * @param $table
          * @param $column
          * @param $value
-         * @return mixed
+         * @return array|void
          */
         protected function _strip_invalid_text_for_column( $table, $column, $value ){
             if ( ! is_string( $value ) ) return $value;
@@ -1341,7 +1341,7 @@ if(ABSPATH){
         /**
          * @description Finds the first table name referenced in a query.
          * @param $query
-         * @return mixed
+         * @return bool|mixed
          */
         protected function _get_table_from_query( $query ){
             $query = rtrim( $query, ';/-#' );
@@ -1488,7 +1488,7 @@ if(ABSPATH){
          * todo,
          * @description Determines if a database supports a particular feature.
          * @param $db_cap
-         * @return mixed
+         * @return bool|mixed
          */
         public function has_cap( $db_cap ){
             $version = $this->db_version();

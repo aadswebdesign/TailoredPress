@@ -22,6 +22,9 @@ if(ABSPATH){
             $output .= "</li></ul>";
             return $output;
         }//3094
+        protected function _multisite_over_quota_message():void{
+            echo $this->_get_multisite_over_quota_message();
+        }//3094
         /**
          * @description Displays the image and editor in the post editor
          * @param $post
@@ -126,6 +129,9 @@ if(ABSPATH){
             $output .= "</li></ul></div>";
             $output .= "</section>";
             return $output;
+        }//3109
+        protected function _edit_form_image_editor( $post ):void{
+            echo $this->_get_edit_form_image_editor( $post );
         }//3109
         /**
          * @description Displays non-editable attachment metadata in the publish meta box.
@@ -236,6 +242,9 @@ if(ABSPATH){
             }
             $output .= "</section>";
             return $output;
+        }//3287
+        protected function _attachment_submitbox_metadata():void{
+            echo $this->_get_attachment_submitbox_metadata();
         }//3287
         /**
          * @description Parse ID3v2, ID3v1, and getID3 comments to extract usable data

@@ -82,7 +82,7 @@ if(ABSPATH){
          * @param $primary_table
          * @param $primary_id_column
          * @param null $context
-         * @return mixed
+         * @return bool|mixed
          */
         protected function _get_meta_sql( $meta_query, $type, $primary_table, $primary_id_column, $context = null ){
             if($meta_query !== null){

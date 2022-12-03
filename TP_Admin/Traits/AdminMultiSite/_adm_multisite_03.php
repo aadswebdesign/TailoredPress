@@ -37,6 +37,9 @@ if(ABSPATH){
             $_screen_links = implode( '', $screen_links );
             return "<nav class='nav-tab-wrapper' aria-label='{$this->_esc_attr__('Secondary menu' )}'>$_screen_links</nav>";
         }//1042
+        protected function _network_edit_site_nav( $args =[]):void{
+            echo $this->_get_network_edit_site_nav( $args);
+        }//1042
         /**
          * @description Returns the arguments for the help tab on the Edit Site screens.
          * @return array

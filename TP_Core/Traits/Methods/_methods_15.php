@@ -40,7 +40,7 @@ if(ABSPATH){
          * @param $start
          * @param $start_parent
          * @param array $callback_args
-         * @return mixed
+         * @return array|void
          */
         protected function _tp_find_hierarchy_loop( $callback, $start, $start_parent, $callback_args = [] ){
             $override = is_null( $start_parent ) ? array() : array( $start => $start_parent );

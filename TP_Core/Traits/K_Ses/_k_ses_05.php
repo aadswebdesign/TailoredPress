@@ -52,7 +52,7 @@ if(ABSPATH){
         /**
          * @description Filters an inline style attribute and removes disallowed rules.
          * @param $css
-         * @return mixed
+         * @return mixed|string
          */
         protected function _safe_css_filter_attr( $css ){
             $css = $this->_tp_kses_no_null( $css );

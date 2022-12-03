@@ -18,9 +18,9 @@ if(ABSPATH){
          * @param bool $more
          * @param string $css_class
          * @param bool $none
-         * @return string
+         * @return bool
          */
-        protected function _comments_popup_link( $zero = false, $one = false, $more = false, $css_class = '', $none = false ):string{
+        protected function _comments_popup_link( $zero = false, $one = false, $more = false, $css_class = '', $none = false ):bool{
             $post_id    = $this->_get_the_ID();
             $post_title = $this->_get_the_title();
             $number     = $this->_get_comments_number($post_id );
@@ -50,7 +50,7 @@ if(ABSPATH){
             $attributes = "";
             $this->args['attributes'] = $this->_apply_filters('comments_popup_link_attributes', $attributes );
             $this->args['comments_number'] = $this->_get_comments_number_text( $zero, $one, $more );
-            return new comments_popup_template_view($this->args);
+            echo new comments_popup_template_view($this->args);
         }//1575 from comment-template
         /**
          * @description Retrieves HTML content for reply to comment link.

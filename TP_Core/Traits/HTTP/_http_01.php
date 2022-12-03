@@ -22,7 +22,7 @@ if(ABSPATH){
          * @description Retrieve the raw response from a safe HTTP request.
          * @param $url
          * @param array $args
-         * @return mixed
+         * @return string|\TP_Core\Libs\\TP_Error
          */
         protected function _tp_safe_remote_request( $url, $args = [] ){
             $args['reject_unsafe_urls'] = true;

@@ -310,7 +310,7 @@ if(ABSPATH){
             }
             return false;
         }
-        protected function _is_parent($tagName):bool{
+        protected function is_parent($tagName):bool{
             return $this->_parent_current->tagName === $tagName;
         }
     }

@@ -83,7 +83,7 @@ if(ABSPATH){
         } //rewrite
         /**
          * @param $base
-         * @return mixed
+         * @return mixed|string
          */
         protected function _tp_filter_taxonomy_base( $base ){
             if ( ! empty( $base ) ) {

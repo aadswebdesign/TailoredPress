@@ -12,10 +12,10 @@ if(ABSPATH){
         protected $_tpdb;
         protected function _init_db(): TP_Db{
             if(!($this->_tpdb instanceof TP_Db)){
-                $db_user     = defined( 'DB_USER' ) ? DB_USER : '';
-                $db_password = defined( 'DB_PASSWORD' ) ? DB_PASSWORD : '';
-                $db_name     = defined( 'DB_NAME' ) ? DB_NAME : '';
-                $db_host     = defined( 'DB_HOST' ) ? DB_HOST : '';
+                $db_user     = defined( 'DB_USER' ) ? DB_USER : 'awd_sites';
+                $db_password = defined( 'DB_PASSWORD' ) ? DB_PASSWORD : '2r7DuG3M6f6bOhIY';
+                $db_name     = defined( 'DB_NAME' ) ? DB_NAME : 'tp_test_base';
+                $db_host     = defined( 'DB_HOST' ) ? DB_HOST : 'localhost';
                 $this->_tpdb = new TP_Db( $db_user, $db_password, $db_name, $db_host );
             }
             //if (! isset( $this->_tpdb ) ) return false;

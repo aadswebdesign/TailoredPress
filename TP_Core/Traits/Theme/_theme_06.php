@@ -89,7 +89,7 @@ if(ABSPATH){
         /**
          * @description Fetches the `custom_css` post for a given theme.
          * @param string $stylesheet
-         * @return mixed
+         * @return null
          */
         protected function _tp_get_custom_css_post( $stylesheet = '' ){
             if ( empty($stylesheet)) $stylesheet = $this->_get_stylesheet();
@@ -137,7 +137,7 @@ if(ABSPATH){
          * @description Updates the `custom_css` post for a given theme.
          * @param $css
          * @param \array[] ...$args
-         * @return mixed
+         * @return null
          */
         protected function _tp_update_custom_css_post( $css,array ...$args){
             $args = $this->_tp_parse_args($args, ['preprocessed' => '', 'stylesheet' => $this->_get_stylesheet(),]);

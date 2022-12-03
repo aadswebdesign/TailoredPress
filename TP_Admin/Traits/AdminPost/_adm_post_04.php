@@ -147,6 +147,9 @@ if(ABSPATH){
             $output .= "</li></ul></div>";
             return $output;
         }//2261
+        protected function _the_block_editor_meta_boxes():void{
+            echo $this->_get_block_editor_meta_boxes();
+        }//2261
         /**
          * @description Renders the hidden form required for the meta boxes form.
          * @param $post
@@ -191,6 +194,9 @@ if(ABSPATH){
             $output .= $this->_tp_nonce_field( 'sample-perma-link', 'sample_perma_link_nonce', false );
             $output .= $this->_do_action( 'block_editor_meta_box_hidden_fields', $post );
             return $output;
+        }//2394
+        protected function _the_block_editor_meta_box_post_form_hidden_fields( $post ):void{
+            echo $this->_get_block_editor_meta_box_post_form_hidden_fields( $post );
         }//2394
         /**
          * @description Disables block editor for tp_navigation type posts so they can be managed via the UI.

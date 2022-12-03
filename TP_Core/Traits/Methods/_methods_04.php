@@ -27,7 +27,7 @@ if(ABSPATH){
         /**
          * @description Retrieve the description for the HTTP status.
          * @param $code
-         * @return mixed
+         * @return mixed|string
          */
         protected function _get_status_header_desc( $code ){
             $code = $this->_abs_int( $code );

@@ -243,7 +243,7 @@ if(ABSPATH){
                 $output .= "</ul></div";
             }
             $output .= "<div class='block one'><p class='you-have'>{$sentence}</p>";
-            $output .= $this->_get_action( 'tp_mu_admin_result'); /** @NOTE methods passed here must be returned*/
+            $output .= $this->_do_action( 'tp_mu_admin_result'); /** @NOTE methods passed here must be returned*/
             $output .= "</div><div class='block two'>";
             $output .= "<form action='{$this->_esc_url( $this->_network_admin_url( 'users.php' ))}' method='get'>";
             $output .= "<ul><li><dt><label for='search_users' class='screen-reader-text'>{$this->__('Search Users')}</label></dt>";
@@ -255,8 +255,8 @@ if(ABSPATH){
             $output .= "<dd><input type='search' name='s' value='' size='30' autocomplete='off' id='search_sites' /></dd>";
             $output .= "</li><li><dd>{$this->_get_submit_button($this->__( 'Search Sites' ),'',false,false,['id' => 'submit_sites'])}</dd>";
             $output .= "</li></ul></form></div><div class='block four' >";
-            $output .= $this->_get_action( 'mu_right_now_end' );/** @NOTE methods passed here must be returned*/
-            $output .= $this->_get_action( 'mu_activity_box_end' );/** @NOTE methods passed here must be returned*/
+            $output .= $this->_do_action( 'mu_right_now_end' );/** @NOTE methods passed here must be returned*/
+            $output .= $this->_do_action( 'mu_activity_box_end' );/** @NOTE methods passed here must be returned*/
             $output .= "</div></main>";
             return $output;
         }//442

@@ -30,6 +30,9 @@ if(ABSPATH){
             <?php
             return ob_get_clean();
         }//15
+        public function options_discussion_add_js():void{
+            echo $this->get_options_discussion_add_js();
+        }//15
         /**
          * @description Display JavaScript on the page.
          * @return string
@@ -40,6 +43,9 @@ if(ABSPATH){
             <script id='general_add_js'>console.log('TODO:','general_add_js');</script>
             <?php
             return ob_get_clean();
+        }//36
+        public function options_general_add_js():void{
+            echo $this->get_options_general_add_js();
         }//36
         /**
          * @description  Display JavaScript on the page.
@@ -52,6 +58,9 @@ if(ABSPATH){
             <?php
             return ob_get_clean();
         }//109
+        public function options_reading_add_js():void{
+            echo $this->get_options_reading_add_js();
+        }//109
         /**
          * @description Render the site charset setting.
          * @return string
@@ -62,6 +71,9 @@ if(ABSPATH){
             $output .= "<dt><p>{$this->__('TODO')}</p></dt>";
             $output .= "</li></ul>";
             return $output;
+        }//131
+        public function options_reading_blog_charset():void{
+            echo $this->get_options_reading_blog_charset();
         }//131
     }
 }else{die;}

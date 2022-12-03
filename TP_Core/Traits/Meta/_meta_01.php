@@ -167,7 +167,7 @@ if(ABSPATH){
          * @param $object_id
          * @param string $meta_key
          * @param bool $single
-         * @return mixed
+         * @return array|bool|mixed|null
          */
         protected function _get_metadata_raw( $meta_type, $object_id, $meta_key = '', $single = false ){
             if ( ! $meta_type || ! is_numeric( $object_id ) )

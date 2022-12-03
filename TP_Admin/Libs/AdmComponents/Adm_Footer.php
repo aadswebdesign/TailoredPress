@@ -9,6 +9,8 @@ namespace TP_Admin\Libs\AdmComponents;
 use TP_Admin\Admins;
 if(ABSPATH){
     class Adm_Footer extends Admins {
+        protected $_args;
+        protected $_html;
         public function __construct($args = null){
             parent::__construct();
             $this->adm_footer_args = $args;

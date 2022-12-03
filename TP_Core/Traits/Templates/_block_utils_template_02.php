@@ -193,7 +193,7 @@ if(ABSPATH){
          * @description Retrieves a single unified template object using its id.
          * @param $id
          * @param string $template_type
-         * @return mixed
+         * @return null|string|TP_Block_Template|TP_Error
          */
         protected function _get_block_template( $id, $template_type = 'tp_template' ){
             $block_template = $this->_apply_filters( 'pre_get_block_template', null, $id, $template_type );

@@ -84,7 +84,7 @@ if(ABSPATH){
          * @param string $taxonomy
          * @param string $output
          * @param string $filter
-         * @return mixed
+         * @return array|bool|null|TP_Error|TP_Term
          */
         protected function _get_term( $term, $taxonomy = '', $output = OBJECT, $filter = 'raw' ){
             if ( empty( $term ) ) return new TP_Error( 'invalid_term', $this->__( 'Empty Term.' ) );
@@ -116,7 +116,7 @@ if(ABSPATH){
          * @param string $taxonomy
          * @param string $output
          * @param string $filter
-         * @return mixed
+         * @return array|bool|mixed|null|TP_Error|TP_Term
          */
         protected function _get_term_by( $field, $value, $taxonomy = '', $output = OBJECT, $filter = 'raw' ){
             if ( 'term_taxonomy_id' !== $field && ! $this->_taxonomy_exists( $taxonomy ) )
@@ -175,7 +175,7 @@ if(ABSPATH){
          * @param $term
          * @param string $taxonomy
          * @param string $context
-         * @return mixed
+         * @return array|bool|null|string|TP_Error|TP_Term
          */
         protected function _get_term_field( $field, $term, $taxonomy = '', $context = 'display' ){
             $term = $this->_get_term( $term, $taxonomy );
@@ -188,7 +188,7 @@ if(ABSPATH){
          * @description Sanitizes Term for editing.
          * @param $id
          * @param $taxonomy
-         * @return mixed
+         * @return array|bool|null|string|TP_Error|TP_Term
          */
         protected function _get_term_to_edit( $id, $taxonomy ){
             $term = $this->_get_term( $id, $taxonomy );
@@ -199,7 +199,7 @@ if(ABSPATH){
         /**
          * @description Retrieves the terms in a given taxonomy or list of taxonomies.
          * @param \array[] ...$args
-         * @return mixed
+         * @return array|null|string|TP_Error
          */
         protected function _get_terms(array ...$args){
             $term_query = new TP_Term_Query();

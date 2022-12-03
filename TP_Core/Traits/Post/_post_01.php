@@ -152,7 +152,7 @@ if(ABSPATH){
          * @param string $output
          * @param string $filter
          * @param object $post
-         * @return mixed
+         * @return array|mixed|null
          */
         protected function _get_post($output = OBJECT, $filter = 'raw',object $post=null ){
             if ( empty( $post ) && isset( $this->tp_post['post'] ) )

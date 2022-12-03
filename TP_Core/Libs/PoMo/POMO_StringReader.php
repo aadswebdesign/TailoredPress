@@ -10,7 +10,7 @@ namespace TP_Core\Libs\PoMo;
 if(ABSPATH){
     class POMO_StringReader extends POMO_Reader {
 
-        protected $_str = '';
+        public $_str = '';
         public function __construct( $str = '' ) {
             parent::__construct();
             $this->_str = $str;

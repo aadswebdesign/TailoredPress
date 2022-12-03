@@ -6,13 +6,13 @@
  * Time: 20:23
  */
 namespace TP_Core\Traits\Templates;
-//use TP_Core\Traits\Inits\_init_pages;
+use TP_Core\Traits\Inits\_init_pages;
 use TP_Core\Traits\Inits\_init_queries;
 use TP_Core\Traits\Inits\_init_rewrite;
 if(ABSPATH){
     trait _link_template_06 {
         use _init_rewrite;
-        //use _init_pages;
+        use _init_pages;
         use _init_queries;
         /**
          * @description Retrieves the next post link that is adjacent to the current post.
@@ -169,7 +169,7 @@ if(ABSPATH){
         }//2513 from link-template
         /**
          * @description Retrieves the previous posts page link.
-         * @return mixed
+         * @return mixed|string
          */
         protected function _get_previous_posts_page_link(){
             $paged = $this->tp_paged;

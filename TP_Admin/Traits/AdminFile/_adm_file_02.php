@@ -44,7 +44,7 @@ if(ABSPATH){
          * @param $url
          * @param int $timeout
          * @param bool $signature_verification
-         * @return mixed
+         * @return bool|mixed|string
          */
         protected function _download_url( $url, $timeout = 300, $signature_verification = false ){
             if ( ! $url ) {

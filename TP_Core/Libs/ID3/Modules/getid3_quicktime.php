@@ -1953,7 +1953,7 @@ if(ABSPATH){
         }
         /**
          * @param string $codecid
-         * @return mixed
+         * @return mixed|string
          */
         public function QuicktimeAudioCodecLookup($codecid) {
             static $QuicktimeAudioCodecLookup = [];

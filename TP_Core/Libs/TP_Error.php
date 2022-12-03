@@ -143,7 +143,7 @@ if(ABSPATH){
         public function export_to( TP_Error $error ): void{
             static::copy_errors( $this, $error );
         }
-        public static function copy_errors( TP_Error $from, TP_Error $to ): void{
+        protected static function copy_errors( TP_Error $from, TP_Error $to ): void{
             foreach ( $from->get_error_codes() as $code ) {
                 foreach ( $from->get_error_messages( $code ) as $error_message ) {
                     $to->add( $code, $error_message );

@@ -97,6 +97,9 @@ if(ABSPATH){
             } else { $url = '';}
             return $this->_esc_url($url);
         }//1836
+        protected function _adm_menu_page_url( $menu_slug):void{
+            echo $this->_get_adm_menu_page_url( $menu_slug);
+        }//1836
         /**
          * @description Gets the parent file of the current admin page.
          * @param string|object $parent

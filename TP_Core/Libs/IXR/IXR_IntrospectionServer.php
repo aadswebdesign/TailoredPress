@@ -93,7 +93,7 @@ if(ABSPATH){
             }
             return parent::call($methodname, $argsbackup);
         }
-        public function methodSignature($method){
+        public function methodSignature($method): mixed{
             if (!$this->hasMethod($method))
                 return new IXR_Error(-32601, 'server error. requested method "'.$method.'" not specified.');
             $types = $this->signatures[$method];

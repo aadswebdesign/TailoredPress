@@ -27,6 +27,9 @@ if(ABSPATH){
             return sprintf("<button type='button' %s class='button insert-media add_media' data-editor='%s'>%s</button>",
                 $id_attribute,$this->_esc_attr( $editor_id ),$img.$this->__('Add Media'));
         }//623
+        protected function _media_buttons( $editor_id = 'content' ):void{
+            echo $this->_get_media_buttons( $editor_id);
+        }//623
         protected function _get_upload_iframe_src( $type = null, $post_id = null, $tab = null ){
             if ( empty( $post_id ) ) { $post_id = $this->tp_post_id; }
             $upload_iframe_src = $this->_add_query_arg( 'post_id', (int) $post_id, $this->_admin_url( 'media_upload.php' ) );

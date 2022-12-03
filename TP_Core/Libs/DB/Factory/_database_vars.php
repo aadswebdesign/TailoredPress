@@ -43,7 +43,12 @@ if(ABSPATH){
         public $func_call;
         public $global_tables = ['users', 'user_meta' ];
         public $insert_id = 0;
-        public $is_mysql = [
+        public $is_mysql;
+        public $last_error = '';
+        public $last_query;
+        public $last_result;
+        public $links;
+        public $ms_global_tables = [
             'blogs','blog_meta','signups','site','site_meta',
             'site_categories','registration_log',
         ];

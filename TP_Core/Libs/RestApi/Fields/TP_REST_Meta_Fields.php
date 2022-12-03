@@ -243,7 +243,7 @@ if(ABSPATH){
             if ((new static)->_init_error( (new static)->_rest_validate_value_from_schema( $value, $schema ))) return null;
             return (new static)->_rest_sanitize_value_from_schema( $value, $schema );
         }//543
-        public function check_meta_is_array( $value) { //not used , $request, $param
+        public function check_meta_is_array( $value): mixed { //not used , $request, $param
             if ( ! is_array($value)) return false;
             return $value;
         }//571

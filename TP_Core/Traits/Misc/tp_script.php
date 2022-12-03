@@ -8,12 +8,12 @@
 namespace TP_Core\Traits\Misc;
 use TP_Core\Libs\AssetsTools\TP_Scripts;
 use TP_Core\Traits\Inits\_init_assets;
-//use TP_Core\Traits\Inits\_init_pages;
+use TP_Core\Traits\Inits\_init_pages;
 if(ABSPATH){
     trait tp_script{
         use _assets_base;
         use _init_assets;
-        //use _init_pages;
+        use _init_pages;
         public function tp_print_scripts( $handles = false ): array{
             $this->_do_action( 'tp_print_scripts' );
             if ( '' === $handles ) $handles = false;

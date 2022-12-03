@@ -100,7 +100,7 @@ if(ABSPATH){
          * @description  . allowed list.
          * @param $is_external
          * @param $host
-         * @return mixed
+         * @return bool|mixed
          */
         protected function _ms_allowed_http_request_hosts( $is_external, $host ){
             static $queried = array();
@@ -115,7 +115,7 @@ if(ABSPATH){
          * @descriptionA wrapper for PHP's parse_url() function that handles consistency in the return values * across PHP versions.
          * @param $url
          * @param int $component
-         * @return mixed
+         * @return mixed|string
          */
         protected function _tp_parse_url( $url, $component = -1 ){
             $to_unset = array();
@@ -137,7 +137,7 @@ if(ABSPATH){
          * @description Retrieve a specific component from a parsed URL array.
          * @param $url_parts
          * @param int $component
-         * @return mixed
+         * @return mixed|null
          */
         protected function _get_component_from_parsed_url_array( $url_parts, $component = -1 ){
             if ( -1 === $component ) return $url_parts;
@@ -149,7 +149,7 @@ if(ABSPATH){
         /**
          * @description Translate a PHP_URL_* constant to the named array keys PHP uses.
          * @param $constant
-         * @return mixed
+         * @return bool|mixed
          */
         protected function _tp_translate_php_url_constant_to_key( $constant ){
             $translation = array(

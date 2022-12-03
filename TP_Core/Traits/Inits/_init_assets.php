@@ -8,7 +8,7 @@
 declare(strict_types=1);
 namespace TP_Core\Traits\Inits;
 use TP_Core\Libs\AssetsTools\TP_Scripts;
-use TP_Core\Libs\AssetsTools\TP_Styles;
+use TP_Core\Libs\AssetsTools\TP_LinkStyle;
 if(ABSPATH){
     trait _init_assets{
         protected $_tp_scripts;
@@ -18,9 +18,9 @@ if(ABSPATH){
                 $this->_tp_scripts = new TP_Scripts();
             return $this->_tp_scripts;
         }
-        protected function _init_styles(): TP_Styles{
-            if(!($this->_tp_styles instanceof TP_Styles))
-                $this->_tp_styles = new TP_Styles();
+        protected function _init_styles(): TP_LinkStyle{
+            if(!($this->_tp_styles instanceof TP_LinkStyle))
+                $this->_tp_styles = new TP_LinkStyle();
             return $this->_tp_styles;
         }
 

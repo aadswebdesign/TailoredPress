@@ -6,10 +6,11 @@
  * Time: 08:32
  */
 namespace TP_Core\Traits\Compat;
-//use TP_Core\Traits\Inits\_init_compat;
+use TP_Core\Traits\Inits\_init_compat;
+
 if(ABSPATH){
     trait _compat_01 {
-        //use _init_compat;
+        use _init_compat;
         /**
          * @description Returns whether PCRE/u (PCRE_UTF8 modifier) is available for use.
          * @param null $set

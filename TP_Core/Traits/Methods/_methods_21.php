@@ -77,7 +77,7 @@ if(ABSPATH){
         /**
          * @description  Gets a basename path. might not be needed as I use classes and methods
          * @param $file
-         * @return mixed
+         * @return mixed|string
          */
         protected function _tp_get_basename_path( $file ){
             $file = $this->_tp_normalize_path( $file );

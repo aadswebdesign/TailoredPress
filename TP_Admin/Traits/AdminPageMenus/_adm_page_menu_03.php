@@ -69,6 +69,9 @@ if(ABSPATH){
             $output_option .= $this->_tp_get_nonce_field( "$option_group-options" );
             return $output_option;
         }//2254 from admin/plugin.php settings fields
+        protected function _hidden_input_settings_fields( $option_group ):void{
+            echo $this->_get_hidden_input_settings_fields( $option_group );
+        }//2254 from admin/plugin.php
         /*
          * _add_allowed_options
          * _remove_allowed_options

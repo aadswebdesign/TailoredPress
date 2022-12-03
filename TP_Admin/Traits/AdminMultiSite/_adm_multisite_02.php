@@ -76,6 +76,9 @@ if(ABSPATH){
             $output = $this->_apply_filters( 'mu_dropdown_languages', $output, $lang_files, $current );
             return implode( "\n\t", $output );
         }//647
+        protected function _mu_dropdown_languages($lang_files = [], $current = '' ):void{
+            echo $this->_mu_get_dropdown_languages($lang_files,$current);
+        }//647
         /**
          * @description Displays an admin notice to upgrade all sites after a core upgrade.
          * @return string
@@ -90,6 +93,9 @@ if(ABSPATH){
                 $output .= "</div>";
             }
             return $output;
+        }//699
+        public function site_admin_notice():void{
+            echo $this->get_site_admin_notice();
         }//699
         /**
          * @description Avoids a collision between a site slug and a permalink slug.
@@ -143,6 +149,9 @@ if(ABSPATH){
             }else{ $output .= "N/A";}
             $output .= "</dd></li></ul></div>";
             return $output;
+        }//771
+        protected function _choose_primary_blog():void{
+            echo $this->_get_primary_blog();
         }//771
         /**
          * @description Whether or not we can edit this network from this page.
@@ -258,12 +267,18 @@ if(ABSPATH){
             $output .= "</li></ul></form></div></div>";
             return $output;
         }//864
+        protected function _confirm_delete_users( $users ):void{
+            echo $this->_get_confirm_delete_users( $users );
+        }//864
         /**
          * @description Print JavaScript in the header on the Network Settings screen.
          * @return string
          */
         protected function _get_network_settings_add_js():string{
             return $this->_get_php_console_log('network_settings_add_js', "Todo, as I do not want to use jQuery");
+        }//1010
+        protected function _network_settings_add_js():void{
+            echo $this->_get_network_settings_add_js();
         }//1010
     }
 }else die;

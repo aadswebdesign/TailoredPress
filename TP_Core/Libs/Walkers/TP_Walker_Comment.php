@@ -88,7 +88,7 @@ if(ABSPATH){
             if ( 'comment' === $comment->comment_type )
                 $this->_remove_filter( 'comment_text', array( $this, 'filter_comment_text' ), 40 );
         }
-        public function end_el( &$output, $data_object, $depth = 0, ...$args ):string {
+        public function end_el( &$output, $data_object, $depth = 0, ...$args ):string  {
             if ( ! empty( $args['end-callback'] ) ) {
                 ob_start();
                 call_user_func(
@@ -120,7 +120,7 @@ if(ABSPATH){
                 $comment_text = $this->_tp_kses( $comment_text, [] );
             return $comment_text;
         }
-        protected function _get_comment( $comment, $depth, $args ):string {
+        protected function _get_comment( $comment, $depth, $args ):string  {
             $tag = ( 'div' === $args['style'] ) ? 'div' : 'li';
             $commenter          = $this->_tp_get_current_commenter();
             $show_pending_links = ! empty( $commenter['comment_author'] );

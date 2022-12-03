@@ -139,10 +139,13 @@ if(ABSPATH){
             $output .= "</strong>";
             return $output;
         }//253
+        protected function _display_space_usage():void{
+            echo $this->_get_display_space_usage();
+        }//253
         /**
          * @description Get the remaining upload space for this site.
          * @param $size
-         * @return mixed
+         * @return int|mixed
          */
         protected function _fix_import_form_size( $size ){
             if ( $this->_upload_is_user_over_quota( false ) ) { return 0;}
@@ -163,6 +166,9 @@ if(ABSPATH){
             $output .= "<dd><input name='option[blog_upload_space]' id='blog_upload_space_number' type='number' step='1' min='0' style='width: 100px;' aria-describedby='blog-upload-space-desc' value='$quota'/></dd>";
             $output .= "<dt><span id='blog_upload_space_desc'><span class='screen-reader-text'>{$this->__('Size in megabytes')}</span>{$this->__('MB (Leave blank for network default)')}</span></dt></li>";
             return $output;
+        }//293
+        protected function _upload_space_setting( $id ):void{
+            echo $this->_get_upload_space_setting( $id );
         }//293
         /**
          * @description Cleans the user cache for a specific user.

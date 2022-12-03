@@ -78,6 +78,8 @@ if(ABSPATH){
                     $this->__( 'Sorry, you are not allowed to edit posts in this post type.' ),
                     ['status' => $this->_rest_authorization_required_code()]
                 );
+
+
             $data = $this->prepare_item_for_response( $obj, $request );
 
             return $this->_rest_ensure_response( $data );

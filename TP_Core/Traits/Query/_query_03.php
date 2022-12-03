@@ -36,7 +36,7 @@ if(ABSPATH){
          * @description Determines whether the query is for a paged result and not for the first page.
          * @return bool
          */
-        protected function _is_paged($page = ''):bool{
+        protected function _is_paged():bool{
             return $this->_init_query()->is_paged();
         }//607
         /**

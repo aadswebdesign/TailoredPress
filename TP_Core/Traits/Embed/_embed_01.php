@@ -45,7 +45,7 @@ if(ABSPATH){
          * @description Attempts to fetch the embed HTML for a provided URL using obj_Embed.
          * @param $url
          * @param string $args
-         * @return mixed
+         * @return bool|mixed
          */
         protected function _tp_obj_embed_get( $url, $args = '' ){
             $_obj_embed = $this->_tp_obj_embed_get_object();

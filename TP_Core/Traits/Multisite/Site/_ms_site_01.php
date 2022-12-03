@@ -59,7 +59,7 @@ if(ABSPATH){
          * @description Updates a site in the database.
          * @param $site_id
          * @param mixed ...$data
-         * @return array|int|string|TP_Error
+         * @return \array[]|int|string|TP_Error
          */
         protected function _tp_update_site( $site_id, array ...$data ){
             $this->tpdb = $this->_init_db();

@@ -164,7 +164,7 @@ if(ABSPATH){
                 return $this->_init_caps( ...$arguments );
             return false;
         }
-        protected function _init_caps( $cap_key = '' ){
+        protected function _init_caps( $cap_key = '' ): mixed{
             if ( empty( $cap_key ) )
                 $this->cap_key = $this->_init_db()->get_blog_prefix( $this->site_id ) . 'capabilities';
             else $this->cap_key = $cap_key;

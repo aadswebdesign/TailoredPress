@@ -118,7 +118,7 @@ if(ABSPATH){
         /**
          * @description Retrieves the parent post object for the given post.
          * @param null $post
-         * @return mixed
+         * @return null
          */
         protected function _get_post_parent( $post = null ){
             $tp_post = $this->_get_post( $post );

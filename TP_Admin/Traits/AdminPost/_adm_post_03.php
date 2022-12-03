@@ -234,6 +234,9 @@ if(ABSPATH){
             $output .= "</div></div>";//notification-dialog //post_lock_dialog
             return $output;
         }//1690
+        protected function _admin_notice_post_locked():void{
+            echo $this->_get_admin_notice_post_locked();
+        }//1690
         /**
          * @description Creates autosave data for the specified post from `$_POST` data.
          * @param $post_data

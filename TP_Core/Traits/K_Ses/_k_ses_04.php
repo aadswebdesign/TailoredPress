@@ -13,9 +13,9 @@ if(ABSPATH){
         /**
          * @description Converts all numeric HTML entities to their named counterparts.
          * @param $string
-         * @return string
+         * @return mixed
          */
-        protected function _tp_kses_decode_entities( $string ):string{
+        protected function _tp_kses_decode_entities( $string ){
             $string = preg_replace_callback( '/&#(\d+);/', [$this,'_tp_kses_decode_entities_chr'], $string );
             $string = preg_replace_callback( '/&#[Xx]([0-9A-Fa-f]+);/', [$this,'_tp_kses_decode_entities_chr_hex_dec'], $string );
             return $string;

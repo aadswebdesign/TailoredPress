@@ -22,7 +22,7 @@ if(ABSPATH){
          * @description Calculate what page number a comment will appear on for comment paging.
          * @param TP_Comment $comment_ID
          * @param array $args
-         * @return mixed
+         * @return array|null|TP_Comment|void
          */
         protected function _get_page_of_comment($comment_ID, ...$args ){
             $tpdb = $this->_init_db();

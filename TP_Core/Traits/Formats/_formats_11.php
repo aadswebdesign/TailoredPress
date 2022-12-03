@@ -78,7 +78,7 @@ if(ABSPATH){
          * @description Sanitizes a hex color.
          * @since
          * @param string $color
-         * @return mixed
+         * @return string|void
          */
         protected function _sanitize_hex_color( $color ) {
             $return = null;

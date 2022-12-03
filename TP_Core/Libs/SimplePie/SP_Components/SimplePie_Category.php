@@ -31,7 +31,7 @@ if(ABSPATH){
                 return $this->get_term();
             return $this->sp_label;
         }
-        public function get_type(){
+        public function get_type()        {
             return $this->sp_type;
         }
     }

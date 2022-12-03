@@ -934,6 +934,110 @@ if(ABSPATH){
                 }
 
             }
+
+
+            //if (false) {
+            //    // experimental side info parsing section - not returning anything useful yet
+            //
+            //    $SideInfoBitstream = getid3_lib::BigEndian2Bin($SideInfoData);
+            //    $SideInfoOffset = 0;
+            //
+            //    if ($thisfile_mpeg_audio['version'] == '1') {
+            //        if ($thisfile_mpeg_audio['channelmode'] == 'mono') {
+            //            // MPEG-1 (mono)
+            //            $thisfile_mpeg_audio['side_info']['main_data_begin'] = substr($SideInfoBitstream, $SideInfoOffset, 9);
+            //            $SideInfoOffset += 9;
+            //            $SideInfoOffset += 5;
+            //        } else {
+            //            // MPEG-1 (stereo, joint-stereo, dual-channel)
+            //            $thisfile_mpeg_audio['side_info']['main_data_begin'] = substr($SideInfoBitstream, $SideInfoOffset, 9);
+            //            $SideInfoOffset += 9;
+            //            $SideInfoOffset += 3;
+            //        }
+            //    } else { // 2 or 2.5
+            //        if ($thisfile_mpeg_audio['channelmode'] == 'mono') {
+            //            // MPEG-2, MPEG-2.5 (mono)
+            //            $thisfile_mpeg_audio['side_info']['main_data_begin'] = substr($SideInfoBitstream, $SideInfoOffset, 8);
+            //            $SideInfoOffset += 8;
+            //            $SideInfoOffset += 1;
+            //        } else {
+            //            // MPEG-2, MPEG-2.5 (stereo, joint-stereo, dual-channel)
+            //            $thisfile_mpeg_audio['side_info']['main_data_begin'] = substr($SideInfoBitstream, $SideInfoOffset, 8);
+            //            $SideInfoOffset += 8;
+            //            $SideInfoOffset += 2;
+            //        }
+            //    }
+            //
+            //    if ($thisfile_mpeg_audio['version'] == '1') {
+            //        for ($channel = 0; $channel < $info['audio']['channels']; $channel++) {
+            //            for ($scfsi_band = 0; $scfsi_band < 4; $scfsi_band++) {
+            //                $thisfile_mpeg_audio['scfsi'][$channel][$scfsi_band] = substr($SideInfoBitstream, $SideInfoOffset, 1);
+            //                $SideInfoOffset += 2;
+            //            }
+            //        }
+            //    }
+            //    for ($granule = 0; $granule < (($thisfile_mpeg_audio['version'] == '1') ? 2 : 1); $granule++) {
+            //        for ($channel = 0; $channel < $info['audio']['channels']; $channel++) {
+            //            $thisfile_mpeg_audio['part2_3_length'][$granule][$channel] = substr($SideInfoBitstream, $SideInfoOffset, 12);
+            //            $SideInfoOffset += 12;
+            //            $thisfile_mpeg_audio['big_values'][$granule][$channel] = substr($SideInfoBitstream, $SideInfoOffset, 9);
+            //            $SideInfoOffset += 9;
+            //            $thisfile_mpeg_audio['global_gain'][$granule][$channel] = substr($SideInfoBitstream, $SideInfoOffset, 8);
+            //            $SideInfoOffset += 8;
+            //            if ($thisfile_mpeg_audio['version'] == '1') {
+            //                $thisfile_mpeg_audio['scalefac_compress'][$granule][$channel] = substr($SideInfoBitstream, $SideInfoOffset, 4);
+            //                $SideInfoOffset += 4;
+            //            } else {
+            //                $thisfile_mpeg_audio['scalefac_compress'][$granule][$channel] = substr($SideInfoBitstream, $SideInfoOffset, 9);
+            //                $SideInfoOffset += 9;
+            //            }
+            //            $thisfile_mpeg_audio['window_switching_flag'][$granule][$channel] = substr($SideInfoBitstream, $SideInfoOffset, 1);
+            //            $SideInfoOffset += 1;
+            //
+            //            if ($thisfile_mpeg_audio['window_switching_flag'][$granule][$channel] == '1') {
+            //
+            //                $thisfile_mpeg_audio['block_type'][$granule][$channel] = substr($SideInfoBitstream, $SideInfoOffset, 2);
+            //                $SideInfoOffset += 2;
+            //                $thisfile_mpeg_audio['mixed_block_flag'][$granule][$channel] = substr($SideInfoBitstream, $SideInfoOffset, 1);
+            //                $SideInfoOffset += 1;
+            //
+            //                for ($region = 0; $region < 2; $region++) {
+            //                    $thisfile_mpeg_audio['table_select'][$granule][$channel][$region] = substr($SideInfoBitstream, $SideInfoOffset, 5);
+            //                    $SideInfoOffset += 5;
+            //                }
+            //                $thisfile_mpeg_audio['table_select'][$granule][$channel][2] = 0;
+            //
+            //                for ($window = 0; $window < 3; $window++) {
+            //                    $thisfile_mpeg_audio['subblock_gain'][$granule][$channel][$window] = substr($SideInfoBitstream, $SideInfoOffset, 3);
+            //                    $SideInfoOffset += 3;
+            //                }
+            //
+            //            } else {
+            //
+            //                for ($region = 0; $region < 3; $region++) {
+            //                    $thisfile_mpeg_audio['table_select'][$granule][$channel][$region] = substr($SideInfoBitstream, $SideInfoOffset, 5);
+            //                    $SideInfoOffset += 5;
+            //                }
+            //
+            //                $thisfile_mpeg_audio['region0_count'][$granule][$channel] = substr($SideInfoBitstream, $SideInfoOffset, 4);
+            //                $SideInfoOffset += 4;
+            //                $thisfile_mpeg_audio['region1_count'][$granule][$channel] = substr($SideInfoBitstream, $SideInfoOffset, 3);
+            //                $SideInfoOffset += 3;
+            //                $thisfile_mpeg_audio['block_type'][$granule][$channel] = 0;
+            //            }
+            //
+            //            if ($thisfile_mpeg_audio['version'] == '1') {
+            //                $thisfile_mpeg_audio['preflag'][$granule][$channel] = substr($SideInfoBitstream, $SideInfoOffset, 1);
+            //                $SideInfoOffset += 1;
+            //            }
+            //            $thisfile_mpeg_audio['scalefac_scale'][$granule][$channel] = substr($SideInfoBitstream, $SideInfoOffset, 1);
+            //            $SideInfoOffset += 1;
+            //            $thisfile_mpeg_audio['count1table_select'][$granule][$channel] = substr($SideInfoBitstream, $SideInfoOffset, 1);
+            //            $SideInfoOffset += 1;
+            //        }
+            //    }
+            //}
+
             return true;
         }
 
@@ -1694,6 +1798,12 @@ if(ABSPATH){
                 echo ($echoerrors ? "\n".'invalid Emphasis ('.$rawarray['emphasis'].')' : '');
                 return false;
             }
+            // These are just either set or not set, you can't mess that up :)
+            // $rawarray['protection'];
+            // $rawarray['padding'];
+            // $rawarray['private'];
+            // $rawarray['copyright'];
+            // $rawarray['original'];
 
             return true;
         }

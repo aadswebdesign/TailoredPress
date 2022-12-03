@@ -24,7 +24,7 @@ if(ABSPATH){
          * @param $dst_h
          * @param bool $src_abs
          * @param string|bool $dst_file
-         * @return mixed
+         * @return bool|mixed|null|string|TP_Image_Editor
          */
         protected function _tp_crop_image($src, $src_x, $src_y, $src_w, $src_h, $dst_w, $dst_h, $src_abs = false, $dst_file = false ){
             $src_file = $src;

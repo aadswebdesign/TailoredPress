@@ -287,8 +287,6 @@ if(ABSPATH){
             ) $output .= '</ul></li>';
             return $this->_apply_filters( 'tp_list_categories', $output, $args );
         }//525 from category-template
-        protected function _tp_list_categories( ...$args):void{
-			echo $this->_tp_get_list_categories($args);
-		}
+        protected function _tp_list_categories( ...$args):void{}
     }
 }else die;

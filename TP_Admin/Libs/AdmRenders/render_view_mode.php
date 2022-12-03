@@ -13,20 +13,19 @@ if(ABSPATH){
     class render_view_mode{
         use _I10n_01;
         use _adm_screen;
+        protected $_html;
         protected $_args;
         public function __construct($args){
             $this->_args['tp_mode'] = $args['tp_mode'];
         }
         private function __to_string():string{
-            $output = "<fieldset class='metabox-prefers view-mode'><legend>{$this->__('View mode')}</legend><ul>";
-            $output .= "<li>";
-            $output .= "<dd><input type='radio' id='list_view_mode' name='mode' value='list' {$this->_get_checked( 'list', $this->_args['tp_mode'] )}/></dd>";
-            $output .= "<dt><label for='list_view_mode'>todo 1</label></dt>";
-            $output .= "</li><li>";
-            $output .= "<dd><input type='radio' id='excerpt_view_mode' name='mode' value='excerpt' {$this->_get_checked( 'excerpt', $this->_args['tp_mode'] )} /></dd>";
-            $output .= "<dt><label for='excerpt_view_mode'>todo 2</label></dt>";
-            $output .= "</li></ul></fieldset>";
-            return (string) $output;
+            $this->_html = "<fieldset class='metabox-prefers view-mode'><legend>{$this->__('View mode')}</legend>";
+            $this->_html .= "<label for='list_view_mode'>";
+            $this->_html .= "<input type='radio' id='list_view_mode' name='mode' value='list' {$this->_get_checked( 'list', $this->_args['tp_mode'] )}/>";
+            $this->_html .= "</label><label for='excerpt_view_mode'>";
+            $this->_html .= "<input type='radio' id='excerpt_view_mode' name='mode' value='excerpt' {$this->_get_checked( 'excerpt', $this->_args['tp_mode'] )} />";
+            $this->_html .= "</label></fieldset>";
+            return (string) $this->_html;
         }
         public function __toString(){
             return $this->__to_string();

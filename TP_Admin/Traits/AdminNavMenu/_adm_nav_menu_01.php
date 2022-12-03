@@ -84,6 +84,9 @@ if(ABSPATH){
                 }
             }
             return $output;
+        }//added
+        protected function _tp_async_menu_quick_search( ...$request):void{
+            echo $this->_get_async_menu_quick_search($request);
         }//23
         /**
          * @description Register nav menu meta boxes and advanced menu items.
@@ -183,6 +186,9 @@ if(ABSPATH){
             $output .= "<dd class='add-to-menu'><input name='add-custom-menu-item' id='submit_custom_link_block' class='button submit-add-to-menu right' type='submit' value='{$this->_esc_attr('Add to Menu')}' {$this->_tp_get_nav_menu_disabled_check( $this->tp_nav_menu_selected_id )}/></dd>";
             $output .= "<span class='spinner'></span></li></ul></div>";
             return $output;
+        }//291
+        protected function _tp_nav_menu_item_link_meta_box():void{
+            echo $this->_tp_get_nav_menu_item_link_meta_box();
         }//291
         /**
          * @description Displays a meta box for a post type menu item.
@@ -358,6 +364,9 @@ if(ABSPATH){
             $output .= "</li></ul></div></div>"; //tabs-panel-footer //posttype-module
             return $output;
         }//338
+        protected function _tp_nav_menu_item_post_type_meta_box($box ):void{
+            echo $this->_tp_get_nav_menu_item_post_type_meta_box($box );
+        }//338
         /**
          * @description Displays a meta box for a taxonomy menu item.
          * @param $box
@@ -468,6 +477,9 @@ if(ABSPATH){
             $output .= "<span class='spinner'></span>";
             $output .= "</li></ul></div></div>";//tabs-panel-footer //taxonomy-module
             return $output;
+        }//702
+        protected function _tp_nav_menu_item_taxonomy_meta_box($box ):void{
+            echo $this->_tp_get_nav_menu_item_taxonomy_meta_box( $box );
         }//702
         /**
          * @description Save posted nav menu item data.

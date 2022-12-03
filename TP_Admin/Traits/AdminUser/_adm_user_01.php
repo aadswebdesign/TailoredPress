@@ -252,5 +252,8 @@ if(ABSPATH){
             $output .= "</p></div>";
             return $output;
         }//515
+        protected function _default_password_nag():void{
+            echo $this->_get_default_password_nag();
+        }//515
     }
 }else die;

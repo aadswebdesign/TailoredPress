@@ -17,8 +17,8 @@ if(ABSPATH){
             $this->admin_header_callback    = $admin_header_callback;
             $this->admin_image_div_callback = $admin_image_div_callback;
             $this->_add_action( 'admin_menu',[$this,'init']);
-            $this->_add_action( 'tp_async_custom-background-add',[$this,'async_background_add']);
-            $this->_add_action( 'tp_async_set-background-image',[$this,'tp_set_background_image']);
+            $this->_add_action( 'tp_ajax_custom-background-add',[$this,'ajax_background_add']);
+            $this->_add_action( 'tp_ajax_set-background-image',[$this,'tp_set_background_image']);
         }
         public function init(){}//64
         public function admin_load(){}//84

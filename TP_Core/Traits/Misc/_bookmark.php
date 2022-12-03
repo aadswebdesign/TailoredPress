@@ -18,7 +18,7 @@ if(ABSPATH){
          * @param $bookmark
          * @param string $output
          * @param string $filter
-         * @return mixed
+         * @return array|mixed|null|string
          */
         protected function _get_bookmark( $bookmark, $output = OBJECT, $filter = 'raw' ){
             $this->tpdb = $this->_init_db();
@@ -55,7 +55,7 @@ if(ABSPATH){
          * @param $field
          * @param $bookmark
          * @param string $context
-         * @return mixed
+         * @return array|int|mixed|null|string
          */
         protected function _get_bookmark_field( $field, $bookmark, $context = 'display' ){
             $bookmark = (int) $bookmark;
@@ -223,7 +223,7 @@ if(ABSPATH){
          * @param $value
          * @param $bookmark_id
          * @param $context
-         * @return mixed
+         * @return array|int|mixed|string
          */
         protected function _sanitize_bookmark_field( $field, $value, $bookmark_id, $context ){
             $int_fields = array( 'link_id', 'link_rating' );

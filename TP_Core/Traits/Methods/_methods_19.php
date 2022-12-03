@@ -44,11 +44,11 @@ if(ABSPATH){
         }//8013
         /**
          * @description Display a button directly linking to a PHP update process.
-         * @return string
+         * @return string|void
          */
-        protected function _tp_get_direct_php_update_button():string{
+        protected function _tp_get_direct_php_update_button(){
             $direct_update_url = $this->_tp_get_direct_php_update_url();
-            if ( empty( $direct_update_url ) ) return false;
+            if ( empty( $direct_update_url ) ) return;
             $print_btn = "<p class='button-container'>";
             $print_btn .= sprintf("<a class='button button-primary' href='%1\$s' target='_blank' rel='noopener'>%2\$s <span class='screen-reader-text'>%3\$s</span><span aria-hidden='true' class='todo'></span></a>",
                     $this->_esc_url( $direct_update_url ), $this->__( 'Update PHP' ), /* translators: Accessibility text. */$this->__( '(opens in a new tab)' ));
@@ -61,9 +61,9 @@ if(ABSPATH){
         /**
          * todo 1-1
          * @description Gets the URL to learn more about updating the site to use HTTPS.
-         * @return string
+         * @return string|void
          */
-        protected function _tp_get_update_https_url():string{
+        protected function _tp_get_update_https_url(){
             $default_url = $this->_tp_get_default_update_https_url();
             $update_url = $default_url;
             if ( false !== getenv( 'TP_UPDATE_HTTPS_URL' ) )

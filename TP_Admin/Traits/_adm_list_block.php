@@ -39,5 +39,9 @@ if(ABSPATH){
         protected function _get_the_column_headers( $screen, $with_id = true ):string{
             return $this->_init_block_compat($screen)->get_column_headers($with_id);
         }//91
+        protected function _print_the_column_headers( $screen, $with_id = true ):void{
+            echo $this->_get_the_column_headers( $screen, $with_id);
+        }//91
+
     }
 }else{die;}

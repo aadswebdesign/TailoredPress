@@ -8,7 +8,7 @@
 namespace TP_Core\Libs\Post;
 if(ABSPATH){
     final class TP_Post extends Post_Base {
-        public static function get_instance( $post_id ){
+        public static function get_instance( $post_id ): ?mixed {
             $tpdb = (new self($post_id))->_init_db();
             $post_id = (int) $post_id;
             if ( ! $post_id ){return null;}

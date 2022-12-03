@@ -19,7 +19,7 @@ if(ABSPATH){
         /**
          * @description Do a REST request.
          * @param $request
-         * @return mixed
+         * @return mixed|string|\TP_Core\Libs\TP_Error
          */
         protected function _rest_do_request( $request ){
             $request = $this->_rest_ensure_request( $request );

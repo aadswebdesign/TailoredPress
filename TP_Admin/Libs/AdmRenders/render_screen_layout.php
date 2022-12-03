@@ -19,22 +19,24 @@ if(ABSPATH){
         use _I10n_03;
         use _formats_08;
         use _adm_screen;
+        protected $_html;
         protected $_args;
         public function __construct($args){
             $this->_args['screen_layout_columns'] = $args['screen_layout_columns'];
             $this->_args['num'] = $args['num'];
         }
         private function __to_string():string{
-            $output = "<fieldset class='columns-prefers'><legend class='screen-layout'>{$this->__('Layout')}</legend><ul>";
+            $this->_html = "<fieldset class='columns-prefers'><legend class='screen-layout'>{$this->__('Layout')}</legend>";
             for ( $i = 1; $i <= $this->_args['num']; ++$i ){
-				$label_value = sprintf($this->_n( '%s column', '%s columns', $i ), $this->_number_format_i18n( $i ));
-				$output .= "<li>";
-                $output .= "<dt><label for='columns_prefers_{$i}' class='columns-prefers-{$i}'>$label_value</label></dt>";
-                $output .= "<dd><input id='columns_prefers_{$i}' type='radio' name='screen_columns' value='{$this->_esc_attr( $i )}' {$this->_get_checked( $this->_args['screen_layout_columns'], $i )}/></dd>";
-                $output .= "</li>\n";
+                $this->_html .= "<label class='columns-prefers-{$i}'>";
+                $this->_html .= "<input type='radio' name='screen_columns' value='{$this->_esc_attr( $i )}' {$this->_get_checked( $this->_args['screen_layout_columns'], $i )}/>";
+                ob_start();
+                printf($this->_n( '%s column', '%s columns', $i ), $this->_number_format_i18n( $i ));
+                $this->_html .= ob_get_clean();
+                $this->_html .= "</label>";
             }
-            $output .= "</ul></fieldset>";
-            return (string) $output;
+            $this->_html .= "</fieldset>";
+            return (string) $this->_html;
         }
         public function __toString(){
             return $this->__to_string();

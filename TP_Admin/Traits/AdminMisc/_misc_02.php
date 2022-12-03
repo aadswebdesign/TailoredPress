@@ -33,6 +33,9 @@ if(ABSPATH){
             };
             return $_canonical_string;
         }//1270
+        protected function _tp_admin_canonical_url():void{
+            echo $this->_tp_get_admin_canonical_url();
+        }//1270
         /**
          * @description Send a referrer policy header so referrers are
          *  not sent externally from administration screens.
@@ -58,6 +61,9 @@ if(ABSPATH){
             </script>
             <?php
             return ob_get_clean();
+        }//1321
+        protected function _tp_page_reload_on_back_button_js():void{
+            echo $this->_tp_get_page_reload_on_back_button_js();
         }//1321
         /**
          * @description Send a confirmation request email when a change,

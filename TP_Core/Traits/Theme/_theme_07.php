@@ -97,7 +97,7 @@ if(ABSPATH){
          * @param \array[] ...$args
          * @return mixed
          */
-        protected function _add_theme_support( $feature,array ...$args ){
+        protected function _add_theme_support( $feature,array ...$args ):mixed{
             if ( ! $args ) { $args = (array) true;}
             switch ( $feature ) {
                 case 'post-thumbnails':
@@ -292,7 +292,7 @@ if(ABSPATH){
         /**
          * @description  Do not use. Removes theme support internally without knowledge of those not used by themes directly.
          * @param $feature
-         * @return mixed
+         * @return bool|void
          */
         protected function _remove_theme_support_internally( $feature ){
             if ($feature === 'custom-header-uploads') {

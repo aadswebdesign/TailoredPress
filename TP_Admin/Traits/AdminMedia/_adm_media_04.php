@@ -32,6 +32,9 @@ if(ABSPATH){
             }
             return $output_header;
         }//2070
+        protected function _media_upload_header():void{
+            echo $this->_get_media_upload_header();
+        }//2070
         /**
          * @description Outputs the legacy media upload form.
          * @param null $errors
@@ -127,6 +130,9 @@ if(ABSPATH){
             $output .= $this->_do_action( 'post-upload-ui' );
             return $output;
         }//2094
+        protected function _media_upload_form( $errors = null ):void{
+            echo $this->_get_media_upload_form( $errors );
+        }
         /**
          * @description Outputs the legacy media upload form for a given media type.
          * @param string $type
@@ -175,6 +181,9 @@ if(ABSPATH){
             $output .= "</dd></li></ul></form>";
             return $output;
         }//2318
+        protected function _media_upload_type_form( $type = 'file', $errors = null, $id = null ):void{
+            echo $this->_get_media_upload_type_form( $type, $errors, $id);
+        }//2318
         /**
          * @description Outputs the legacy media upload form for external media.
          * @param null $type
@@ -205,6 +214,9 @@ if(ABSPATH){
             $output .= $this->_apply_filters( 'type_url_form_media', $this->_tp_get_media_insert_url_form( $type ) );
             $output .= "</div></li></ul></form>";
             return $output;
+        }//2392
+        protected function _media_upload_type_url_form( $type = null, $errors = null, $id = null ):void{
+            echo $this->_get_media_upload_type_url_form( $type, $errors, $id);
         }//2392
         /**
          * @description Adds gallery form to upload iframe
@@ -297,6 +309,9 @@ if(ABSPATH){
             $output .= "<dd><input name='update_gallery' id='update_gallery' class='button' type='button' $tp_gallery_update value='{$this->_esc_attr('Update gallery settings')}'/></dd>";
             $output .= "</li></ul></div></div></form>";
             return $output;
+        }//2541
+        protected function _media_upload_gallery_form( $errors ):void{
+            echo $this->_get_media_upload_gallery_form( $errors );
         }//2541
         /**
          * @description Outputs the legacy media upload form for the media library.
@@ -418,6 +433,9 @@ if(ABSPATH){
             $output .= "</li></ul></form>";
             return $output;
         }//2704
+        protected function _media_upload_library_form( $errors ):void{
+            echo $this->_get_media_upload_library_form( $errors );
+        }//2704
         /**
          * @description Creates the form for external url
          * @param string $default_view
@@ -521,6 +539,9 @@ if(ABSPATH){
             $output .= "</p>";
             return $output;
         }//3018
+        protected function _media_upload_flash_bypass():void{
+            echo $this->_get_media_upload_flash_bypass();
+        }//3018
         /**
          * @description Displays the browser's built-in uploader message.
          * @return string
@@ -530,6 +551,9 @@ if(ABSPATH){
             $output .= $this->__("You are using the browser&#8217;s built-in file uploader. The TailoredPress uploader includes multiple file selection and drag and drop capability. <a href='#'>Switch to the multi-file uploader</a>.");
             $output .= "</p>";
             return $output;
+        }//3047
+        protected function _media_upload_html_bypass():void{
+            echo $this->_get_media_upload_html_bypass();
         }//3047
         protected function _media_upload_text_after():void{}//3060 nothing todo
         /**
@@ -549,6 +573,9 @@ if(ABSPATH){
             $output .= "</label></dt><dd><input name='image_resize' id='image_resize' type='checkbox' value='true' $checked/></dd>";
             $output .= "</li></ul>";
             return $output;
+        }//3067
+        protected function _media_upload_max_image_resize():void{
+            echo $this->_get_media_upload_max_image_resize();
         }//3067
     }
 }else die;

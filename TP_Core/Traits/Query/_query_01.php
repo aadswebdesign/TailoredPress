@@ -44,7 +44,7 @@ if(ABSPATH){
         /**
          * @description Sets up The Loop with query parameters.
          * @param $query
-         * @return mixed
+         * @return array|mixed|null
          */
         protected function _query_posts( $query ){
             $this->_tp_query = new TP_Query();

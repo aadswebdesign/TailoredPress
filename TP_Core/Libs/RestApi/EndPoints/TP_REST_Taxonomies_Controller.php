@@ -181,6 +181,11 @@ if(ABSPATH){
                                 'type' => 'boolean',],
                         ],
                     ],
+
+
+
+
+
                 ]
             ];
             $this->_schema = $schema;

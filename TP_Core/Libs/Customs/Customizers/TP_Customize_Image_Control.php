@@ -11,5 +11,6 @@ if(ABSPATH){
         public $type = 'image';
         public $mime_type = 'image';
         public function prepare_control():void {}//38
+
     }
 }else die;

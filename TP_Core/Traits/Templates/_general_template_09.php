@@ -246,7 +246,7 @@ if(ABSPATH){
         /**
          * @description  Enqueues or directly prints a stylesheet link to the specified CSS file.
          * @param string $file
-         * @return mixed
+         * @return string|void
          */
         protected function _tp_get_admin_css( $file = 'tp-admin'){
             $handle = 0 === strpos( $file, 'css/' ) ? substr( $file, 4 ) : $file;

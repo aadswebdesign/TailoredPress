@@ -15,6 +15,7 @@ if(ABSPATH){
         private $__valid;
         protected $_i_fragment;
         protected $_i_host;
+        public $i_host;
         protected $_i_path = '';
         protected $_i_query;
         protected $_i_user_info;
@@ -27,7 +28,6 @@ if(ABSPATH){
         ];
         protected $_port;
         protected $_scheme;
-        public $i_host;
         public function __toString() {
             return (string)$this->_get_iri();
         }//149
@@ -69,7 +69,7 @@ if(ABSPATH){
             $this->_set_iri($iri);
             $this->i_host = $this->_i_host;
         }//247
-        public static function absolutize($base, $relative) {
+        public static function absolutize($base, $relative): mixed{
             if (!($relative instanceof self))
                 $relative = new Requests_IRI($relative);
             if (!$relative->is_valid()) return false;

@@ -20,7 +20,7 @@ if(ABSPATH){
          * @param $options
          * @return string
          */
-        protected function _option_update_filter( $options ):string{
+        protected function _option_update_filter( $options ){
             if ( is_array( $this->tp_new_allowed_options ) ) {
                 $options = $this->_add_allowed_options( $this->tp_new_allowed_options, $options );
             }

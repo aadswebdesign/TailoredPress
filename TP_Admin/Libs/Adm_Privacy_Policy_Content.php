@@ -78,6 +78,9 @@ if(ABSPATH){
             $output .= "</p></div>";
             return $output;
         }//131
+        public static function policy_text_changed_notice():void{
+            echo self::get_policy_text_changed_notice();
+        }
         public static function _policy_page_updated( $post_id ):void {
             $policy_page_id = (int) (new static)->_get_option( 'tp_page_for_privacy_policy' );
             if ( ! $policy_page_id || $policy_page_id !== (int) $post_id ) {
@@ -201,6 +204,9 @@ if(ABSPATH){
             }
             return $output;
         }//312
+        public static function notice( $post = null ):void{
+            echo self::get_notice( $post );
+        }//312
         public static function get_privacy_policy_guide():string{
             $content_array = self::get_suggested_policy_text();
             $content       = '';
@@ -238,6 +244,9 @@ if(ABSPATH){
                 $output .= $sanitized_policy_name;
             }
             return $output;
+        }//378
+        public static function privacy_policy_guide():void{
+            echo self::get_privacy_policy_guide();
         }//378
         public static function get_default_content( $description = false, $blocks = true ):string {
             $suggested_text = "<strong class='privacy-policy-tutorial'>{(new static)->__( 'Suggested text:' )}</strong>";

@@ -11,7 +11,7 @@ use TP_Core\Libs\ID3\getid3_lib;
 use TP_Core\Libs\ID3\getid3_handler;
 if(ABSPATH){
     class getid3_flac extends getid3_handler{
-		public const SYNC_WORD = 'fLaC';
+       public const SYNC_WORD = 'fLaC';
         public function Analyze():bool {
             $info = &$this->getid3->info;
             $this->fseek($info['avdataoffset']);

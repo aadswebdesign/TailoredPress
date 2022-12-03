@@ -106,7 +106,7 @@ if(ABSPATH){
          */
         protected function _tp_installing( $is_installing = null ):bool{
             static $installing = null;
-            // Support for the `TP_INSTALLING` constant, defined before TP is loaded.
+            // Support for the `WP_INSTALLING` constant, defined before WP is loaded.
             if ( is_null( $installing ) )
                 $installing = defined( 'TP_INSTALLING' ) && TP_INSTALLING;
             if ( ! is_null( $is_installing ) ) {

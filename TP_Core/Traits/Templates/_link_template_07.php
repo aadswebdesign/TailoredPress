@@ -6,11 +6,11 @@
  * Time: 20:23
  */
 namespace TP_Core\Traits\Templates;
-//use TP_Core\Traits\Inits\_init_pages;
+use TP_Core\Traits\Inits\_init_pages;
 use TP_Core\Traits\Inits\_init_queries;
 if(ABSPATH){
     trait _link_template_07 {
-        use _init_queries;//_init_pages, 
+        use _init_pages, _init_queries;
         /**
          * @description Displays or retrieves the previous posts page link.
          * @return mixed

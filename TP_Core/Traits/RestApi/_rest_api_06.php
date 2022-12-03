@@ -25,7 +25,7 @@ if(ABSPATH){
          * @description Finds the schema for a property using the patternProperties keyword.
          * @param $property
          * @param $args
-         * @return mixed
+         * @return null
          */
         protected function _rest_find_matching_pattern_property_schema( $property, $args ){
             if ( isset( $args['patternProperties'] ) ) {
@@ -128,7 +128,7 @@ if(ABSPATH){
          * @param $args
          * @param $param
          * @param bool $stop_after_first_match
-         * @return mixed
+         * @return mixed|TP_Error
          */
         protected function _rest_find_one_matching_schema( $value, $args, $param, $stop_after_first_match = false ){
             $matching_schemas = [];

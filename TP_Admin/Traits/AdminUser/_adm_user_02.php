@@ -16,6 +16,9 @@ if(ABSPATH){
             <?php
             return ob_get_clean();
         }//537
+        protected function _delete_users_add_js():void{
+            echo $this->_get_delete_users_add_js();
+        }//537
         /**
          * @description Optional SSL preference that can be turned on by hooking to the 'personal_options' action.
          * @param $user
@@ -28,6 +31,7 @@ if(ABSPATH){
             $output .= "</li></ul>";
             return $output;
         }//562
+        protected function _use_ssl_preference( $user ):void{}//562
         protected function _admin_created_user_email( $text ):string{
             $roles = $this->_get_editable_roles();
             $role  = $roles[ $_REQUEST['role'] ];

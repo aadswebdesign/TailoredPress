@@ -426,7 +426,7 @@ if(ABSPATH){
             $this->_sp_registry->call('Misc', 'error', array($this->__sp_error, E_USER_NOTICE, __FILE__, __LINE__));
             return false;
         }//1387
-        protected function _sp_fetch_data(&$cache)
+        protected function _sp_fetch_data(&$cache): mixed
         {
             if ($cache instanceof SP_Cache_File){ //added
                 // Load the Cache
@@ -906,10 +906,12 @@ if(ABSPATH){
             if (isset($this->__sp_data['links'][$rel])) return $this->__sp_data['links'][$rel];
             return null;
         }//2621
-        public function sp_get_all_discovered_feeds(): array{
+        public function sp_get_all_discovered_feeds(): array
+        {
             return $this->__sp_all_discovered_feeds;
         }//2705
-        public function sp_get_description(): ?string{
+        public function sp_get_description(): ?string
+        {
             if ($return = $this->sp_get_channel_tags(SP_NS_ATOM_10, 'subtitle'))
                 return $this->sp_sanitized($return[0]['data'], $this->_sp_registry->call('Misc', 'atom_10_construct_type', array($return[0]['atts'])), $this->sp_get_base($return[0]));
             elseif ($return = $this->sp_get_channel_tags(SP_NS_ATOM_03, 'tagline'))

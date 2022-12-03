@@ -220,7 +220,9 @@ if(ABSPATH){
             $args = array_merge( $defaults, $args );
             if ( isset( $args['fields']['email'] ) && false === strpos( $args['comment_notes_before'], "id='email_notes'" ) )
                 $args['fields']['email'] = str_replace(' aria-describedby="email-notes"','', $args['fields']['email']);
-            $this->__html = $this->_get_action( 'comment_form_before' );
+            ob_start(); //begin form container
+            $this->_do_action( 'comment_form_before' );
+            $this->__html = ob_get_clean();
             $this->__html .= "<div id='respond' class='{$this->_esc_attr( $args['class_container'] )}'>";
             $this->__html .= $args['title_reply_before'];
             ob_start();
@@ -239,7 +241,9 @@ if(ABSPATH){
                 $this->__html .= ob_get_clean();
             }else $this->__html .= new TP_Comment_Form($args);
             $this->__html .= "</div>"; //end form container
-            $this->__html .= $this->_get_action( 'comment_form_after' );
+            ob_start();
+            $this->_do_action( 'comment_form_after' );
+            $this->__html .= ob_get_clean();
             return (string) $this->__html;
         }//2327 from comment-template
         public function comment_form($post_id = null, ...$args ):void{

@@ -176,7 +176,7 @@ if(ABSPATH){
         /**
          * @description XMLRPC XML content without title and category elements.
          * @param $content
-         * @return mixed
+         * @return mixed|string
          */
         protected function _xml_rpc_remove_post_data( $content ){
             $content = preg_replace( '/<title>(.+?)<\/title>/si', '', $content );

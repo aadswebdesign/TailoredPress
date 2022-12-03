@@ -83,6 +83,9 @@ if(ABSPATH){
             $output .= $walker->walk( $categories, 0, $args );
             return $output;
         }//81
+        protected function _tp_terms_checklist( $post_id = 0, ...$terms_args):void{
+            echo $this->_tp_get_terms_checklist($post_id,$terms_args);
+        }
         /**
          * @param $taxonomy
          * @param int $number
@@ -116,6 +119,9 @@ if(ABSPATH){
             }
             return $popular_ids;
         }//209
+        protected function _tp_popular_terms_checklist( $taxonomy, $number = 10):void{
+            echo $this->_tp_get_popular_terms_checklist( $taxonomy, $number);
+        }//209
         /**
          * @description Outputs a link category checklist element.
          * @param int $link_id
@@ -143,6 +149,9 @@ if(ABSPATH){
             }
             return $category_list;
         }//263
+        protected function _tp_link_category_checklist( $link_id = 0 ):void{
+            echo $this->_tp_get_link_category_checklist( $link_id );
+        }
         /**
          * @description Adds hidden fields with the data for use in the inline editor for posts and pages.
          * @param $post
@@ -205,7 +214,9 @@ if(ABSPATH){
             $html .= "</div>";
             return $html;
         }//307
-
+        protected function _do_inline_data( $post ):void{
+            echo $this->_get_inline_data( $post );
+        }//307
         /**
          * @description Outputs the in-line comment reply-to form in the Comments list table.
          * @param int $position
@@ -261,6 +272,9 @@ if(ABSPATH){
             $output .= "</li></ul></div></fieldset></div></div></form>";
             return $output;
         }//404
+        protected function _tp_comment_reply( $position = 1, $checkbox = false, $mode = 'single' ):void{
+            echo $this->_tp_get_comment_reply( $position, $checkbox, $mode);
+        }//404
         /**
          * @description Output 'undo move to Trash' text for comments
          * @return string
@@ -278,6 +292,9 @@ if(ABSPATH){
             $output .= "</div></div>";
             return $output;
         }//534
+        protected function _tp_comment_trash_notice():void{
+            echo $this->_tp_get_comment_trash_notice();
+        }//530
         /**
          * @description Outputs a post's public meta data in the Custom Fields meta box.
          * @param $meta
@@ -310,6 +327,9 @@ if(ABSPATH){
             $output .= "</ul></div>";
             $output .= "</div>";
             return $output;
+        }//564
+        protected function _list_meta( $meta ):void{
+            echo $this->_get_list_meta( $meta );
         }//564
         /**
          * @description Outputs a single row of public meta data in the Custom Fields meta box.
@@ -409,6 +429,9 @@ if(ABSPATH){
             $output .= "</li></ul></div>";
             return $output;
         }//665
+        protected function _meta_form( $post = null ):void{
+            echo $this->_get_meta_form( $post);
+        }
         /**
          * @description Print out HTML form date elements for editing post or comment publish date.
          * @param int|bool $edit
@@ -483,6 +506,9 @@ if(ABSPATH){
             $output .= "<dd><a href='$_edit_timestamp' class='cancel-timestamp hide-if-no-js button-cancel'>{$this->__('Cancel')}</a></dd>";
             $output .= "</li></ul>";
             return $output;
+        }//786
+        protected function _touch_time( $edit = 1, $for_post = 1, $tab_index = 0, $multi = 0 ):void{
+            echo $this->_get_touch_time( $edit, $for_post, $tab_index, $multi);
         }//786
     }
 }else die;

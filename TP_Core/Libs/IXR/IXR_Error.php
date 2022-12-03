@@ -42,7 +42,8 @@ if(ABSPATH){
         public function __toString(){
             return $this->__to_string();
         }
-        public function getXml(): {
+        public function getXml(): string
+        {
             return $this->__toString();
         }
     }

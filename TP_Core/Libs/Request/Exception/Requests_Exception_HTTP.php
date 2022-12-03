@@ -7,7 +7,7 @@
  */
 namespace TP_Core\Libs\Request\Exception;
 if(ABSPATH){
-    class Requests_Exception_HTTP extends Requests_Exception{
+    class Requests_Exception_HTTP extends Requests_Exception    {
         protected $_code = 0;
         protected $_reason = 'Unknown';
         public function __construct($reason = null, $data = null) {

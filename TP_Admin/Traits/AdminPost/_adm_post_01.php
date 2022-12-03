@@ -469,7 +469,7 @@ if(ABSPATH){
         }//783
         /**
          * @description Creates a new post from the "Write Post" form using `$_POST` information.
-         * @return mixed
+         * @return array|int|mixed|null|TP_Error
          */
         protected function _tp_write_post(){
             if ( isset( $_POST['post_type'] ) ) { $ptype = $this->_get_post_type_object( $_POST['post_type'] ); }
@@ -510,7 +510,7 @@ if(ABSPATH){
         }//836
         /**
          * @description Calls wp_write_post() and handles the errors.
-         * @return mixed
+         * @return array|int|mixed|null|TP_Error
          */
         protected function _write_post(){
             $result = $this->_tp_write_post();

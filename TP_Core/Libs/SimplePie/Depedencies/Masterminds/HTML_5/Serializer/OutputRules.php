@@ -154,11 +154,11 @@ if(ABSPATH){
             if ($this->_output_mode === static::IM_IN_HTML || $ele->hasChildNodes())
                 $this->wr('</')->wr($traverser->isLocalElement($ele) ? $ele->localName : $ele->tagName)->wr('>');//todo
         }
-        protected function wr(string $text){
+        protected function wr(string $text):mixed{
             fwrite($this->_out, $text);
             return $this;
         }
-        protected function nl() {
+        protected function nl():mixed {
             fwrite($this->_out, PHP_EOL);
             return $this;
         }

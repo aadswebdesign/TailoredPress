@@ -11,7 +11,7 @@ use TP_Core\Libs\TP_Error;
 if(ABSPATH){
     trait _adm_rewrite_02{
         use _init_error;
-        // not used _tp_print_plugin_file_tree //461
+        // not used __tp_print_plugin_file_tree //461
         //@description Flushes rewrite rules if siteurl, home or page_on_front changed.
         /**
          * @description Flushes rewrite rules if siteurl, home or page_on_front changed.

@@ -6,10 +6,10 @@
  * Time: 13:00
  */
 namespace TP_Core\Traits\ShortCode;
-//use TP_Core\Traits\Inits\_init_shortcode_tags;
+use TP_Core\Traits\Inits\_init_shortcode_tags;
 if(ABSPATH){
     trait _short_code_01{
-        //use _init_shortcode_tags;
+        use _init_shortcode_tags;
         /**
          * @description Adds a new shortcode.
          * @param $tag
@@ -71,7 +71,7 @@ if(ABSPATH){
          * @description Search content for shortcodes and filter shortcodes through their hooks.
          * @param $content
          * @param bool $ignore_html
-         * @return mixed
+         * @return mixed|string
          */
         protected function _apply_shortcodes( $content, $ignore_html = false ){
             return $this->_do_shortcode( $content, $ignore_html );

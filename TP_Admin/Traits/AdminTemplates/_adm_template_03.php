@@ -38,6 +38,9 @@ if(ABSPATH){
             }
             return $output;
         }//1681
+        protected function _do_settings_sections( $page ):void{
+            echo $this->_get_settings_sections( $page );
+        }//1681
         /**
          * @description Print out the settings fields for a particular settings section.
          * @param $page
@@ -63,6 +66,9 @@ if(ABSPATH){
                 $output .= "</dd></li>";
             }
             return $output;
+        }//1720
+        protected function _do_settings_fields( $page, $section ):void{
+            echo $this->_get_settings_fields( $page, $section);
         }//1720
         /**
          * @description Register a settings error to be displayed to the user.
@@ -149,6 +155,9 @@ if(ABSPATH){
             $output .= "</div></div>";
             return $output;
         }//1932
+        protected function _find_posts_div( $found_action = '' ):void{
+            echo $this->_get_posts_div( $found_action);
+        }//1932
         /**
          * @description Displays the post password.
          * @return string
@@ -160,6 +169,9 @@ if(ABSPATH){
                 $output .= $this->_esc_attr( $post->post_password );
             }
             return $output;
+        }//1969
+        protected function _the_post_password():void{
+            echo $this->_get_the_post_password();
         }//1969
         /**
          * @description Get the post title.
@@ -179,6 +191,9 @@ if(ABSPATH){
          */
         protected function _get_admin_search_query():string{
             return isset( $_REQUEST['s'] ) ? $this->_esc_attr( $this->_tp_unslash( $_REQUEST['s'] ) ) : '';
+        }//2003
+        protected function _admin_search_query():void{
+            echo $this->_get_admin_search_query();
         }//2003
     }
 }else die;

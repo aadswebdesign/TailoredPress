@@ -52,6 +52,9 @@ if(ABSPATH){
                 return $html;
             };
         }//925
+        protected function _admin_color_scheme_picker( $user_id ):void{
+            echo $this->_get_admin_color_scheme_picker( $user_id );
+        }//925
         /**
          * @return string
          */
@@ -70,6 +73,9 @@ if(ABSPATH){
             <?php
             return ob_get_clean()."\n";
         }//990
+        protected function _tp_color_scheme_settings():void{
+            echo $this->_tp_get_color_scheme_settings();
+        }//990
         /**
          * @description Displays the viewport meta in the admin.
          * @return string
@@ -78,6 +84,9 @@ if(ABSPATH){
             $viewport_meta = $this->_apply_filters( 'admin_viewport_meta', 'width=device-width,initial-scale=1.0' );
             if ( empty( $viewport_meta ) ) {return null;}
             return "<meta name='viewport' content='{$this->_esc_attr( $viewport_meta )}'/>";
+        }//1021
+        protected function _tp_admin_viewport_meta():void{
+            echo $this->_tp_get_admin_viewport_meta();
         }//1021
         /**
          * @description Adds viewport meta for mobile in Customizer.

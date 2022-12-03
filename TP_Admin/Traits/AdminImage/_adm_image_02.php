@@ -97,7 +97,7 @@ if(ABSPATH){
         /**
          * @description Copy an existing image file.
          * @param $attachment_id
-         * @return mixed
+         * @return bool|mixed|string
          */
         protected function _copy_image_file( $attachment_id ){
             $dst_file = $this->_get_attached_file( $attachment_id );

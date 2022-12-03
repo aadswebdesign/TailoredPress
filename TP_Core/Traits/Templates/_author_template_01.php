@@ -23,7 +23,7 @@ if(ABSPATH){
         }//60 from author-template
         /**
          * @description Retrieve the author who last edited the current post.
-         * @return mixed
+         * @return null
          */
         protected function _get_the_modified_author(){
             $last_id = $this->_get_post_meta( $this->_get_post()->ID, '_edit_last', true );

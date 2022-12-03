@@ -7,12 +7,12 @@
  */
 namespace TP_Core\Traits\Post;
 use TP_Core\Traits\Inits\_init_db;
-//use TP_Core\Traits\Inits\_init_pages;
+use TP_Core\Traits\Inits\_init_pages;
 use TP_Core\Libs\Post\TP_Post;
 if(ABSPATH){
     trait _post_10{
         use _init_db;
-        //use _init_pages;
+        use _init_pages;
         /**
          * @description Traverse and return all the nested children post names of a root page.
          * @param $page_id
@@ -362,7 +362,7 @@ if(ABSPATH){
         /**
          * @description Retrieve the URL for an attachment.
          * @param int $attachment_id
-         * @return mixed
+         * @return bool|mixed|string
          */
         protected function _tp_get_attachment_url( $attachment_id = 0 ){
             $attachment_id = (int) $attachment_id;

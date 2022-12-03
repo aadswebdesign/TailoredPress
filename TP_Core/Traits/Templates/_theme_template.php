@@ -7,14 +7,14 @@
  */
 namespace TP_Core\Traits\Templates;
 use TP_Core\Traits\Inits\_init_error;
-//use TP_Core\Traits\Inits\_init_template;
+use TP_Core\Traits\Inits\_init_template;
 use TP_Core\Libs\TP_Theme;
 use TP_Core\Libs\Queries\TP_Query;
 use TP_Core\Libs\JSON\TP_Theme_JSON_Resolver;
 if(ABSPATH){
     trait _theme_template {
         use _init_error;
-        //use _init_template;
+        use _init_template;
         /**
          * @description Sets a custom slug when creating auto-draft template parts.
          * @param $post_id

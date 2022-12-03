@@ -67,6 +67,9 @@ if(ABSPATH){
             $output .= ob_get_clean();
             return $output;
         }//2019
+        protected function _iframe_header( $title = ''):void{
+            echo $this->_get_iframe_header( $title);
+        }//2019
         protected function _get_iframe_footer():string{
             $output  = "<div class='hidden'>";
             $output .= $this->_do_action( 'admin_footer', $this->tp_hook_suffix );
@@ -80,6 +83,9 @@ if(ABSPATH){
             $output .= ob_get_clean();
             $output .= "</body></html>";
             return $output;
+        }//2106
+        protected function _iframe_footer():void{
+            echo $this->_get_iframe_footer();
         }//2106
         /**
          * @description Retrieves an array of post states from a post.
@@ -250,6 +256,9 @@ if(ABSPATH){
             <?php
             return ob_get_clean();
         }//2373
+        protected function _compression_test():void{
+            echo $this->_get_compression_test();
+        }//2373
         /**
          * @param string $text
          * @param string|array $type
@@ -294,6 +303,9 @@ if(ABSPATH){
             }
             return $output;
         }//2474
+        protected function _submit_button( $text = null, $type = 'primary', $name = 'submit', $wrap = true, $other_attributes = null ):void{
+            echo $this->_get_submit_button( $text, $type, $name, $wrap, $other_attributes);
+        }//2449
         protected function _tp_get_admin_html_begin():string{
             $admin_html_class = ( $this->_is_admin_bar_showing() ) ? 'tp-toolbar' : '';
             $_adm_xml_ns = $this->add_asset( 'admin_xml_ns', '' );//todo: method will follow!
@@ -303,6 +315,9 @@ if(ABSPATH){
                 $output_begin .= "<meta http-equiv='Content-Type' content='{$this->_bloginfo( 'html_type' )}' charset='{$this->_get_option( 'blog_charset' )}' />";
             }
             return $output_begin;
+        }//2528
+        protected function _tp_admin_html_begin():void{
+            echo $this->_tp_get_admin_html_begin();
         }//2528
         /**
          * @description Convert a screen string to a screen object

@@ -47,7 +47,7 @@ if(ABSPATH){
         /**
          * @description Normalize EOL characters and strip duplicate whitespace.
          * @param $str
-         * @return mixed
+         * @return mixed|string
          */
         protected function _normalize_whitespace( $str ){
             $str = trim( $str );
@@ -88,7 +88,7 @@ if(ABSPATH){
          * @description Internal helper function to sanitize a string from user input or from the db
          * @param $str
          * @param bool $keep_newlines
-         * @return mixed
+         * @return mixed|string
          */
         protected function _sanitize_text_fields( $str, $keep_newlines = false ){
             if ( is_object( $str ) || is_array( $str ) ) return '';

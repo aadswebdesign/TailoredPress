@@ -219,6 +219,7 @@ if(ABSPATH){
         public function get_display_rows():string{
             $output  = "";
             //$this->items = ['item_1' => 'Item1','item_2' => 'Item2'];
+
             foreach ((array)$this->items as $blog ) {
                 $blog  = $blog->to_array();
                 $class = '';

@@ -14,20 +14,20 @@ if(ABSPATH){
          * @return string
          */
         protected function _tp_get_footer():string{
-            return $this->_get_action( 'tp_footer' );
+            return $this->_do_action( 'tp_footer' );
         }//3052 from general-template
         protected function _tp_footer():void{
-            echo $this->_tp_get_footer();
+            $this->_tp_get_footer();
         }
         /**
-         * @description Fire the tp_body_open action.
+         *  @description Fire the tp_body_open action.
          * @return mixed
          */
         protected function _tp_get_body_open(){
-            return $this->_get_action( 'tp_body_open' );
+            return $this->_do_action( 'tp_body_open' );
         }//3068 from general-template
         protected function _tp_body_open():void{
-            echo $this->_tp_get_body_open();
+            $this->_tp_get_body_open();
         }
         /**
          * @description Display the links to the general feeds.

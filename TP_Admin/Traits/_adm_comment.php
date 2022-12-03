@@ -130,5 +130,8 @@ if(ABSPATH){
             }
             die;
         }//213
+        protected function _comment_footer_die( $msg ):void{
+            echo $this->_get_comment_footer_die( $msg );
+        }//213
     }
 }else die;

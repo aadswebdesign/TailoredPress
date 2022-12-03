@@ -89,7 +89,7 @@ if(ABSPATH){
          * @description Retrieves the full permalink for the current post or post ID.
          * @param string|object|int $post
          * @param bool $leave_name
-         * @return mixed
+         * @return bool|void
          */
         protected function _get_permalink( $post= 0,$leave_name = false ){
             $rewrite_code = ['%year%','%monthnum%','%day%',

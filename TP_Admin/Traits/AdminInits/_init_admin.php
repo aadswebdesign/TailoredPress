@@ -8,85 +8,91 @@
 namespace TP_Admin\Traits\AdminInits;
 if(ABSPATH){
     trait _init_admin{
-        protected $_adm_page_hooks;
-        protected $_adm_library_page;
-        protected $_adm_menu;
-        protected $_adm_pagenow;
-        protected $_adm_parent_file;
-        protected $_adm_parent_pages;
-        protected $_adm_registered_pages;
-        protected $_adm_submenu;
-        protected $_adm_submenu_file;
-        protected $_adm_tp_menu_nopriv;
-        protected $_adm_real_parent_file;
-        protected $_adm_submenu_nopriv;
-        protected $_adm_type_now;
-        protected $_adm_title;
-        protected $_adm_hook_suffix;
-        protected $_adm_current_screen;
-        protected $_adm_locale;
-        protected $_adm_update_title;
-        protected $_adm_total_update_count;
-        protected $_adm_self;
+        private $__admin_page_hooks;
+        private $__library_page;
+        private $__menu;
+        private $__pagenow;
+        private $__parent_file;
+        private $__parent_pages;
+        private $__registered_pages;
+        private $__submenu;
+        private $__submenu_file;
+        private $__tp_menu_nopriv;
+        private $__tp_real_parent_file;
+        private $__tp_submenu_nopriv;
+        private $__type_now;
+        private $__title;
+        private $__hook_suffix;
+        private $__current_screen;
+        private $__tp_locale;
+        private $__update_title;
+        private $__total_update_count;
+        private $__self;
         public function getAdminPageHooks(){
-            return $this->_adm_page_hooks;
+            return $this->__admin_page_hooks;
         }
         public function getLibraryPage(){
-            return $this->_adm_library_page;
+            return $this->__library_page;
         }
         public function getMenu(){
-            return $this->_adm_menu;
+            return $this->__menu;
         }
         public function getPagenow(){
-            return $this->_adm_pagenow;
+            return $this->__pagenow;
         }
         public function getParentFile(){
-            return $this->_adm_parent_file;
+            return $this->__parent_file;
         }
         public function getParentPages(){
-            return $this->_adm_parent_pages;
+            return $this->__parent_pages;
         }
         public function getRegisteredPages(){
-            return $this->_adm_registered_pages;
+            return $this->__registered_pages;
         }
         public function getSubmenu(){
-            return $this->_adm_submenu;
+            return $this->__submenu;
         }
         public function getTpMenuNopriv(){
-            return $this->_adm_menu_nopriv;
+            return $this->__tp_menu_nopriv;
         }
         public function getTpRealParentFile(){
-            return $this->_adm_real_parent_file;
+            return $this->__tp_real_parent_file;
         }
         public function getTpSubmenuNopriv(){
-            return $this->_adm_submenu_nopriv;
+            return $this->__tp_submenu_nopriv;
         }
         public function getTypeNow(){
-            return $this->_adm_type_now;
+            return $this->__type_now;
         }
         public function getTitle()
         {
-            return $this->_adm_title;
+            return $this->__title;
         }
         public function getHookSuffix()
         {
-            return $this->_adm_hook_suffix;
+            return $this->__hook_suffix;
         }
         public function getCurrentScreen()
         {
-            return $this->_adm_current_screen;
+            return $this->__current_screen;
         }
         public function getTpLocale()
         {
-            return $this->_adm_locale;
+            return $this->__tp_locale;
         }
         public function getUpdateTitle()
         {
-            return $this->_adm_update_title;
+            return $this->__update_title;
         }
         public function getTotalUpdateCount()
         {
-            return $this->_adm_total_update_count;
+            return $this->__total_update_count;
         }
+
+
+
+
     }
 }else die;
+
+

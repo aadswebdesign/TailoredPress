@@ -47,7 +47,7 @@ if(ABSPATH){
         /**
          * @description Retrieves a sites ID given its (sub domain or directory) slug.
          * @param $slug
-         * @return mixed
+         * @return mixed|null
          */
         protected function _get_id_from_blogname( $slug ){
             $current_network = $this->_get_network();

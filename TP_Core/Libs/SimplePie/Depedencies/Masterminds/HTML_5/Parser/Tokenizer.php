@@ -24,6 +24,8 @@ if(ABSPATH){
                 // FIXME: Add infinite loop protection.
                 if($this->_carry_on === null) return false; //this way?
             } while ($this->_carry_on);
+
+
         }
         public function setTextMode($text_mode, $until_tag = null):void{
             $this->_text_mode = $text_mode & (Elements::TEXT_RAW | Elements::TEXT_RCDATA);
@@ -573,6 +575,14 @@ if(ABSPATH){
             $this->_scanner->un_consume($this->_scanner->position() - $start);
             $this->_parseError('Expected &ENTITY;, got &ENTITY%s (no trailing ;) ', $tok);
             return '&';
+
+
+
+
+
+
+
+
         }
     }
 }else die;

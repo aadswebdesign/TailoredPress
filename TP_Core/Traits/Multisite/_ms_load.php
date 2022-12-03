@@ -53,7 +53,7 @@ if(ABSPATH){
          * @param $domain
          * @param $path
          * @param null $segments
-         * @return mixed
+         * @return bool|mixed
          */
         protected function _get_network_by_path( $domain, $path, $segments = null ){
             return TP_Network::get_by_path( $domain, $path, $segments );
@@ -63,7 +63,7 @@ if(ABSPATH){
          * @param $domain
          * @param $path
          * @param null $segments
-         * @return mixed
+         * @return bool|mixed
          */
         protected function _get_site_by_path( $domain, $path, $segments = null ){
             $path_segments = array_filter( explode( '/', trim( $path, '/' ) ) );

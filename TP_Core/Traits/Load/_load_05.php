@@ -9,10 +9,10 @@ namespace TP_Core\Traits\Load;
 use TP_Core\Traits\Inits\_init_db;
 use TP_Core\Traits\Inits\_init_error;
 use TP_Core\Traits\Inits\_init_locale;
-//use TP_Core\Traits\Inits\_init_pages;
+use TP_Core\Traits\Inits\_init_pages;
 if(ABSPATH){
     trait _load_05 {
-        use _init_locale, _init_db, _init_error;//, _init_pages
+        use _init_locale, _init_db, _init_error, _init_pages;
         /**
          * @description Determines whether the current request should use themes.
          * @return mixed

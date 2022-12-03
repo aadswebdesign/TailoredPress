@@ -66,7 +66,7 @@ if(ABSPATH){
             echo $this->_get_single_month_title( $prefix);
         }
         /**
-         * @description Display the archive title based on the queried object.
+         *  @description Display the archive title based on the queried object.
          * @param string $before
          * @param string $after
          * @return string

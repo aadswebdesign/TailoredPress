@@ -21,7 +21,7 @@ if(ABSPATH){
          * @description Redirects incoming links to the proper URL based on the site url.
          * @param null $requested_url
          * @param bool $do_redirect
-         * @return mixed
+         * @return bool|void
          */
         protected function _redirect_canonical( $requested_url = null, $do_redirect = true ){
             $this->tpdb = $this->_init_db();

@@ -17,7 +17,7 @@ if(ABSPATH){
          * @description Given an ISO 8601 (Ymd\TH:i:sO) date, returns a MySQL DateTime (Y-m-d H:i:s) format used by post_date[_gmt].
          * @param $date_string
          * @param string $timezone
-         * @return bool
+         * @return bool|string
          */
         protected function _iso8601_to_datetime( $date_string, $timezone = 'user' ){
             $timezone    = strtolower( $timezone );
@@ -172,7 +172,7 @@ if(ABSPATH){
          * @description Perform a deep string replace operation to ensure the values in $search are no longer present
          * @param $search
          * @param $subject
-         * @return mixed
+         * @return mixed|string
          */
         protected function _deep_replace( $search, $subject ){
             $subject = (string) $subject;
@@ -183,7 +183,7 @@ if(ABSPATH){
         /**
          * @description Escapes data for use in a MySQL query.
          * @param $data
-         * @return array
+         * @return array|string
          */
         protected function _esc_sql( $data ){
             return $this->_init_db()->escape( $data );
@@ -193,7 +193,7 @@ if(ABSPATH){
          * @param $url
          * @param null $protocols
          * @param string $_context
-         * @return mixed
+         * @return mixed|string
          */
         protected function _esc_url( $url, $protocols = null, $_context = 'display' ){
             $original_url = $url;

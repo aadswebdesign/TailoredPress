@@ -9,6 +9,7 @@ namespace TP_Core\Libs\Walkers;
 use TP_Core\Traits\Filters\_filter_01;
 use TP_Core\Traits\Formats\_formats_07;
 use TP_Core\Traits\Formats\_formats_08;
+
 if(ABSPATH){
     class TP_Walker_Nav_Menu extends TP_Walker {
         use _filter_01;

@@ -64,7 +64,7 @@ if(ABSPATH){
         /**
          * @description Polyfill for `array_key_last()` function added in PHP 7.3.
          * @param array $arr
-         * @return mixed
+         * @return mixed|null
          */
         protected function _tp_array_key_last( array $arr ){
             if ( empty( $arr ) ) return null;
@@ -81,7 +81,7 @@ if(ABSPATH){
             return (string)$needle !== '' && strncmp($haystack, $needle, strlen($needle)) === 0;
         }//451 as a custom method todo testing
         /**
-         * @description Polyfill for `str_ends_with()` function added in PHP 8.0.
+         *  @description Polyfill for `str_ends_with()` function added in PHP 8.0.
          * @param $hay_stack
          * @param $needle
          * @return bool

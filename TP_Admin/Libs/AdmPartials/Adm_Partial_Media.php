@@ -42,7 +42,7 @@ if(ABSPATH){
             $this->__is_trash = isset( $_REQUEST['attachment-filter'] ) && 'trash' === $_REQUEST['attachment-filter'];
             $this->_set_pagination_args(['total_items' => $tp_query->found_posts,'total_pages' => $tp_query->max_num_pages,'per_page' => $tp_query->query_vars['posts_per_page'],]);
         }//69
-        protected function get_prepare_items():void{
+        protected function _get_views():array{
             $type_links = [];
             $filter = empty( $_GET['attachment-filter'] ) ? '' : $_GET['attachment-filter'];
             $type_links['all'] = sprintf("<option value='' %s>%s</option>",$this->_get_selected( $filter, true),$this->__('All media items'));

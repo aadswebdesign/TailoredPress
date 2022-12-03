@@ -451,7 +451,7 @@ if(ABSPATH){
         /**
          * @param int $fscod
          *
-         * @return mixed
+         * @return int|string|false
          */
         public static function sampleRateCodeLookup($fscod) {
             static $sampleRateCodeLookup = array(
@@ -466,7 +466,7 @@ if(ABSPATH){
         /**
          * @param int $fscod2
          *
-         * @return mixed
+         * @return int|string|false
          */
         public static function sampleRateCodeLookup2($fscod2) {
             static $sampleRateCodeLookup2 = array(
@@ -528,7 +528,7 @@ if(ABSPATH){
         /**
          * @param int $cmixlev
          *
-         * @return mixed
+         * @return int|float|string|false
          */
         public static function centerMixLevelLookup($cmixlev) {
             static $centerMixLevelLookup;
@@ -546,7 +546,7 @@ if(ABSPATH){
         /**
          * @param int $surmixlev
          *
-         * @return mixed
+         * @return int|float|string|false
          */
         public static function surroundMixLevelLookup($surmixlev) {
             static $surroundMixLevelLookup;

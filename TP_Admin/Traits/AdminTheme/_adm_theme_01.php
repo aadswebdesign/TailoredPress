@@ -111,6 +111,13 @@ if(ABSPATH){
             return str_replace( dirname($containingfolder, 2), '', $fullpath );
         }//158
         /**
+         * @description Check if there is an update for a theme available.
+         * @param $theme
+         */
+        protected function _theme_update_available( $theme ):void{
+            echo $this->_get_theme_update_available( $theme );
+        }//173
+        /**
          * @description Retrieve the update link if there is a theme update available.
          * @param $theme
          * @return string

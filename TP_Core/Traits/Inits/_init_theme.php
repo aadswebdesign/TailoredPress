@@ -11,6 +11,7 @@ if(ABSPATH){
     trait _init_theme{
         protected $_tp_theme;
         protected $_tp_theme_directories;
+        /** @noinspection PhpUnusedPrivateMethodInspection */
         /**
          * @param string $theme_dir
          * @param string $theme_root

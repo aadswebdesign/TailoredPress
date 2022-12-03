@@ -21,6 +21,9 @@ if(ABSPATH){
             $output .= "</div>";
             return $output;
         }//2592
+        protected function _local_storage_notice():void{
+            echo $this->_get_local_storage_notice();
+        }//2592
         /**
          * @description Output a HTML element with a star rating for a given rating.
          * @param array|null $args
@@ -55,12 +58,18 @@ if(ABSPATH){
         /**
          * @param array|null $args
          */
+        protected function _tp_star_rating($args = null):void{
+            echo $this->_tp_get_star_rating($args);
+        }//2629
         /**
          * @description Outputs a notice when editing the page for posts (internal use only).
          * @return string
          */
         protected function _tp_get_posts_page_notice():string{
             return sprintf("<div class='notice notice-warning inline'><p>%s</p></div>",$this->__('You are currently editing the page that shows your latest posts.'));
+        }//2680
+        protected function _tp_posts_page_notice():void{
+            echo $this->_tp_get_posts_page_notice();
         }//2680
         /**
          * @description Outputs a notice when editing the page,
@@ -70,6 +79,9 @@ if(ABSPATH){
         protected function _tp_get_block_editor_posts_page_notice():string{
             return $this->tp_add_inline_script('tp-notices',sprintf("tp.data.dispatch('core/notices').createWarningNotice('%s', { isDismissible: false } )",
                 $this->__('You are currently editing the page that shows your latest posts.')),'after');
+        }//2693
+        protected function _tp_block_editor_posts_page_notice():void{
+            echo $this->_tp_get_block_editor_posts_page_notice();
         }//2693
         //@description Internal helper function to find the plugin from a meta box callback.
         //protected function _get_plugin_from_callback( $callback ){return '';}//1198 might not use this or in an other form

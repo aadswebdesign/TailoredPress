@@ -100,7 +100,7 @@ if(ABSPATH){
          * @param $value
          * @param $request
          * @param $param
-         * @return mixed
+         * @return bool|mixed
          */
         protected function _rest_parse_request_arg( $value, $request, $param ){
             $is_valid = $this->_rest_validate_request_arg( $value, $request, $param );
