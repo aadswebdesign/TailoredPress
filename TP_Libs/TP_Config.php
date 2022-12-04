@@ -10,6 +10,7 @@ if(ABSPATH){
     class TP_Config{
         public $table_prefix;
         public function __construct(){
+            echo "<p>TP_Config.php</p>";
            $this->__tp_configs();
         }
         private function __tp_configs():void{
@@ -33,7 +34,7 @@ if(ABSPATH){
             if ( ! defined( 'ABSPATH' ) ) {
                 define( 'ABSPATH', __DIR__ . '/' );
             }
-            echo ABSPATH .' (from TP_Config!)<br/>';
+            //echo ABSPATH .' (from TP_Config!)<br/>';
             /**
              * @description As this is a methods package and auto loaded,
              * @description . there is just a single include used and nothing more to do from here.

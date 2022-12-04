@@ -6,12 +6,11 @@
  * Time: 21:03
  */
 namespace TP_Admin\Libs\AdmComponents;
-use TP_Admin\Admins;
 if(ABSPATH){
-    class Adm_Footer extends Admins {
+    class Adm_Footer extends ComponentsBase {
         protected $_args;
         protected $_html;
-        public function __construct($args = null){
+        public function __construct($args = []){
             parent::__construct();
             $this->adm_footer_args = $args;
         }

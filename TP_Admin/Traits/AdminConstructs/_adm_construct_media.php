@@ -5,7 +5,7 @@
  * Date: 25-9-2022
  * Time: 10:48
  */
-namespace TP_Core\Traits\AdminConstructs;
+namespace TP_Admin\Traits\AdminConstructs;
 if(ABSPATH){
     trait _adm_construct_media{
         public $tp_redirect_tab;

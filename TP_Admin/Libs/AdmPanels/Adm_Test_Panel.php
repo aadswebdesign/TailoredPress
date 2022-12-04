@@ -6,9 +6,11 @@
  * Time: 22:25
  */
 namespace TP_Admin\Libs\AdmPanels;
-use TP_Admin\Admins;
+//use TP_Admin\Admins;
+use TP_Admin\AdminSettings;
+
 if(ABSPATH){
-    class Adm_Test_Panel extends Admins {
+    class Adm_Test_Panel extends AdminSettings  {
         protected $_args;
         protected $_tests;
         public function __construct($args = null){
@@ -16,13 +18,15 @@ if(ABSPATH){
             $this->_args = $args;
             $this->adm_header_args = [
                 'parent_file' => 'testpanel.php',
-                //'get_admin_index_head' => [$this,'get_options_index_stuff'],
-                //'index_title' => 'TailoredPress',
+                'get_admin_index_head' => [$this,'get_options_index_stuff'],
+                'panel_title' => '',
+                'index_title' => 'TailoredPress',
             ];
-            //$this->_self_admin_url();
-
+            $this->adm_footer_args = [
+                'parent_file' => 'testpanel.php'
+            ];
             $this->adm_header = $this->get_adm_component_class('Adm_Header',$this->adm_header_args);
-            $this->adm_footer = $this->get_adm_component_class('Adm_Footer');
+            $this->adm_footer = $this->get_adm_component_class('Adm_Footer',$this->adm_footer_args);
         }
 
         /**

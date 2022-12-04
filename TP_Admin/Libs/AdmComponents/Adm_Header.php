@@ -7,12 +7,13 @@
  */
 namespace TP_Admin\Libs\AdmComponents;
 use TP_Admin\Libs\Adm_Screen;
-use TP_Admin\Admins;
+
 if(ABSPATH){
-    class Adm_Header extends Admins{
+    class Adm_Header extends ComponentsBase {
         private $__index_title;
         public function __construct($args =null){
             parent::__construct();
+
             $this->adm_header_menu = $this->get_adm_component_class('Adm_Header_Menu');
             $this->adm_header_args = $args;
             if('options_general.php' === $this->adm_header_args['parent_file']){
@@ -72,7 +73,7 @@ if(ABSPATH){
             $admin_body_class = preg_replace( '/[^a-z0-9_-]+/i', '-', $this->tp_hook_suffix );
             $this->tp_current_screen->id = $this->tp_current_screen->id ?: '10';
             $this->tp_current_screen->post_type = $this->tp_current_screen->post_type ?: 'example_type';
-            $thousands_sep = $this->tp_locale->number_format['thousands_sep'] ?: '/';
+            $thousands_sep = $this->tp_locale->number_format['thousands_sep'] ?? '/';
             ?>
             <style>
                 *{ padding: 0; margin: 0;list-style-type: none;}

@@ -67,5 +67,7 @@ if(ABSPATH){
         public $taxonomies = [];
         public $template = [];
         public $template_lock = false;
+        //added for _I10n_03.php
+        public $tp_I10n_unloaded;
     }
 }else{die;}

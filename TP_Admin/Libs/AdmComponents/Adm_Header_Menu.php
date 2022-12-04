@@ -8,32 +8,12 @@
 namespace TP_Admin\Libs\AdmComponents;
 use TP_Admin\Traits\AdminNavMenu\_adm_nav_menu_01;
 use TP_Admin\Traits\AdminNavMenu\_adm_nav_menu_02;
-use TP_Admin\Traits\AdminPageMenus\_adm_page_menu_02;
-use TP_Admin\Traits\AdminPageMenus\_adm_page_menu_03;
-use TP_Core\Traits\Capabilities\_capability_01;
-use TP_Core\Traits\Constructs\_construct_menu;
-use TP_Core\Traits\Constructs\_construct_page;
-use TP_Core\Traits\Constructs\_construct_utils;
-use TP_Core\Traits\Filters\_filter_01;
-use TP_Core\Traits\Formats\_formats_01;
-use TP_Core\Traits\Formats\_formats_02;
-use TP_Core\Traits\Formats\_formats_03;
-use TP_Core\Traits\Formats\_formats_07;
-use TP_Core\Traits\Formats\_formats_08;
-use TP_Core\Traits\I10n\_I10n_01;
-use TP_Core\Traits\I10n\_I10n_02;
-use TP_Core\Traits\I10n\_I10n_03;
-use TP_Core\Traits\I10n\_I10n_04;
-use TP_Core\Traits\Methods\_methods_03;
-use TP_Core\Traits\Options\_option_01;
 if(ABSPATH){
-    class Adm_Header_Menu{
-        use _adm_nav_menu_01,_adm_nav_menu_02, _adm_page_menu_02,_adm_page_menu_03;
-        use _capability_01, _construct_menu,_construct_page,_construct_utils;
-        use _filter_01, _formats_01,_formats_02, _formats_03, _formats_07,_formats_08;
-        use _I10n_01,_I10n_02,_I10n_03,_I10n_04, _methods_03, _option_01;
+    class Adm_Header_Menu extends ComponentsBase {
+        use _adm_nav_menu_01,_adm_nav_menu_02;
         protected $_args;
         public function __construct($menu_args = null){
+            parent::__construct();
             $this->_args = $menu_args;
             $this->tp_self = preg_replace( '|^.*/TP_Admin/Network/|i', '', $_SERVER['PHP_SELF'] );
             $this->tp_self = preg_replace( '|^.*/TP_Admin/|i', '', $this->tp_self );

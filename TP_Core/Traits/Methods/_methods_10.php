@@ -83,12 +83,12 @@ if(ABSPATH){
         //protected function _smilies_init(){}//4616
         /**
          * @description Merges user defined arguments into defaults array.
-         * @param $args
+         * @param array $args
          * @param array $defaults
          * @return array
          */
-        protected function _tp_parse_args( $defaults = [],array ...$args ): array{
-            if ( is_object((string) $args ) ) $parsed_args = get_object_vars( $args );
+        protected function _tp_parse_args( $defaults = [],$args = [] ): array{
+            if ( is_object( $args ) ) $parsed_args = get_object_vars( $args );
             elseif ( is_array( $args ) ) $parsed_args =& $args;
             else $this->_tp_parse_str( $args, $parsed_args );
             if ( is_array( $defaults ) && $defaults )

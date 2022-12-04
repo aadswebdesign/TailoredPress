@@ -8,7 +8,7 @@
 declare(strict_types=1);
 namespace TP_Admin\Libs;
 use TP_Admin\Traits\_adm_screen;
-use TP_Core\Traits\AdminConstructs\_adm_construct_screen;
+use TP_Admin\Traits\AdminConstructs\_adm_construct_screen;
 use TP_Admin\Traits\AdminPost\_adm_post_04;
 use TP_Admin\Traits\AdminTemplates\_adm_template_04;
 use TP_Core\Traits\Actions\_action_01;
@@ -72,6 +72,8 @@ if(ABSPATH){
         private static $__registry = [];
         public $action;
         public $base;
+        //added
+        public $hook_suffix;
         public $id;
         protected $in_admin;
         public $is_block_editor = false;
@@ -90,11 +92,13 @@ if(ABSPATH){
             if ( $hook_name instanceof self ) {return $hook_name;}
             $post_type       = null;
             $taxonomy        = null;
-            $in_admin        = false;
+            $in_admin        = false;// ?: (new self)->hook_suffix
             $action          = '';
             $is_block_editor = false;
+            //edition
             if ( $hook_name ) $id = $hook_name;
-            else $id = $GLOBALS['hook_suffix'];
+            elseif(isset($GLOBALS['hook_suffix'])) {$id = $GLOBALS['hook_suffix'];}
+            else $id = (new self)->hook_suffix;
             if ( $hook_name && ((new static)->_post_type_exists($hook_name))) {
                 $post_type = $id;
                 $id        = 'post'; // Changes later. Ends up being $base.

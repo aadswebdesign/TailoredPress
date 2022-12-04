@@ -6,15 +6,17 @@
  * Time: 16:22
  */
 namespace TP_Admin\Libs\AdmPanels;
-use TP_Admin\Admins;
+//use TP_Admin\Admins;
+use TP_Admin\AdminSettings;
+
 if(ABSPATH){
-    class Adm_Options_General_Panel extends Admins{
+    class Adm_Options_General_Panel extends AdminSettings {
         private $__tp_site_url_class,$__tp_home_class,$__new_admin_email;
         protected $_args;
         public function __construct($args =null){
             parent::__construct();
-            $this->_admin_consts();
-            $this->_admin_construct();
+            //$this->_admin_consts();
+            //$this->_admin_construct();
             $this->adm_header_args = [
                 'parent_file' => 'options_general.php',
                 'get_admin_general_head' => [$this,'get_options_general_add_js',],

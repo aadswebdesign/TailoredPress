@@ -7,7 +7,7 @@
  */
 namespace TP_Admin\Traits\AdminInits;
 use TP_Admin\Libs\Adm_Screen;
-use TP_Core\Traits\AdminConstructs\_adm_construct_screen;
+use TP_Admin\Traits\AdminConstructs\_adm_construct_screen;
 
 if(ABSPATH){
     trait _adm_init_screen{

@@ -39,7 +39,7 @@ if(ABSPATH){
          * @return mixed
          */
         protected function _tp_get_user_current(){
-            return $this->_tp_get_current_user();
+            return $this->_tp_get_current_user();//todo
         }//71
         /**
          * @description Retrieve user info by user ID.

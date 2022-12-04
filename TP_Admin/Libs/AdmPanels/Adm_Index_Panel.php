@@ -6,9 +6,10 @@
  * Time: 16:22
  */
 namespace TP_Admin\Libs\AdmPanels;
-use TP_Admin\Admins;
+//use TP_Admin\Admins;
+use TP_Admin\AdminSettings;
 if(ABSPATH){
-    class Adm_Index_Panel extends Admins{
+    class Adm_Index_Panel extends AdminSettings {
         protected $_args;
         private $__screen;
         public function __construct($downstream_args = null ,$args = null){

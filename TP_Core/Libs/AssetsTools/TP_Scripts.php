@@ -27,6 +27,8 @@ if(ABSPATH){
         public $print_code = '';
         public $print_html = '';
         public $types = [];
+        //todo temporary added
+        public $tp_filter;
         public function __construct() {
             $this->init();
             $this->_add_action( 'init', array( $this, 'init' ), 0 );

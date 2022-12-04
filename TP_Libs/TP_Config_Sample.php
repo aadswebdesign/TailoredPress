@@ -10,10 +10,10 @@ if(ABSPATH){
     class TP_Config_Sample{
         public $table_prefix;
         public function __construct(){
-            echo "<p>TP_Config_Sample</p>";
-            $this->__tp_configs();
+            echo "<p>TP_Config_Sample.php</p>";
+            $this->__tp_configs_sample();
         }
-        private function __tp_configs():void{
+        private function __tp_configs_sample():void{
             define( 'TP_DB_NAME', 'database_name_here' );
             define( 'TP_DB_USER', 'username_here' );
             define( 'TP_DB_PASSWORD', 'password_here' );

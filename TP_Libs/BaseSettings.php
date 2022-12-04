@@ -2,19 +2,10 @@
 /**
  * Created by PhpStorm.
  * User: Aad Pouw
- * Date: 1-8-2022
- * Time: 13:51
+ * Date: 3-12-2022
+ * Time: 13:38
  */
-namespace TP_Core;
-//use TP_Core\Libs\ID3\getID3;
-use TP_Admin\Traits\_adm_filters;
-use TP_Admin\Traits\AdminMultiSite\_adm_multisite_hooks;
-use TP_Core\Traits\AdminConstructs\_adm_construct_media;
-use TP_Core\Traits\AdminConstructs\_adm_construct_dashboard;
-use TP_Core\Traits\AdminConstructs\_adm_construct_admins;
-use TP_Core\Traits\AdminConstructs\_adm_construct_screen;
-
-use TP_Core\Traits\_constants;
+namespace TP_Libs;
 use TP_Core\Traits\Actions\_action_01;
 use TP_Core\Traits\AdminBar\_admin_bar_01;
 use TP_Core\Traits\AdminBar\_admin_bar_02;
@@ -33,8 +24,10 @@ use TP_Core\Traits\Block\_blocks_02;
 use TP_Core\Traits\Block\_blocks_03;
 use TP_Core\Traits\Block\_blocks_04;
 use TP_Core\Traits\Block\_blocks_editor;
+use TP_Core\Traits\Misc\_bookmark;
 use TP_Core\Traits\Cache\_cache_01;
 use TP_Core\Traits\Cache\_cache_02;
+use TP_Core\Traits\Compat\_cache_compat;
 use TP_Core\Traits\Capabilities\_capability_01;
 use TP_Core\Traits\Capabilities\_capability_02;
 use TP_Core\Traits\Categories\_category_01;
@@ -47,9 +40,7 @@ use TP_Core\Traits\Comment\_comment_05;
 use TP_Core\Traits\Comment\_comment_06;
 use TP_Core\Traits\Comment\_comment_07;
 use TP_Core\Traits\Comment\_comment_08;
-use TP_Core\Traits\Compat\_cache_compat;
 use TP_Core\Traits\Compat\_compat_01;
-
 use TP_Core\Traits\Constructs\_construct_adminbar;
 use TP_Core\Traits\Constructs\_construct_browsers;
 use TP_Core\Traits\constructs\_construct_editor;
@@ -79,8 +70,6 @@ use TP_Core\Traits\Constructs\_construct_time;
 use TP_Core\Traits\Constructs\_construct_upgrading;
 use TP_Core\Traits\Constructs\_construct_user;
 use TP_Core\Traits\Constructs\_construct_utils;
-
-
 use TP_Core\Traits\Cron\_cron_01;
 use TP_Core\Traits\Cron\_cron_02;
 use TP_Core\Traits\Embed\_embed_01;
@@ -159,10 +148,10 @@ use TP_Core\Traits\Methods\_methods_18;
 use TP_Core\Traits\Methods\_methods_19;
 use TP_Core\Traits\Methods\_methods_20;
 use TP_Core\Traits\Methods\_methods_21;
-use TP_Core\Traits\Misc\_bookmark;
 use TP_Core\Traits\Misc\_canonical;
 use TP_Core\Traits\Misc\_error_protection;
 use TP_Core\Traits\Misc\_global_settings;
+use TP_Core\Traits\Misc\_rewrite;
 use TP_Core\Traits\Misc\_sitemap;
 use TP_Core\Traits\Misc\_update;
 use TP_Core\Traits\Misc\tp_link_styles;
@@ -171,6 +160,7 @@ use TP_Core\Traits\Multisite\_ms_network;
 use TP_Core\Traits\Multisite\Blog\_ms_blog_01;
 use TP_Core\Traits\Multisite\Blog\_ms_blog_02;
 use TP_Core\Traits\Multisite\Blog\_ms_blog_03;
+use TP_Core\Traits\Multisite\_ms_load;
 use TP_Core\Traits\Multisite\Methods\_ms_methods_01;
 use TP_Core\Traits\Multisite\Methods\_ms_methods_02;
 use TP_Core\Traits\Multisite\Methods\_ms_methods_03;
@@ -218,7 +208,6 @@ use TP_Core\Traits\RestApi\_rest_api_07;
 use TP_Core\Traits\RestApi\_rest_api_08;
 use TP_Core\Traits\Revisions\_revision_01;
 use TP_Core\Traits\Revisions\_revision_02;
-use TP_Core\Traits\Misc\_rewrite;
 use TP_Core\Traits\ShortCode\_short_code_01;
 use TP_Core\Traits\ShortCode\_short_code_02;
 use TP_Core\Traits\Taxonomy\_taxonomy_01;
@@ -293,12 +282,9 @@ use TP_Core\Traits\User\_user_04;
 use TP_Core\Traits\User\_user_05;
 use TP_Core\Traits\User\_user_06;
 use TP_Core\Traits\User\_user_07;
-use TP_Core\Traits\Multisite\_ms_load;
-//admins from here
 
 if(ABSPATH){
-    class Cores{
-        //THIS IS A TEMPORARY FILE
+    class BaseSettings{
         /* CONSTRUCTS */
         use _construct_kses,_construct_time,_construct_upgrading,_construct_filter;
         use _construct_theme,_construct_db,_construct_assets;
@@ -307,139 +293,67 @@ if(ABSPATH){
         use _construct_rewrite,_construct_queries,_construct_multisite;
         use _construct_user,_construct_rest,_construct_taxonomy,_construct_template,_construct_comment;
         use _construct_settings,_construct_locale,_construct_adminbar,_construct_browsers,_construct_page;
-        use _adm_multisite_hooks;
+        /* TEMPLATES */
+        use _author_template_01,_author_template_02,_block_template_01,_block_utils_template_01,_block_utils_template_02;
+        use _bookmark_template,_category_template_01,_category_template_02,_category_template_03,_comment_template_01;
+        use _comment_template_02,_comment_template_03,_comment_template_04,_comment_template_05,_comment_template_06;
+        use _general_template_01,_general_template_02,_general_template_03,_general_template_04,_general_template_05;
+        use _general_template_06,_general_template_07,_general_template_08,_general_template_09,_general_template_10;
+        use _link_template_01,_link_template_02,_link_template_03,_link_template_04,_link_template_05,_link_template_06;
+        use _link_template_07,_link_template_08,_link_template_09,_link_template_10,_link_template_11,_link_template_12;
+        use _nav_menu_template,_post_template_01,_post_template_02,_post_template_03,_post_template_04,_post_thumbnail_template;
+        use _robots_template ,_template_01,_template_02,_template_03,_theme_template;
         /* OTHER */
         use _action_01;
         use _admin_bar_01,_admin_bar_02,_admin_bar_03;
         use _assets_loader_01,_assets_loader_02,_assets_loader_03,_assets_loader_04,_assets_loader_05;
-        use _constants,_capability_01,_capability_02;
-        use _filter_01,_bookmark,_sitemap;
-        use _formats_01,_formats_02,_formats_03,_formats_04,_formats_05,_formats_06,_formats_07;
-        use _formats_08,_formats_09,_formats_10,_formats_11;
-        use _k_ses_01,_k_ses_02,_k_ses_03,_k_ses_04;
-
-        use _load_01,_load_02,_load_03,_load_04,_load_05,_rewrite;
-        use _I10n_01,_I10n_02,_I10n_03,_I10n_04,_I10n_05;
-        use _link_template_01,_link_template_02,_link_template_03,_link_template_04,_link_template_05;
-        use _link_template_06,_link_template_07,_link_template_08,_link_template_09,_link_template_10;
-        use _link_template_11,_link_template_12;
-        use _methods_01,_methods_02,_methods_03,_methods_04,_methods_05,_methods_06,_methods_07;
-        use _methods_08,_methods_09,_methods_10,_methods_11,_methods_12,_methods_13,_methods_14;
-        use _methods_15,_methods_16,_methods_17,_methods_18,_methods_19,_methods_20,_methods_21;
-        use _global_settings, _theme_01, _theme_02, _theme_03, _theme_04, _theme_05, _theme_06;
-        use _theme_07,_theme_08, _theme_09,_short_code_01,_short_code_02;
-        use _option_01,_option_02,_option_03,_option_04;
-        use _pluggable_01,_pluggable_02,_pluggable_03,_pluggable_04,_pluggable_05;
-        use _post_01,_post_02,_post_03,_post_04,_post_05,_post_06,_post_07,_post_08,_post_09,_post_10;
-        use _post_11,_post_12,_post_13,_post_14;
-        use _query_01,_query_02,_query_03,_query_04,_query_05;
         use _block_category_patterns,_block_duotone_01,_block_duotone_02,_blocks_editor;
-        use _blocks_01,_blocks_02,_blocks_03,_blocks_04,_block_registries;
-        use _rest_api_01,_rest_api_02,_rest_api_02,_rest_api_03,_rest_api_04,_rest_api_05,_rest_api_06,_rest_api_07,_rest_api_08;
-        use _comment_01,_comment_02,_comment_03,_comment_04,_comment_05,_comment_06,_comment_07,_comment_08;
-        use _http_01,_http_02,_http_03,_media_01,_media_02,_media_03,_media_04,_media_05,_media_06,_media_07,_media_08,_media_09;
-        use _taxonomy_01,_taxonomy_02,_taxonomy_03,_taxonomy_04,_taxonomy_05,_taxonomy_06,_taxonomy_07,_taxonomy_08;
-        use _category_01,_category_02,_cron_01,_cron_02;
-        use _meta_01,_meta_02,_meta_03,_cache_01,_cache_02,_template_01,_template_02,_template_03;
-        use _block_template_01,_block_utils_template_01,_block_utils_template_02;
-        use _general_template_01,_general_template_02,_general_template_03,_general_template_04,_general_template_05;
-        use _general_template_06,_general_template_07,_general_template_08,_general_template_09,_general_template_10;
-        use _comment_template_01,_comment_template_02,_comment_template_03,_comment_template_04,_comment_template_05,_comment_template_06;
-        use _post_template_01,_post_template_02,_post_template_03,_post_template_04,_post_thumbnail_template;
-        use _author_template_01,_author_template_02,_category_template_01,_category_template_02,_category_template_03;
-        use _k_ses_01,_k_ses_02,_k_ses_03,_k_ses_04,_k_ses_05,_bookmark_template,_nav_menu_template;
-        use _cache_compat,_compat_01,_canonical;
-        use _embed_01,_embed_02,_embed_03,_embed_04;
+        use _blocks_01,_blocks_02,_blocks_03,_blocks_04,_block_registries,_bookmark;
+        use _cache_01,_cache_02,_cache_compat,_canonical,_capability_01,_capability_02,_category_01,_category_02;
+        use _comment_01,_comment_02,_comment_03,_comment_04,_comment_05,_comment_06,_comment_07,_comment_08,_compat_01,_cron_01,_cron_02;
+        use _embed_01,_embed_02,_embed_03,_embed_04,_error_protection, _feed_01,_feed_02,_feed_03,_feed_04,_filter_01;
+        use _format_post_01,_format_post_02,_formats_01,_formats_02,_formats_03,_formats_04;
+        use _formats_05,_formats_06,_formats_07,_formats_08,_formats_09,_formats_10,_formats_11;
+        use _global_settings,_http_01,_http_02,_http_03,_I10n_01,_I10n_02,_I10n_03,_I10n_04,_I10n_05;
+        use _k_ses_01,_k_ses_02,_k_ses_03,_k_ses_04,_k_ses_05, _load_01,_load_02,_load_03,_load_04,_load_05;
+        use _media_01,_media_02,_media_03,_media_04,_media_05,_media_06,_media_07,_media_08,_media_09;
+        use _meta_01,_meta_02,_meta_03,_methods_01,_methods_02,_methods_03,_methods_04,_methods_05,_methods_06;
+        use _methods_07,_methods_08,_methods_09,_methods_10,_methods_11,_methods_12,_methods_13,_methods_14;
+        use _methods_15,_methods_16,_methods_17,_methods_18,_methods_19,_methods_20,_methods_21;
         use _ms_blog_01,_ms_blog_02,_ms_blog_03,_ms_site_01,_ms_site_02,_ms_site_03,_ms_network,_ms_load;
         use _ms_methods_01,_ms_methods_02,_ms_methods_03,_ms_methods_04,_ms_methods_05,_ms_methods_06;
-        use _feed_01,_feed_02,_feed_03,_feed_04;
-        use _format_post_01,_format_post_02;
-        use _formats_01,_formats_02,_formats_03,_formats_04,_formats_05,_formats_06,_formats_07,_formats_08,_formats_09,_formats_10,_formats_11;
-        use _error_protection,_revision_01,_revision_02;
-        use _nav_menu_01,_nav_menu_02,_nav_menu_03,_update;
+        use _nav_menu_01,_nav_menu_02,_nav_menu_03, _option_01,_option_02,_option_03,_option_04;
+        use _pluggable_01,_pluggable_02,_pluggable_03,_pluggable_04,_pluggable_05,_post_01,_post_02,_post_03;
+        use _post_04,_post_05,_post_06,_post_07,_post_08,_post_09,_post_10,_post_11,_post_12,_post_13,_post_14;
+        use _query_01,_query_02,_query_03,_query_04,_query_05,_rest_api_01,_rest_api_02,_rest_api_02,_rest_api_03;
+        use _rest_api_04,_rest_api_05,_rest_api_06,_rest_api_07,_rest_api_08,_revision_01,_revision_02,_rewrite;
+        use _sitemap,_short_code_01,_short_code_02,_taxonomy_01,_taxonomy_02,_taxonomy_03,_taxonomy_04;
+        use _taxonomy_05,_taxonomy_06,_taxonomy_07,_taxonomy_08,_theme_01, _theme_02, _theme_03, _theme_04;
+        use _theme_05, _theme_06, _theme_07, _theme_08, _theme_09,tp_link_styles,tp_script,_update;
         use _user_01,_user_02,_user_03,_user_04,_user_05,_user_06,_user_07;
-        use tp_link_styles,tp_script;
-        use _theme_template,_robots_template;
-        //admins from here
-        use _adm_construct_admins;
-        use _adm_construct_dashboard;
-        use _adm_construct_media;
-        use _adm_construct_screen;
-        use _adm_filters;
-        protected $_html = [];
+        // as last
+        use Constants;
         public function __construct(){
-            $this->_error_reporting();
-            $this->_admin_constants();
-            $this->_content_constants();
-            $this->_core_constants();
-
-
+            if(class_exists(TP_Config::class)){
+                new TP_Config();
+            }else{new TP_Config_Sample();}
+            $this->_tp_content_constants();
+            $this->_tp_core_constants();
             $this->_http_constants();
             $this->_db_constants();
             $this->_initial_constants();
-            $this->_cookie_constants();
-            $this->_ssl_constants();
             $this->_functional_constants();
-            $this->_ftp_constants();
             $this->_media_constants();
-
-            $this->_namespace_constants();
+            $this->_various_constants();
             $this->_version_constants();
             $this->_rewrite_constants();
 
-            $this->_construct_adminbar();
-            $this->_construct_assets();
-            $this->_construct_browsers();
-            $this->_construct_cache();
-            $this->_construct_comment();
-            $this->_construct_core();
-            $this->_construct_db();
-            $this->_construct_editor();
-            $this->_construct_filters();
-            $this->_construct_kses();
-            $this->_construct_locale();
-            $this->_construct_menu();
-            $this->_construct_meta();
-            $this->_construct_methods();
-            $this->_construct_multisite();
-            $this->_construct_page();
-            $this->_construct_post();
-            $this->_construct_queries();
-            $this->_construct_recovery();
-            $this->_construct_rest();
-            $this->_construct_rewrite();
-            $this->_construct_settings();
-            $this->_construct_taxonomy();
-            $this->_construct_template();
-            $this->_construct_theme();
-            $this->_construct_time();
-            $this->_construct_upgrading();
-            $this->_construct_user();
-            $this->_construct_utils();
-
-            $this->tp_version = TP_VERSION;
-
-            /** @description from the Admin Directory */
-            $this->_ms_admin_filters_hooks();
-            $this->_adm_construct_admins();
-            $this->_adm_construct_adm_media();
-            $this->_adm_construct_dashboard();
-            $this->_adm_construct_screen();
-
-
-            //trial
-            if (!defined('GETID3_TEMP_DIR')) {
-                define('GETID3_TEMP_DIR', '');
-            }
-            //$test = new getID3();
-
-            //$this->_add_thick_box();
-
-
-
-
-
 
         }
+
+
+
+
+
     }
 }else{die;}
