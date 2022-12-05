@@ -12,8 +12,6 @@ use TP_Admin\Traits\AdminConstructs\_adm_construct_screen;
 use TP_Admin\Traits\AdminDashboard\_adm_dashboard_01;
 use TP_Admin\Traits\AdminDashboard\_adm_dashboard_02;
 use TP_Admin\Traits\AdminDashboard\_adm_dashboard_03;
-
-
 use TP_Admin\Traits\AdminPageMenus\_adm_page_menu_02;
 use TP_Admin\Traits\AdminPageMenus\_adm_page_menu_03;
 use TP_Admin\Traits\AdminRewrite\_adm_rewrite_02;
@@ -21,13 +19,11 @@ use TP_Admin\Traits\AdminTemplates\_adm_template_03;
 use TP_Core\Traits\Actions\_action_01;
 use TP_Core\Traits\AdminBar\_admin_bar_03;
 use TP_Core\Traits\Capabilities\_capability_01;
-
 use TP_Core\Traits\Constructs\_construct_core;
 use TP_Core\Traits\Constructs\_construct_locale;
 use TP_Core\Traits\Constructs\_construct_menu;
 use TP_Core\Traits\Constructs\_construct_page;
 use TP_Core\Traits\Constructs\_construct_utils;
-
 use TP_Core\Traits\Filters\_filter_01;
 use TP_Core\Traits\Formats\_formats_01;
 use TP_Core\Traits\Formats\_formats_02;
@@ -71,59 +67,22 @@ use TP_Core\Traits\Theme\_theme_09;
 use TP_Core\Libs\HTTP\TP_Http;
 use TP_Core\Traits\User\_user_03;
 use TP_Core\Traits\User\_user_05;
-
 if(ABSPATH){
     class ComponentsBase{
-        use _action_01;
-        use _adm_class_loaders;
-
-        use _adm_construct_screen;
-        use _adm_dashboard_01,_adm_dashboard_02,_adm_dashboard_03;
-        use _adm_page_menu_02,_adm_page_menu_03;
-        use _adm_rewrite_02;
-        use _adm_screen;
-        use _adm_template_03;
-        use _admin_bar_03;
-        use _capability_01;
-        use _construct_core;
-        use _construct_locale;
-        use _construct_menu,_construct_page,_construct_utils;
-        use _error_protection;
-        use _filter_01;
-        use _formats_01,_formats_02;
-        use _formats_03 ,_formats_07,_formats_08,_formats_10;
-        use _general_template_02,_general_template_08;
-        use _general_template_09,_global_settings;
-        use _http_01;
-        use _I10n_01,_I10n_02,_I10n_03,_I10n_04,_I10n_05;
-        use _k_ses_02, _k_ses_03, _k_ses_04;
-        use _link_template_09;
-        use _load_03,_load_04,_load_05;
-        use _methods_03,_methods_04;
-        use _methods_15;
-        use _ms_methods_01;
-        use _ms_network;
-        use _option_01,_option_02;
-        use _pluggable_01;
-        use _post_03;
-        use _post_template_01;
-        use _query_04;
-        use _rewrite;
-        use _theme_09;
-        use tp_link_styles,tp_script;
-        use _user_03;
-        use _user_05;
+        use _action_01, _adm_class_loaders, _adm_construct_screen, _adm_dashboard_01,_adm_dashboard_02;
+        use _adm_dashboard_03, _adm_page_menu_02,_adm_page_menu_03, _adm_rewrite_02, _adm_screen, _adm_template_03;
+        use _admin_bar_03, _capability_01, _construct_core, _construct_locale,_construct_menu,_construct_page;
+        use _construct_utils, _error_protection, _filter_01, _formats_01,_formats_02,_formats_03 ,_formats_07;
+        use _formats_08,_formats_10, _general_template_02,_general_template_08, _general_template_09,_global_settings;
+        use _http_01, _I10n_01,_I10n_02,_I10n_03,_I10n_04,_I10n_05, _k_ses_02, _k_ses_03, _k_ses_04, _link_template_09;
+        use _load_03,_load_04,_load_05, _methods_03,_methods_04, _methods_15, _ms_methods_01, _ms_network;
+        use _option_01,_option_02, _pluggable_01, _post_03, _post_template_01, _query_04, _rewrite, _theme_09;
+        use tp_link_styles,tp_script, _user_03, _user_05;
         protected $_args;
-        public $adm_footer_args;
-        public $adm_header_args;
-        public $adm_header_menu;
-        public $adm_panel_title;
-        public $adm_title;
-
+        public $adm_footer_args, $adm_header_args, $adm_header_menu, $adm_panel_title, $adm_title;
         protected function _error_reporting():void{ //todo lookup load
             error_reporting( E_CORE_ERROR | E_CORE_WARNING | E_COMPILE_ERROR | E_ERROR | E_WARNING | E_PARSE | E_USER_ERROR | E_USER_WARNING | E_RECOVERABLE_ERROR );
         }
-
         public function __construct($args = null){
             $this->_args = $args;
         }
