@@ -46,4 +46,3 @@ if(ABSPATH){
         }
     }
 }else die;
-
