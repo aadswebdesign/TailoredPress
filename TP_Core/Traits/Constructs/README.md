@@ -5,7 +5,7 @@
 **Files:** 
 - README.md
 
-**Files/Methods:** methods added to the Cores constructor.
+**Files/Methods:** methods added to CoreSettings constructor.
 - _construct_adminbar.php: 	
 	- public $tp_admin_bar, $tp_show_admin_bar
 	- _construct_adminbar():void*  
