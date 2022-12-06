@@ -41,7 +41,7 @@ if(ABSPATH){
         protected function _tp_core_constants():void{
             //dirs
             if(!defined('TP_CORE') ) define('TP_CORE', ABSPATH . 'TP_Core/');
-            if(!defined('TP_CORE_ASSETS')) define('TP_CORE_ASSETS', TP_CORE .'Assets/');
+            if(!defined('TP_CORE_ASSETS')) define('TP_CORE_ASSETS', TP_CONTENT_ASSETS);
             if(!defined('TP_CORE_MEDIA')) define('TP_CORE_MEDIA', TP_CORE_ASSETS .'Media/');
             if(!defined('TP_CORE_IMAGES')) define('TP_CORE_IMAGES', TP_CORE_MEDIA .'Images/');
             if(!defined('TP_CORE_LANG')) define('TP_CORE_LANG', TP_CORE_ASSETS. '/Languages');
