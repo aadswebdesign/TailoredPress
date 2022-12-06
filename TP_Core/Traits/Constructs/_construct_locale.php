@@ -8,7 +8,8 @@
 namespace TP_Core\Traits\Constructs;
 if(ABSPATH){
     trait _construct_locale{
-        public $noop_translations;public $tp_I10n;
+        public $noop_translations;
+		public $tp_I10n;
         public $tp_I10n_unloaded;
         public $tp_locale;
         public $tp_local_package;

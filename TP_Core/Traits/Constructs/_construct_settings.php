@@ -8,12 +8,7 @@
 namespace TP_Core\Traits\Constructs;
 if(ABSPATH){
     trait _construct_settings{
-        public
-            $tp_updated_user_settings,
-            $tp_new_allowed_options,
-            $tp_registered_settings,
-            $tp_new_whitelist_options;
-
+        public $tp_updated_user_settings,$tp_new_allowed_options,$tp_registered_settings,$tp_new_whitelist_options;
         protected function _construct_settings():void{
             $this->tp_updated_user_settings;
             $this->tp_new_allowed_options;

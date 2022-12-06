@@ -18,7 +18,6 @@ if(ABSPATH){
         public $tp_nav_menu_placeholder;
         public $tp_nav_menu_selected_id;
         public $tp_real_parent_file;
-
         protected function _construct_menu():void{
             $this->tp_menu = [];
             $this->tp_menu_nopriv;
