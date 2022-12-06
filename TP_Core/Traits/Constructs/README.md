@@ -1,0 +1,115 @@
+### TP_Core/Traits/Contructs
+
+**Note:** For what it is now and subject to change. 
+
+**Files:** 
+- README.md
+
+**Files/Methods:** methods added to the Cores constructor.
+- _construct_adminbar.php: 	
+	- public $tp_admin_bar, $tp_show_admin_bar
+	- _construct_adminbar():void*  
+- _construct_assets.php: 	
+	- public $tp_compress_css, $tp_compress_scripts, $tp_concatenate_scripts, $tp_editor_styles;
+	- public $tp_scripts, $tp_styles, $tp_stylesheet
+	- _construct_assets():void*  
+- _construct_browsers.php: 	
+	- public $tp_is_lynx, $tp_is_gecko, $tp_is_opera, $tp_is_safari, $tp_is_chrome, $tp_is_iphone
+	- public $tp_is_edge, $tp_is_apache, $tp_is_IIS, $tp_is_iis7, $tp_is_nginx, $tp_is_winIE
+	- _construct_browsers():void  
+- _construct_cache.php: 	
+	- public $tp_cache_expiration, $tp_suspend_cache_invalidation, $tp_using_ext_object_cache
+	- _construct_cache():void 
+- _construct_comment.php: 	
+	- public $tp_comment, $tp_comment_alt, $tp_comment_depth, $tp_comment_thread_alt
+	- public $tp_in_comment_loop, $tp_comment_status, $tp_comment_type
+	- _construct_comment():void 
+- _construct_core.php: 	
+	- public $PHP_SELF, $tp_allowed_options, $tp_auth_secure_cookie, $tp_bookmark, $tp_core, $tp_current_env
+	- public $tp_new_allowed_options, $tp_relative_file, $tp_title, $tp_update_title, $tp_version
+	- _construct_core():void 
+- _construct_db.php: 	
+	- public $tp_charset_collate, $tp_order, $tp_orderby, $tp_table_prefix, $tpdb
+	- _construct_db():void  
+- _construct_editor.php: 	
+	- public $tp_additional_img_sizes, $tp_content_width, $tp_custom_background, $tp_custom_image_header, $tp_rich_edit
+,	- _construct_editor():void 
+- _construct_filter.php: 	
+	- public $tp_filter, $tp_action, $tp_actions, $tp_current_filter, $tp_hook_suffix
+	- _construct_filters():void  
+- _construct_kses.php: 	
+	- public $allowed_tags,$allowed_post_tags,$allowed_entity_names,$allowed_xml_entity_names
+	- public $pass_allowed_html,$pass_allowed_protocols
+	- _construct_kses():void 
+- _construct_locale.php: 	
+	- public $noop_translations, $tp_I10n, $tp_I10n_unloaded, $tp_locale, $tp_local_package, $tp_locale_switcher
+	- public $tp_current_day, $tp_previous_day, $tp_previous_weekday, $tp_month, $tp_month_number, $tp_year
+	- _construct_locale():void 
+- _construct_menu.php: 	
+	- public $tp_menu, $tp_menu_nopriv, $tp_registered_menus, $tp_submenu, $tp_submenu_file,$tp_one_theme_location_no_menus
+	- public $tp_nav_menu_placeholder, $tp_nav_menu_selected_id, $tp_real_parent_file
+	- _construct_menu():void 
+- _construct_meta.php: 	
+	- public $tp_meta_keys, $tp_meta_boxes
+	- _construct_meta():void 
+- _construct_methods.php: 	
+	- public $tp_base_paths, $tp_mime, $tp_header_to_desc, $tp_filename, $tp_filetype, $tp_msg,$tp_view_args, $tp_util
+	- public $tp_evanescent_hare, $tp_login_grace_period, $tp_hasher,$tp_rand_value, $tp_shortcode_tags
+	- _construct_methods():void 
+- _construct_multisite.php: 	
+	- public $tp_ms_blog, $tp_domain, $tp_current_site, $tp_current_blog
+	- _construct_multisite():void 
+- _construct_page.php: 	
+	- public $tp_library_page, $tp_multi_page, $tp_num_pages, $tp_page, $tp_paged,$tp_pages,$tp_pagenow, $tp_parent_file
+	- public $tp_parent_pages, $tp_real_parent_file, $tp_registered_pages,$tp_title, $tp_typenow, $tp_update_title
+	- _construct_page():void 
+- _construct_post.php: 	
+	- public $tp_avail_post_mime_types, $tp_avail_post_stati, $tp_cat, $tp_get_posts, $tp_locked_post_status
+	- public $tp_post, $tp_post_default_category, $tp_post_default_title, $tp_post_id, $tp_post_mime_types
+	- public $tp_post_statuses, $tp_post_type, $tp_post_type_features, $tp_post_type_meta_caps, $tp_post_type_object
+	- public $tp_post_types, $tp_posts, $tp_posts_per_page
+	- _construct_post():void 
+- _construct_queries.php: 	
+	- $tp_query,$tp_the_query
+	- _construct_queries():void 
+- _construct_recovery.php: 	
+	- public $tp_recovery_mode
+	- _construct_recovery():void 
+- _construct_rest.php: 	
+	- public $tp_rest_additional_fields, $tp_rest_auth_cookie, $tp_rest_server
+	- private $__tp_rest_application_password_status, $__tp_rest_application_password_uuid //todo
+	- _construct_rest():void 
+- _construct_rewrite.php: 	
+	- public $tp_rewrite
+	- _construct_rewrite():void 
+- _construct_settings.php: 	
+	- public $tp_updated_user_settings,$tp_new_allowed_options,$tp_registered_settings,$tp_new_whitelist_options
+	- _construct_settings():void  
+- _construct_taxonomy.php: 	
+	- public $tp_tax, $tp_taxonomies, $tp_taxonomy, $tp_tax_query_obj
+	- _construct_taxonomy():void  
+- _construct_template.php: 	
+	- public $tp_args, $tp_author_data, $tp_cat_id, $tp_current_template_content
+	- public $tp_default_headers, $tp_embed, $tp_list_block, $tp_overridden_cpage
+	- public $tp_sidebars_widgets,$tp_tab, $tp_tabs, $tp_type, $tp_with_comments
+	- _construct_template():void
+- _construct_theme.php: 	
+	- public $tp_themes_allowedtags, $tp_paused_themes, $tp_registered_theme_features, $tp_theme, $tp_theme_directories
+	- public $tp_theme_features, $tp_theme_field_defaults, $tp_theme_roots, $tp_themes
+	- _construct_theme():void 
+- _construct_time.php: 	
+	- public $tp_time_start, $tp_time_end
+	- _construct_time():void  
+- _construct_upgrading.php: 	
+	- public $tp_upgrading
+	- _construct_upgrading():void 
+- _construct_user.php: 	
+	- public $tp_user, $tp_user_data, $tp_user_level, $tp_user_ID, $tp_user_email
+	- public $tp_user_login, $tp_user_url, $tp_user_identity, $tp_user_search
+	- public $tp_current_user, $tp_manager, $tp_role
+	- _construct_user():void 
+- _construct_utils.php: 	
+	- public $tp_action, $tp_actions, $tp_current_filter, $tp_customize, $tp_filter, $tp_hook_suffix
+	- public $tp_link, $tp_mode, $tp_more, $tp_number, $tp_preview, $tp_s, $tp_self, $tp_search
+	- public $tp_status, $tp_total_update_count, $tp_totals, $tp_zip
+	- _construct_utils():void	
