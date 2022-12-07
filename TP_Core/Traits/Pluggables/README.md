@@ -1,0 +1,51 @@
+### TP_Core/Traits/Pluggables
+
+**Note:** For what it is now and subject to change. 
+
+**Files/Methods:** 
+- _pluggable_01.php: 	
+	- _tp_set_current_user( $id, $name = '' ):TP_User 
+	- _tp_get_user_current() -> mixed 
+	- _get_user_data( $user_id ) -> bool|TP_User 
+	- _get_user_by( $field, $value ) -> bool|TP_User 
+	- _tp_get_user_current() -> mixed  
+	- _get_user_data( $user_id ) bool|TP_User 
+	- _get_user_by( $field, $value ) bool|TP_User 
+	- _cache_users( $user_ids ):void 
+	- _tp_mail( $to, $subject, $message,$headers = '',array ...$attachments):?bool 
+	- _tp_authenticate( $username, $password ):TP_Error 
+- _pluggable_02.php: 	
+	- _tp_logout():void 
+	- _tp_validate_auth_cookie( $cookie = '', $scheme = '' ):bool 
+	- _tp_generate_auth_cookie( $user_id, $expiration, $scheme = 'auth', $token = '' ):string 
+	- _tp_parse_auth_cookie( $cookie = '', $scheme = '' ) -> mixed 
+	- _tp_set_auth_cookie( $user_id, $remember = false, $secure = '', $token = '' ):void 
+	- _tp_clear_auth_cookie():void 
+	- _is_user_logged_in() -> mixed 
+	- _auth_redirect():void 
+	- _check_admin_referer( $action = -1, $query_arg = '_tp_nonce' ):bool 
+- _pluggable_03.php: 	
+	- _check_async_referer( $action = -1, $query_arg = false, $die = true ) -> mixed  
+	- _tp_redirect( $location, $status = 302, $x_redirect_by = 'TailoredPress' ):bool 
+	- _tp_sanitize_redirect( $location ) -> mixed  
+	- _tp_sanitize_utf8_in_redirect( $matches ):string 
+	- _tp_safe_redirect( $location, $status = 302, $x_redirect_by = 'TailoredPress' ):bool 
+	- _tp_validate_redirect( $location, $default = '' ) -> mixed  
+	- _tp_notify_post_author( $comment_id):bool 
+	- _tp_notify_moderator( $comment_id ):bool 
+- _pluggable_04.php: 	
+	- _tp_password_change_notification( $user ):void 
+	- _tp_new_user_notification( $user_id, $notify = '' ):string 
+	- _tp_nonce_tick():float 
+	- _tp_verify_nonce( $nonce, $action = -1 ) -> bool|int
+	- _tp_create_nonce( $action = -1 ):string 
+	- _tp_salt( $scheme = 'auth' ) -> mixed 
+	- _tp_hash( $data, $scheme = 'auth' ):string 
+	- _tp_hash_password( $password ):string 
+	- _tp_check_password( $password, $hash, $user_id = '' ) -> mixed 
+- _pluggable_05.php: 	
+	- _tp_generate_password( $length = 12, $special_chars = true, $extra_special_chars = false ) -> mixed  
+	- _tp_rand( $min = 0, $max = 0 ) -> number  
+	- _tp_set_password( $password, $user_id ):void 
+	- _get_avatar( $id_or_email, $size = 96, $default = '', $alt = '', ...$args) -> mixed  
+	- _tp_text_diff( $left_string, $right_string, $args = null ):string 
