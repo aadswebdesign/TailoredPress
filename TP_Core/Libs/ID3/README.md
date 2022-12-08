@@ -1,0 +1,176 @@
+### TP_Core/Libs/ID3
+
+**Note:** For what it is now and subject to change. 
+
+**Files/ClassMethods and Vars:**  
+
+- AMFReader.php: 	
+	- __construct(AMFStream $stream) 
+	- readData() 
+	- readDouble() 
+	- readBoolean():bool 
+	- readString():string 
+	- readObject():array 
+	- readMixedArray():array 
+	- readArray():array 
+	- readDate() 
+	- readLongString():string 
+	- readXML():string 
+	- readTypedObject():array 
+- AMFStream.php: 	
+	- public $bytes, $pos 
+	- readByte():int 
+	- readInt():int 
+	- readLong():int 
+	- readDouble() 
+	- readUTF():string 
+	- readLongUTF():string 
+	- read($length):string 
+	- peekByte():int 
+	- peekInt():int 
+	- peekLong():int 
+	- peekDouble() 
+	- peekUTF():string 
+	- peekLongUTF():int 
+- AVCSequenceParameterSetReader.php: 	
+	- public $sps, $start, $currentBytes, $currentBits, $width, $height 
+	- __construct($sps) 
+	- readData():void 
+	- skipBits($bits):void 
+	- getBit():int 
+	- getBits($bits):int 
+	- expGolombUe():int 
+	- expGolombSe():int 
+	- getWidth():int 
+	- getHeight():int 
+- getID3.php: extends getID3Base	
+	- public $test 
+	- __construct() 
+	- version():string 
+	- fread_buffer_size():int 
+	- setOption($optArray):bool 
+	- openfile($filename, $filesize=null, $fp=null):bool 
+	- analyze($filename, $filesize=null, $original_filename='', $fp=null) 
+	- error($message) 
+	- warning($message):bool 
+	- __clean_up():bool 
+	- GetFileFormatArray():array 
+	- GetFileFormat(&$filedata, $filename='') 
+	- CharConvert(&$array, $encoding):void 
+	- HandleAllTags():bool 
+	- CopyTagsToComments(&$ThisFileInfo) 
+	- getHashdata($algorithm):bool 
+	- ChannelsBitratePlaytimeCalculations():void 
+	- CalculateCompressionRatioVideo():bool 
+	- CalculateCompressionRatioAudio():bool 
+	- CalculateReplayGain():bool 
+	- ProcessAudioStreams():bool 
+	- getid3_tempnam():string 
+	- load_module($module, ...$args):object 
+	- is_writable ($filename) static 
+- getid3_exception.php: 	
+- getid3_handler.php: 	
+	- protected $getid3, $data_string_flag, $data_string, $data_string_position, $data_string_length  
+	- private $dependency_to 
+	- __construct(getID3 $getid3, $call_module=null) 
+	- Analyze() abstract 
+	- AnalyzeString($string):void 
+	- setStringMode($string):void 
+	- ftell():bool protected
+	- fread($bytes):string protected
+	- fseek($bytes, $whence=SEEK_SET):int protected 
+	- fgets():string protected 
+	- feof():bool protected 
+	- isDependencyFor($module):bool final protected 
+	- error($text):bool protected 
+	- warning($text):bool protected
+	- notice($text):void protected
+	- saveAttachment($name, $offset, $length, $image_mime=null):string 
+- getid3_handler_base.php: 	
+	- public $max_frames
+    - public const MAGIC
+	- __construct() 
+- getid3_lib.php: 	
+	- PrintHexBytes($string, $hex=true, $spaces=true, $htmlencoding='UTF-8'):string static 
+	- trunc($floatnumber) static static 
+	- safe_inc(&$variable, $increment=1):bool static 
+	- CastAsInt($floatnum) static 
+	- intValueSupported($num) :int static 
+	- DecimalizeFraction($fraction) static 
+	- DecimalBinary2Float($binarynumerator):int static 
+	- NormalizeBinaryPoint($binarypointnumber, $maxbits=52):array static
+	- Float2BinaryDecimal($floatvalue):string static 
+	- Float2String($floatvalue, $bits):int static 
+	- LittleEndian2Float($byteword) static 
+	- BigEndian2Float($byteword):float static 
+	- BigEndian2Int($byteword, $synchsafe=false, $signed=false) static 
+	- LittleEndian2Int($byteword, $signed=false) static  
+	- LittleEndian2Bin($byteword):int  static 
+	- BigEndian2Bin($byteword):int  static 
+	- BigEndian2String($number, $minbytes=1, $synchsafe=false, $signed=false):float  static 
+	- Dec2Bin($number):int  static 
+	- Bin2Dec($binstring, $signed=false)  static 
+	- Bin2String($binstring):string static 
+	- LittleEndian2String($number, $minbytes=1, $synchsafe=false):string static 
+	- array_merge_clobber($array1, $array2) static 
+	- array_merge_noclobber($array1, $array2) static 
+	- flipped_array_merge_noclobber($array1, $array2) static 
+	- ksort_recursive(&$theArray):bool static 
+	- fileextension($filename, $numextensions=1):string static 
+	- PlaytimeString($seconds):float static 
+	- DateMac2Unix($macdate) static 
+	- FixedPoint8_8($rawdata) static  
+	- FixedPoint16_16($rawdata) static  
+	- FixedPoint2_30($rawdata) static  
+	- CreateDeepArray($ArrayPath, $Separator, $Value):array static  
+	- array_max($arraydata, $returnkey=false) static  
+	- array_min($arraydata, $returnkey=false) static  
+	- XML2array($XMLstring):bool static  
+	- SimpleXMLelement2array($XMLobject) static  
+	- hash_data($file, $offset, $end, $algorithm) static  
+	- CopyFileParts($filename_source, $filename_dest, $offset, $length):bool static  
+	- iconv_fallback_int_utf8($charval): string static  
+	- iconv_fallback_iso88591_utf8($string, $bom=false):string static  
+	- iconv_fallback_iso88591_utf16be($string, $bom=false):string static  
+	- iconv_fallback_iso88591_utf16le($string, $bom=false):string static  
+	- iconv_fallback_iso88591_utf16($string):string static  
+	- iconv_fallback_utf8_iso88591($string):string static  
+	- iconv_fallback_utf8_utf16be($string, $bom=false):string static  
+	- iconv_fallback_utf8_utf16le($string, $bom=false):string static  
+	- iconv_fallback_utf8_utf16($string):string static  
+	- iconv_fallback_utf16be_utf8($string):string static  
+	- iconv_fallback_utf16le_utf8($string):string static  
+	- iconv_fallback_utf16be_iso88591($string):string static  
+	- iconv_fallback_utf16le_iso88591($string):string static  
+	- iconv_fallback_utf16_iso88591($string):string static  
+	- iconv_fallback_utf16_utf8($string):string static  
+	- iconv_fallback($in_charset, $out_charset, $string):string static  
+	- recursiveMultiByteCharString2HTML($data, $charset='ISO-8859-1') static  
+	- MultiByteCharString2HTML($string, $charset='ISO-8859-1'):string static  
+	- RGADnameLookup($namecode) static  
+	- RGADoriginatorLookup($originatorcode) static  
+	- RGADadjustmentLookup($rawadjustment, $signbit):float static  
+	- RGADgainString($namecode, $originatorcode, $replaygain):float static  
+	- RGADamplitude2dB($amplitude):float static  
+	- GetDataImageSize($imgData, &$imageinfo=[]) static  
+	- ImageExtFromMime($mime_type) static  
+	- CopyTagsToComments(&$ThisFileInfo, $option_tags_html=true):bool static  
+	- EmbeddedLookup($key, $begin, $end, $file, $name):string static  
+	- IncludeDependency($filename, $sourcefile, $DieOnFailure=false) static //todo  
+	- trimNullByte($string):string static  
+	- getFileSizeSyscall($path) static  
+	- truepath($filename) static  
+	- mb_basename($path, $suffix = ''):string static  
+- getID3Base.php: 	
+	- public $encoding, $encoding_id3v1, $encoding_id3v1_autodetect, $option_tag_id3v1, $option_tag_id3v2, $option_tag_lyrics3 
+	- public $option_tag_apetag, $option_tags_process, $option_tags_html, $option_extra_info, $option_save_attachments
+	- public $option_md5_data, $option_md5_data_source, $option_sha1_data, $option_max_2gb_check, $option_fread_buffer_size 
+	- // module-specific options 
+	- public $options_archive_rar_use_php_rar_extension, $options_archive_gzip_parse_contents, $options_audio_midi_scanwholefile, $options_audio_mp3_allow_bruteforce 
+	- public $options_audio_mp3_mp3_valid_check_frames, $options_audio_wavpack_quick_parsing, $options_audiovideo_flv_max_frames, $options_audiovideo_matroska_hide_clusters 
+	- public $options_audiovideo_matroska_parse_whole_file, $options_audiovideo_quicktime_ReturnAtomData, $options_audiovideo_quicktime_ParseAllPossibleAtoms, $options_audiovideo_swf_ReturnAllTagData 
+	- public $options_graphic_bmp_ExtractPalette, $options_graphic_bmp_ExtractData, $options_graphic_png_max_data_bytes, $options_misc_pdf_returnXREF 
+	- public $options_misc_torrent_max_torrent_filesize, $filename, $fp, $info, $tempdir, $memory_limit 
+	- protected $_startup_error, $_startup_warning 
+	- public const VERSION, FREAD_BUFFER_SIZE , ATTACHMENTS_NONE, ATTACHMENTS_INLINE 
+	- __construct() 
