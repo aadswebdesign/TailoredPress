@@ -42,7 +42,7 @@ if(ABSPATH){
             $this->_db_password = $db_password;
             $this->_db_name     = $db_name;
             $this->_db_host     = $db_host;
-            if ( defined( 'TP_SETUP_CONFIG' ) ) return;
+            if (! defined( 'TP_SETUP_CONFIG' ) ) return;
             $this->db_connect();
         }//700
         /**

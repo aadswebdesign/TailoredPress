@@ -18,7 +18,6 @@ if(ABSPATH){
                 $db_host     = defined( 'DB_HOST' ) ? DB_HOST : 'localhost';
                 $this->_tpdb = new TP_Db( $db_user, $db_password, $db_name, $db_host );
             }
-            //if (! isset( $this->_tpdb ) ) return false;
             return $this->_tpdb;
         }
     }
