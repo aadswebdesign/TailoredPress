@@ -89,6 +89,8 @@ if(ABSPATH){
             parent::__construct();
             $this->_admin_constants();
 
+
+
         }
 
         protected function _admin_constants():void{

@@ -246,9 +246,11 @@ if(ABSPATH){
         /**
          * @description  Enqueues or directly prints a stylesheet link to the specified CSS file.
          * @param string $file
+         * @param bool $print
          * @return string|void
          */
-        protected function _tp_get_admin_css( $file = 'tp-admin'){
+        protected function _tp_get_admin_css( $file = 'tp-admin', $print = false){
+            if($print !== true) { return false;}
             $handle = 0 === strpos( $file, 'css/' ) ? substr( $file, 4 ) : $file;
             $this->tp_styles = $this->_init_styles();
             static $get_style ='';

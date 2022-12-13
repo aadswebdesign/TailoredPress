@@ -6,11 +6,11 @@
  * Time: 10:19
  */
 namespace TP_Admin\Libs\AdmComponents;
-use TP_Admin\BaseLibs\TP_User_Edit;
+use TP_Admin\Libs\Adm_User_Edit;
 if(ABSPATH){
     class Adm_Profile{
         public static function get_profile():string{
-            return new TP_User_Edit();
+            return new Adm_User_Edit();
         }
 
     }
