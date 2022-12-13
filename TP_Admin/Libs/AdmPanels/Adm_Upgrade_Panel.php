@@ -6,9 +6,9 @@
  * Time: 22:25
  */
 namespace TP_Admin\Libs\AdmPanels;
-use TP_Admin\Admins;
+use TP_Admin\AdminSettings;
 if(ABSPATH){
-    class Adm_Upgrade_Panel extends Admins {
+    class Adm_Upgrade_Panel extends AdminSettings {
         protected $_args;
         public function __construct($args = null){
             parent::__construct();

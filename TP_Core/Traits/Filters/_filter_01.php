@@ -7,11 +7,11 @@
  */
 declare(strict_types=1);
 namespace TP_Core\Traits\Filters;
-//use TP_Core\Traits\Inits\_init_filter;
+use TP_Core\Traits\Inits\_init_filter;
 use TP_Core\Libs\TP_Hook;
 if(ABSPATH){
     trait _filter_01 {
-        //use _init_filter;
+        use _init_filter;
         use _all_hooks_helper;
         // from plugins.php
         /**

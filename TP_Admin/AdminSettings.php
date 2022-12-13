@@ -19,7 +19,7 @@ use TP_Admin\Traits\_adm_translation_install;
 use TP_Admin\Traits\AdminConstructs\_adm_construct_media;
 use TP_Admin\Traits\AdminConstructs\_adm_construct_dashboard;
 use TP_Admin\Traits\AdminConstructs\_adm_construct_admins;
-use TP_Admin\Traits\AdminConstructs\_adm_construct_screen;
+//use TP_Admin\Traits\AdminConstructs\_adm_construct_screen;
 use TP_Admin\Traits\AdminDashboard\_adm_dashboard_01;
 use TP_Admin\Traits\AdminDashboard\_adm_dashboard_02;
 use TP_Admin\Traits\AdminDashboard\_adm_dashboard_03;
@@ -64,7 +64,7 @@ use TP_Admin\Traits\AdminUser\_adm_user_02;
 if(ABSPATH){
     class AdminSettings extends BaseSettings {
         use _adm_bookmark,_adm_class_loaders,_adm_comment,_adm_construct_admins;
-        use _adm_construct_dashboard, _adm_construct_media, _adm_construct_screen;
+        use _adm_construct_dashboard, _adm_construct_media;//todo , _adm_construct_screen
         use _adm_dashboard_01,_adm_dashboard_02,_adm_dashboard_03,_adm_file_01,_adm_file_02;
         use _adm_file_03,_adm_filters,_adm_image_01,_adm_image_02,_adm_image_edit;
         use _adm_list_block,_adm_category,_adm_theme_install,_adm_translation_install;

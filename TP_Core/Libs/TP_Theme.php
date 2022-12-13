@@ -7,11 +7,11 @@
  */
 namespace TP_Core\Libs;
 use \ArrayAccess;
-use TP_Core\Cores;
 use TP_Core\Libs\Core_Factory\Theme_Base;
 use TP_Core\Libs\Core_Factory\_array_access;
 use TP_Core\Traits\I10n\_I10n_02;
 use TP_Core\Traits\I10n\_I10n_04;
+
 if(ABSPATH){
     final class TP_Theme extends Theme_Base implements ArrayAccess {
         use _I10n_02,_I10n_04;
@@ -531,23 +531,30 @@ if(ABSPATH){
             (new static('theme_dir','theme_root'))->_update_option( 'allowed_themes', $allowed_themes );
         }//1699
         public static function sort_by_name( &$themes ){
-            $_static_theme = new static('theme_dir','theme_root');
-            $static_theme = null;
-            if( $_static_theme instanceof Cores ){ $static_theme = $_static_theme;}
-            if ( 0 === strpos( $static_theme->get_user_locale(), 'en_' ))
-                uasort($themes, array( 'TP_Theme', '__name_sort' ));
-            else {
-                foreach ( $themes as $key => $theme )
-                    $theme->this->__translate_header( 'Name', $theme->__headers['Name'] );
-                uasort( $themes, array( 'TP_Theme', '__name_sort_i18n' ) );
+            if ( 0 === strpos( (new self(null, $themes))->_get_user_locale(), 'en_' ) ) {
+                uasort( $themes, [__CLASS__, '__name_sort']);
+            } else {
+                foreach ((array) $themes as $key => $theme ) {
+                    $theme->translate_header( 'Name', $theme->headers['Name'] );
+                }
+                uasort( $themes, [__CLASS__, '__name_sort_i18n']);
             }
         }//1725
-        //todo make it private if is needed
-        protected static function _name_sort( $a, $b ){
+        /**
+         * @param $a
+         * @param $b
+         * @return int
+         */
+        private static function __name_sort( $a, $b ):int{
             return strnatcasecmp( $a->__headers['Name'], $b->__headers['Name'] );
         }//1749
-        protected static function _name_sort_i18n( $a, $b ){
+        /**
+         * @param $a
+         * @param $b
+         * @return int
+         */
+        private static function __name_sort_i18n( $a, $b ):int{
             return strnatcasecmp( $a->name_translated, $b->name_translated );
-        }
+        }//1763
     }
 }else die;

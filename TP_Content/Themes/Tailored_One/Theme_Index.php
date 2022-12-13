@@ -24,33 +24,33 @@ if(ABSPATH){
             //$this->_args = $args;
             $this->_footer_args = [
                 'name' => 'get_footer',
-                'theme_name' => 'DefaultTheme',
+                'theme_name' => 'Tailored_One',
                 'class_name' => 'DT_Default_Footer'
             ];
             $this->_get_a_footer = $this->_get_footer($args,$this->_footer_args);
             $this->_header_args = [
                 'name' => 'get_header',
-                'theme_name' => 'DefaultTheme',
+                'theme_name' => 'Tailored_One',
                 'class_name' => 'DT_Default_Header'
             ];
             $this->_get_a_header = $this->_get_header($args,$this->_header_args);
             $this->_partial_args['one'] =[
                 'name' => 'get_partial_one',
-                'theme_name' => 'DefaultTheme',
+                'theme_name' => 'Tailored_One',
                 'class_name' => 'DT_Partial_One'
             ];
             $this->_get_a_partial['one'] = $this->_get_partial($args,$this->_partial_args['one']);
 
             $this->_partial_args['two'] =[
                 'name' => 'get_partial_two',
-                'theme_name' => 'DefaultTheme',
+                'theme_name' => 'Tailored_One',
                 'class_name' => 'DT_Partial_Two'
             ];
             $this->_get_a_partial['two'] = $this->_get_partial($args,$this->_partial_args['two']);
 
             $this->_sidebar_args = [
                 'name' => 'get_header',
-                'theme_name' => 'DefaultTheme',
+                'theme_name' => 'Tailored_One',
                 'class_name' => 'DT_Default_Sidebar'
             ];
             $this->_get_a_sidebar = $this->_get_sidebar($args,$this->_sidebar_args);
