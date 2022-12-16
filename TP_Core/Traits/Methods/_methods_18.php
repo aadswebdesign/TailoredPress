@@ -168,9 +168,9 @@ All at ###SITENAME###
         //protected function _tp_privacy_delete_old_export_files(){}//7870
         /**
          * @description Gets the URL to learn more about updating the PHP version the site is running on.
-         * @return string
+         * @return string|null
          */
-        protected function _tp_get_update_php_url():string{
+        protected function _tp_get_update_php_url(){
             $default_url = $this->_tp_get_default_update_php_url();
             $update_url = $default_url;
             if ( false !== getenv( 'TP_UPDATE_PHP_URL' ) ) $update_url = getenv( 'TP_UPDATE_PHP_URL' );

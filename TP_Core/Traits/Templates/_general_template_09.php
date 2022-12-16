@@ -238,8 +238,8 @@ if(ABSPATH){
          * @return string
          */
         protected function _tp_admin_css_uri( $file = 'tp-admin' ):string{
-            if ( defined( 'TP_INSTALLING' ) ) { $_file = "./$file.css";}
-            else { $_file = $this->_admin_url( "$file.css" );}
+            if ( defined( 'TP_INSTALLING' ) ) { $_file = "https://localhost/TailoredPress/TP_Admin/Assets/Styles/$file.css";}//todo
+            else { $_file = $this->_get_admin_url( "$file.css" );}
             $_file = $this->_add_query_arg( 'version', $this->_get_bloginfo( 'version' ), $_file );
             return $this->_apply_filters( 'tp_admin_css_uri', $_file, $file );
         }//4560 from general-template

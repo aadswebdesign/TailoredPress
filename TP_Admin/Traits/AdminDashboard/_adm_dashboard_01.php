@@ -7,7 +7,7 @@
  */
 namespace TP_Admin\Traits\AdminDashboard;
 use TP_Admin\Libs\Adm_Screen;
-use TP_Admin\Libs\Adm_Site_Health;
+use TP_Admin\Libs\AdmUtils\Adm_Site_Health;
 if(ABSPATH){
     trait _adm_dashboard_01{
         /** @note All 'widget(s)' terms are transformed in 'module(s)' */

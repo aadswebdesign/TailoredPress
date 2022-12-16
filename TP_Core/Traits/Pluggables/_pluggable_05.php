@@ -12,6 +12,7 @@ use TP_Core\Libs\Diff\TP_TextDiff_Renderer_Table;
 if(ABSPATH){
     trait _pluggable_05 {
         use _init_db;
+        public $tp_rand_value;//todo
         /**
          * @description Generates a random password drawn from the defined set of characters.
          * @param int $length
@@ -67,7 +68,7 @@ if(ABSPATH){
             $value = substr( $this->tp_rand_value, 0, 8 );
             $rnd_value = substr( $this->tp_rand_value, 8 );//todo wasn't used anywhere, added it to the if statement
             $value = abs( hexdec( $value ) );
-            if ( 0 !== $max ) $value = $min + ( $max - $min + 1 ) * $rnd_value / ( $max_random_number + 1 );
+            if ( 0 !== $max ) $value = $min + ( $max - $min + 1 ) * $value / ( $max_random_number + 1 );
             return abs( (int) $value );
         }//2540
         /**

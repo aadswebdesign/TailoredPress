@@ -30,6 +30,11 @@ if(ABSPATH){
         protected $_reconnect_retries = 5;
         protected $_result;
         protected $_table_charset = [];
+        //temporary
+        public $tp_filter;
+
+
+
         public $base_prefix;
         public $blog_id = 0;
         public $blog_meta;

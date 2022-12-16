@@ -1531,6 +1531,7 @@ if(ABSPATH){
          * @return string
          */
         public function db_server_info(): string{
+			if(!$this->_dbh){return false;}
             return mysqli_get_server_info( $this->_dbh );
         }//3810
     }

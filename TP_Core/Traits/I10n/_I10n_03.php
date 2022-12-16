@@ -18,6 +18,8 @@ if(ABSPATH){
         use _init_translate;
         //876 load_plugin_textdomain skipped
         //917 load_mu_plugin_textdomain skipped
+        //temporary
+        public $tp_I10n_unloaded;
         /**
          * @description Whether there are translations for the text domain.
          * @param $domain

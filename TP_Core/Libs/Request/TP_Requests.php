@@ -24,7 +24,7 @@ if(ABSPATH){
             }
             self::$_transports = array_merge(self::$_transports, array($transport));
         }//173
-        protected static function get_transport($capabilities = array()) {
+        protected static function get_transport($capabilities = []) {
             ksort($capabilities);
             $cap_string = serialize($capabilities);
             if (isset(self::$transport[$cap_string]) && self::$transport[$cap_string] !== null) {
@@ -74,9 +74,13 @@ if(ABSPATH){
         public static function request($url, $headers = array(), $data = array(), $type = TP_GET, $options = array()): Requests_Response{
             if (empty($options['type'])) $options['type'] = $type;
             $options = array_merge(self::get_default_options(), $options);
-            $hooks = $options['hooks'] ?: new Requests_Hooks();
+            $hooks = null;
             self::set_defaults($url, $headers, $data, $type, $options);
+            if($options['hooks'] instanceof Requests_Hooks){
+                $hooks = $options['hooks'];
+            }
             $hooks->dispatch('requests.before_request', array(&$url, &$headers, &$data, &$type, &$options));
+
             if (!empty($options['transport'])) {
                 $transport = $options['transport'];
                 if (is_string($options['transport'])) $transport = new $transport();

@@ -442,7 +442,7 @@ if(ABSPATH){
          */
         protected function _get_language_attributes( $doctype = 'html' ){
             $attributes = [];
-            if ( function_exists( 'is_rtl' ) && is_rtl() ) $attributes[] = 'dir="rtl"';
+            if ($this->_is_rtl() ) $attributes[] = 'dir="rtl"';
             $lang = $this->_get_bloginfo( 'language' );
             if ( $lang ) {
                 if ('html'===$doctype || 'text/html' === $this->_get_option('html_type'))

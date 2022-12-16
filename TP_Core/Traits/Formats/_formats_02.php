@@ -277,7 +277,7 @@ if(ABSPATH){
             $raw_username = $username;
             $username     = $this->_tp_strip_all_tags( $username );
             $username     = $this->_remove_accents( $username );
-            $username = preg_replace( '|%([a-fA-F0-9](...)|', '', $username );
+            $username = preg_replace( '|%([a-fA-F0-9][a-fA-F0-9])|', '', $username );
             $username = preg_replace( '/&.+?;/', '', $username );
             if ( $strict ) $username = preg_replace( '|[^a-z0-9 _.\-@]|i', '', $username );
             $username = trim( $username );

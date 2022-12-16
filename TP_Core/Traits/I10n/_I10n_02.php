@@ -87,7 +87,7 @@ if(ABSPATH){
             static $cached_mo_files = null;
             if ( null === $cached_mo_files ) {
                 $cached_mo_files = [];
-                $locations = [TP_DIR_THEMES_LANG];// no plugins
+                $locations = [TP_CONTENT_LANG];// no plugins
                 foreach ( $locations as $location ) {
                     $mo_files = glob( $location . '/*.mo' );
                     if ( $mo_files ) {
@@ -97,7 +97,7 @@ if(ABSPATH){
             }
             $locale = $this->_determine_locale();
             $mo_file = "{$domain}-{$locale}.mo";
-            $path = TP_DIR_THEMES_LANG . $mo_file;
+            $path = TP_CONTENT_LANG . $mo_file;
             if ( in_array( $path, $cached_mo_files, true ) ) {
                 return $path;
             }

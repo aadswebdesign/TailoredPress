@@ -39,7 +39,7 @@ if(ABSPATH){
                 $request = null;
                 if( $_request instanceof TP_Error ){$request = $_request;}
                 if ( $ssl && $this->_init_error( $request ) ) {
-                    trigger_error(sprintf("todo"));//todo
+                    //trigger_error(sprintf(""));//todo
                     $request = $this->_tp_remote_post( $http_url, $options );
                 }
                 if ( $this->_init_error( $request ) ) {
@@ -83,8 +83,8 @@ if(ABSPATH){
         protected function _tp_get_install_language_form( $languages ){
             $installed_languages = $this->_get_available_languages();
             $language_form = static function() use($languages,$installed_languages){
-                $html = "<label class='screen-reader-text' for='language'>Select a default language</label>\n";
-                $html .= "<select size='14' name='language' id='language'>\n";
+                $html = "<li><dt><label class='screen-reader-text' for='language'>Select a default language</label></dt>\n";
+                $html .= "<dd><select size='14' name='language' id='language'>\n";
                 $html .= "<option value='' lang='en' selected='selected' data-continue='Continue' data-installed='1'>English (United States)</option>\n";
                 if (!empty((new self)->_tp_local_package) && isset($languages[(new self)->_tp_local_package],$languages[(new self)->_tp_local_package])) {
                     $language = $languages[ (new self)->_tp_local_package ];
@@ -98,8 +98,8 @@ if(ABSPATH){
                         (new self)->_esc_attr(current($language['iso'])),(new self)->_esc_attr( $language['strings']['continue'] ?: 'Continue' ),
                         in_array( $language['language'], $installed_languages, true ) ? ' data-installed="1"' : '',(new self)->_esc_html( $language['native_name']));
                 }
-                $html .= "</select>\n";
-                $html .= "<p class='step'><span class='spinner'></span><input id='language_continue' type='submit' class='button button-primary button-large' value='Continue' /></p>";
+                $html .= "</select></dd></li>\n";
+                $html .= "<li><dt><p class='step'><span class='spinner'></span><input id='language_continue' type='submit' class='button button-primary button-large' value='Continue' /></p></dt></li>";
                 return $html;
             };
             return $language_form;

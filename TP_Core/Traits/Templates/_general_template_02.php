@@ -167,7 +167,7 @@ if(ABSPATH){
                     $output_bg .= $this->_get_option( 'html_type' );
                     break;
                 case 'version':
-                    $output_bg .= $this->tp_version;
+                    $output_bg .= TP_VERSION;
                     break;
                 case 'language':
                     $output_bg .= $this->__( 'html_lang_attribute' );
