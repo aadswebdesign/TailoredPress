@@ -69,9 +69,11 @@ use TP_Core\Traits\Inits\_init_error;
 use TP_Core\Traits\Inits\_init_queries;
 use TP_Core\Traits\Inits\_init_db;
 use TP_Core\Traits\Multisite\_ms_network;
+use TP_Libs\Constants;
 
 if(ABSPATH){
     class Query_Base{
+        use Constants;
         use _init_queries, _init_error, _init_post, _init_db, _init_taxonomy, _init_user;
         use _action_01, _cache_01, _cache_02, _capability_01, _category_02,_comment_01, _comment_02, _comment_07;
         use _filter_01, _feed_01, _formats_02, _formats_03, _formats_04,_formats_07,_formats_08, _formats_10,_formats_11;
@@ -166,7 +168,9 @@ if(ABSPATH){
         public $meta_value;
         public $networks;
 
-        //
+
+
+
 
 
 

@@ -12,6 +12,7 @@ use TP_Core\Traits\Filters\_filter_01;
 use TP_Core\Traits\I10n\_I10n_02;
 use TP_Core\Traits\I10n\_I10n_03;
 use TP_Core\Traits\I10n\_I10n_04;
+use TP_Core\Traits\Load\_load_01;
 use TP_Core\Traits\Methods\_methods_06;
 use TP_Core\Traits\Methods\_methods_08;
 use TP_Core\Traits\Methods\_methods_12;
@@ -22,13 +23,18 @@ use TP_Core\Traits\Inits\_init_error;
 use TP_Core\Traits\Load\_load_04;
 use TP_Core\Traits\I10n\_I10n_01;
 use TP_Core\Traits\Actions\_action_01;
+use TP_Libs\Constants;
+
 if(ABSPATH){
     class TP_Db {
+        use Constants;
         use _database_vars, _init_error, _filter_01, _methods_06, _methods_08;
         use _methods_12, _methods_15, _methods_16, _methods_17;
-        use _action_01, _I10n_01, _I10n_02, _I10n_03,_I10n_04, _load_04;
+        use _action_01, _I10n_01, _I10n_02, _I10n_03,_I10n_04, _load_01, _load_04;
         protected $_checking_collation;//todo added
         public function __construct( $db_user = '', $db_password = '', $db_name = '', $db_host = '' ) {
+            $this->_initial_constants();
+            $this->_version_constants();
             $this->tp_version = TP_VERSION;
             $this->required_mysql_version = TP_REQUIRED_MYSQL_VERSION;
             if ( TP_DEBUG && TP_DEBUG_DISPLAY ) $this->show_errors();

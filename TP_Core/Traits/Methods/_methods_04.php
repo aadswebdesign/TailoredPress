@@ -116,20 +116,20 @@ if(ABSPATH){
         /**
          * @description Load the feed template from the use of an action hook.
          */
-        protected function _do_feed():void{
+        protected function _do_feed(){//todo
             $tp_query = $this->_init_query();
             $feed = $this->_get_query_var( 'feed' );
             $feed = ltrim($feed, '_');
             if ( '' === $feed || 'feed' === $feed )$feed = $this->_get_default_feed();
             if ( ! $this->_has_action( "do_feed_{$feed}" ) )
                 $this->_tp_die( $this->__( 'Error: This is not a valid feed template.' ), '', array( 'response' => 404 ) );
-            $this->_do_action( "do_feed_{$feed}", $tp_query->is_comment_feed, $feed );
+            return $this->_get_action( "do_feed_{$feed}", $tp_query->is_comment_feed, $feed );
         }//1570
         /**
          * @description Load the RDF RSS 0.91 Feed template.
          */
-        protected function _do_feed_rdf():void{
-            echo new feed_rdf();
+        protected function _do_feed_rdf():string{
+            return new feed_rdf();
         }//1614
     }
 }else die;

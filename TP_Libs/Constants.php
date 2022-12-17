@@ -16,8 +16,8 @@ if(ABSPATH){
             if(!defined('TP_CONTENT_LIBS')) define('TP_CONTENT_LIBS', TP_CONTENT_THEMES . 'TP_Library/' );
             if(!defined('TP_MU_CONTENT_LIBS')) define('TP_MU_CONTENT_LIBS', TP_CONTENT_LIBS . 'Multisite/' );
             if(!defined('TP_CONTENT_LANG')) define('TP_CONTENT_LANG', TP_CONTENT_ASSETS. '/Languages');
-            if (!defined( 'TEMPLATE_PATH' ) ) define( 'TEMPLATE_PATH', $this->_get_template_directory() );
-            if (!defined( 'STYLESHEET_PATH' ) ) define( 'STYLESHEET_PATH', $this->_get_stylesheet_directory() );
+            if (!defined( 'TP_TEMPLATE_PATH' ) ) define( 'TP_TEMPLATE_PATH', $this->_get_template_directory() );
+            if (!defined( 'TP_STYLESHEET_PATH' ) ) define( 'TP_STYLESHEET_PATH', $this->_get_stylesheet_directory() );
             //namespaces
             if (!defined( 'TP_NS' ) ) define('TP_NS','\\');
             if (!defined( 'TP_NS_CONTENT' ) ) define('TP_NS_CONTENT','TP_Content\\');
@@ -27,6 +27,7 @@ if(ABSPATH){
             if (!defined( 'TP_NS_TEMPLATE_PATH' ) ) define('TP_NS_TEMPLATE_PATH','\\ThemeSrc\\Templates\\');
             //if(!defined( 'TP_NS_STYLESHEET_PATH' ) ) define('TP_NS_CONTENT',TP_NS_CONTENT.'\\');
             //themes
+            if (!defined('TP_USE_THEMES' )) define('TP_USE_THEMES', '');//todo
             if (!defined('TP_DEFAULT_THEME' ) ) define('TP_DEFAULT_THEME',TP_CONTENT_THEMES.'DefaultTheme/');
             if (!defined('TP_THEME_ASSETS' ) ) define('TP_THEME_ASSETS',TP_DEFAULT_THEME.'ThemeAssets/');
             if (!defined('TP_THEME_MEDIA' ) ) define('TP_THEME_MEDIA',TP_THEME_ASSETS.'Media/');
@@ -40,6 +41,8 @@ if(ABSPATH){
         }
         protected function _tp_core_constants():void{
             //dirs
+            if(!defined('TP_CONTENT_DIR')) define('TP_CONTENT_DIR', ABSPATH .'TP_Content/');
+            if(!defined('TP_CONTENT_ASSETS')) define('TP_CONTENT_ASSETS', TP_CONTENT_DIR .'Assets/');
             if(!defined('TP_CORE') ) define('TP_CORE', ABSPATH . 'TP_Core/');
             if(!defined('TP_CORE_ASSETS')) define('TP_CORE_ASSETS', TP_CONTENT_ASSETS);
             if(!defined('TP_CORE_MEDIA')) define('TP_CORE_MEDIA', TP_CORE_ASSETS .'Media/');

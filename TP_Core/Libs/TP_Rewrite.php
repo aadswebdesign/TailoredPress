@@ -8,6 +8,8 @@
 namespace TP_Core\Libs;
 if(ABSPATH){
     class TP_Rewrite extends Rewrite_Base {
+        //temporary
+        public $tp_filter;
         /**
          * @description Determines whether permalinks are being used.
          * @return bool
@@ -728,7 +730,9 @@ if(ABSPATH){
             if ( $this->using_index_permalinks() )
                 $this->root = $this->index . '/';
             unset( $this->author_structure , $this->date_structure, $this->page_structure , $this->search_structure , $this->feed_structure,$this->comment_feed_structure );
-            $this->use_trailing_slashes = ( '/' === $this->permalink_structure[strlen($this->permalink_structure) - 1]);
+            //$this->use_trailing_slashes = ( '/' === $this->permalink_structure[strlen($this->permalink_structure) - 1]);
+            /** @noinspection SubStrUsedAsArrayAccessInspection */
+            $this->use_trailing_slashes =  ( '/' === substr( $this->permalink_structure, -1, 1 ) );
             if ( preg_match( '/^[^%]*%(?:post_name|category|tag|author)%/', $this->permalink_structure ) )
                 $this->use_verbose_page_rules = true;
             else $this->use_verbose_page_rules = false;

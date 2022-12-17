@@ -88,5 +88,8 @@ if(ABSPATH){
         public $tp_version;
         public $user_meta;
         public $users;
+
+        //temporary
+        public $tp_current_env;
     }
 }else die;

@@ -123,5 +123,12 @@ if(ABSPATH){
             }
             return $this->_tp_load_class($class_name,TP_NS_MODULES,$class_name,$class_args);
         }//added
+        protected function _mb_convert_encoding($string,$option, ...$args): ?string{
+            $args_to_string = implode(',', $args);
+            if ( function_exists( 'mb_convert_encoding' ) ) {
+                return mb_convert_encoding( $string,$option, $args_to_string );
+            }
+            return false;
+        }
     }
 }else die;

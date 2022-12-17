@@ -109,9 +109,9 @@ if(ABSPATH){
          * @description Validates whether this comment is allowed to be made.
          * @param $comment_data
          * @param bool $tp_error
-         * @return TP_Error
+         * @return mixed
          */
-        protected function _tp_allow_comment( $comment_data, $tp_error = false ): TP_Error{
+        protected function _tp_allow_comment( $comment_data, $tp_error = false ){
             $tpdb = $this->_init_db();
             $dupe = $tpdb->prepare( TP_SELECT . " comment_ID FROM $tpdb->comments WHERE comment_post_ID = %d AND comment_parent = %s AND comment_approved != 'trash' AND ( comment_author = %s ",
                 $this->_tp_unslash( $comment_data['comment_post_ID'] ),

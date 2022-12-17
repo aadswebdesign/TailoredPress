@@ -1489,6 +1489,7 @@ if(ABSPATH){
             return 0;
         }//3630
         public function __construct( $query = '' ){
+            $this->_http_constants();
             $this->meta_query = $this->_init_meta_query();
         }//3651
         public function is_archive(): bool{

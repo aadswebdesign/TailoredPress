@@ -25,8 +25,11 @@ use TP_Core\Traits\Post\_post_03;
 use TP_Core\Traits\Taxonomy\_taxonomy_01;
 use TP_Core\Libs\RestApi\EndPoints\TP_REST_Controller;
 use TP_Core\Libs\RestApi\EndPoints\TP_REST_Terms_Controller;
+use TP_Libs\Constants;
+
 if(ABSPATH){
     class TP_Taxonomy{
+        use Constants;
         use _filter_01, _formats_02, _formats_03,_I10n_01,_I10n_02,_I10n_03,_I10n_04,_I10n_05,_init_core;
         use _load_03, _methods_10, _methods_16, _methods_17,_option_01, _post_03, _rewrite,  _taxonomy_01;
         public $name;
@@ -59,6 +62,7 @@ if(ABSPATH){
         public $args;
         public $_builtin;
         public function __construct( $taxonomy, $object_type,array ...$args) {
+            $this->_rewrite_constants();
             $this->name = $taxonomy;
             $this->set_props( $object_type, $args );
         }//279

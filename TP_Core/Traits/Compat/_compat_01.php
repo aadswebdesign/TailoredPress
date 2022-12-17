@@ -22,7 +22,6 @@ if(ABSPATH){
             if ( 'reset' === $this->_utf8_pcre ) $this->_utf8_pcre = @preg_match( '/^./u', 'a' );
             return $this->_utf8_pcre;
         }//28
-
         protected function _mb_substr( $str, $start, $length = null, $encoding = null ):string {
             return $this->_get_mb_substr( $str, $start, $length, $encoding );
         }//59

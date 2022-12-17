@@ -122,7 +122,7 @@ if(ABSPATH){
          */
         protected function _tp_is_site_protected_by_basic_auth( $context = '' ){
             if ( ! $context ) {
-                if ( 'tp-login.php' === $this->tp_pagenow ) $context = 'login';//todo
+                if ( 'tp_login.php' === $this->tp_pagenow ) $context = 'login';//todo
                 elseif ( $this->_is_admin() ) $context = 'admin';
                 else $context = 'front';
             }

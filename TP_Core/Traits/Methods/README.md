@@ -45,7 +45,7 @@
 	- _cache_javascript_headers():void 
 	- _get_num_queries():int 
 	- _bool_from_yes_no( $yes_no ):bool 
-	- _do_feed():void 
+	- _do_feed() 
 	- _do_feed_rdf():void 
 - _methods_05.php: 	
 	- _do_feed_rss():void 
@@ -206,7 +206,7 @@
 	- _tp_get_default_update_php_url() 
 	- //protected function _tp_unique_id( $prefix = '' ) 
 - _methods_19.php: 	
-	- _tp_update_php_annotation( $before = "<p class='description'>", $after = '</p>' ):void //todo, make it return
+	- _tp_update_php_annotation( ):void //todo, make it return
 	- _tp_get_update_php_annotation():string 
 	- _tp_get_direct_php_update_url():string 
 	- _tp_get_direct_php_update_button():string 
