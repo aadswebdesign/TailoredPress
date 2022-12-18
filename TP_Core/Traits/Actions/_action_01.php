@@ -14,6 +14,7 @@ if(ABSPATH){
         use _all_hooks_helper;
         //taken from plugins.php
         protected function _add_action( $hook_name, $callback, $priority = 10, $accepted_args = 1 ){
+
             return $this->_add_filter($hook_name, $callback, $priority, $accepted_args);
         }//398
         protected function _has_action( $hook_name, $callback = false ){

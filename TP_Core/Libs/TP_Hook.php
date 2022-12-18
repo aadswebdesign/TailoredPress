@@ -25,8 +25,9 @@ if(ABSPATH){
             $priority_existed = isset( $this->callbacks[ $priority ] );
             $this->callbacks[ $priority ][ $idx ] = [
                 'function'      => $callback,
+                //'string'        => $callback,
                 'accepted_args' => $accepted_args,
-            ];
+            ];//todo accepting strings too
             // If adding a new priority to the list, put them back in sorted order.
             if (!$priority_existed && count($this->callbacks)>1){
                 ksort( $this->callbacks, SORT_NUMERIC );
