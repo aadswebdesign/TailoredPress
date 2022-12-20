@@ -54,11 +54,10 @@ if(ABSPATH){
             return $output;
         }//545 todo
         protected function _get_embed_template():string{
+            //$post_formats; standard (default), aside, gallery, link, image, quote, status, video, audio and chat.
+            //seven post types; posts, pages, attachments, revisions, navigation menus, custom CSS, and changesets
             $output  = "";
-            $output .= "";
-            $output .= "";
-            $output .= "</br>_get_embed_template";
-            $output .= "";
+            $output .= "</br>_get_embed_template</br>";
             $output .= "";
             return $output;
         }//594
@@ -80,13 +79,17 @@ if(ABSPATH){
             $output .= "";
             return $output;
         }//657 todo
-        protected function _locate_template($path=null,$template_classes =null, ...$args):string{
+        protected function _locate_template($template_classes, $load = false, ...$args):string{//$path=null,$template_classes =null, ...$args
+            $located = '';
+            foreach ( (array) $template_classes as $template_class ) {
+                if ( ! $template_class ) continue;
+
+
+
+            }
+
             $output  = "";
-            $output .= "";
-            $output .= "";
             $output .= "_locate_template";
-            $output .= "";
-            $output .= "";
             return $output;
         }//697
         //protected function _locate_theme($theme_class):?string{}//added

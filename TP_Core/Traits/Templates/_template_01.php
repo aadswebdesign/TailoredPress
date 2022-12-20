@@ -11,6 +11,18 @@ namespace TP_Core\Traits\Templates;
 if(ABSPATH){
     trait _template_01 {
         protected function _get_query_template($type,...$templates):string{
+            $type = preg_replace( '|[^a-z0-9-]+|', '', $type );
+            var_dump('</br>$type: ',$type);
+            if ( empty( $templates ) ) {
+                $templates = [$this, $type];
+            }
+            var_dump('</br>$templates1: ',$templates);
+            $templates = $this->_apply_filters( "{$type}_template_hierarchy", $templates );
+            //var_dump('</br>$templates2: ',$templates);
+            //$template = $this->_locate_template( $templates );
+            //var_dump('</br>$template1: ',$template);
+            //$template = $this->_locate_block_template( $template, $type, $templates );
+            //var_dump('</br>$template2: ',$template);
             $output  = "";
             $output .= "";
             $output .= "";

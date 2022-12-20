@@ -23,11 +23,14 @@ use TP_Core\Traits\Formats\_formats_03;
 use TP_Core\Traits\Options\_option_01;
 use TP_Core\Traits\Post\_post_01;
 use TP_Core\Traits\Taxonomy\_taxonomy_01;
+use TP_Libs\Constants;
+
 if(ABSPATH){
     class PostType_Base{
         use _action_01, _post_01, _post_03, _post_04, _load_03, _init_rewrite,_init_core;
         use _filter_01, _formats_03, _methods_10, _taxonomy_01,_taxonomy_02, _option_01;
         use _rewrite,_I10n_02,_I10n_04,_I10n_05;
+        use Constants;
         //protected static $_default_labels = [];
         public $tp_post_type_features; //added
         public $post_type_meta_caps; //added

@@ -253,8 +253,10 @@ if(ABSPATH){
             $class_suffix =  $block_template_args['class_suffix'];
             $class_Default = $class_suffix ?: '_Base';
             $template = null;
-            if ( $name !== null || $theme_name !== null || $class_name !== null|| $class_suffix !== null ){
-                $template = $this->_tp_load_class($name,TP_NS_THEMES. $theme_name .TP_NS_TEMPLATE_PATH, $class_name.$class_suffix,$args);
+            if ( $name !== null || $class_name !== null|| $class_suffix !== null ){
+                $load_template = TP_NS_THEMES.$theme_name.TP_NS_THEME_TEMPLATE ?: TP_NS_TEMPLATE;
+
+                $template = $this->_tp_load_class($name,$load_template, $class_name.$class_suffix,$args);
             }else{
                 $template = $this->_tp_load_class('default_block_parts',TP_NS_CORE_TEMPLATES,'TP_Block_Template_Part'.$class_Default,$args);
             }

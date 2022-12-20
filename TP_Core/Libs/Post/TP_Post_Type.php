@@ -16,6 +16,7 @@ if(ABSPATH){
          * @param \array[] ...$args
          */
         public function __construct( $post_type = null, ...$args){
+            $this->_rewrite_constants();
             $this->name = $post_type;
             $this->set_properties( $args );
         }//405

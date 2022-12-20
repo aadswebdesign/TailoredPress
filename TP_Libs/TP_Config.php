@@ -10,7 +10,7 @@ if(ABSPATH){
     class TP_Config{
         public $table_prefix;
         public function __construct(){
-            echo "<p>TP_Config.php</p>";
+            //echo "<p>TP_Config.php</p>";
            $this->__tp_configs();
         }
         private function __tp_configs():void{

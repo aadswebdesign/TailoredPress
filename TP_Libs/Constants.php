@@ -24,7 +24,12 @@ if(ABSPATH){
             if (!defined( 'TP_NS_THEMES' ) ) define('TP_NS_THEMES',TP_NS_CONTENT.'Themes\\');
             if (!defined( 'TP_NS_LIBRARY' ) ) define('TP_NS_LIBRARY',TP_NS_THEMES.'TP_Library\\');
             if (!defined( 'TP_NS_MODULES' ) ) define('TP_NS_MODULES',TP_NS_LIBRARY.'Modules\\');
-            if (!defined( 'TP_NS_TEMPLATE_PATH' ) ) define('TP_NS_TEMPLATE_PATH','\\ThemeSrc\\Templates\\');
+            if (!defined( 'TP_NS_POST_TYPE' ) ) define('TP_NS_POST_TYPE',TP_NS_LIBRARY.'PostTypes\\');
+            if (!defined( 'TP_NS_TEMPLATE' ) ) define('TP_NS_TEMPLATE',TP_NS_LIBRARY.'Templates\\');
+            //todo need Theme related
+            if (!defined( 'TP_NS_THEME_TEMPLATE' ) ) define('TP_NS_THEME_TEMPLATE','\\ThemeSrc\\Templates\\');
+            if (!defined( 'TP_NS_THEME_POST_TYPE' ) ) define('TP_NS_THEME_POST_TYPE','\\ThemeSrc\\PostTypes\\');
+
             //if(!defined( 'TP_NS_STYLESHEET_PATH' ) ) define('TP_NS_CONTENT',TP_NS_CONTENT.'\\');
             //themes
             if (!defined('TP_USE_THEMES' )) define('TP_USE_THEMES', '');//todo

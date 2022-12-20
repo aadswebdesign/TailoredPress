@@ -7,68 +7,52 @@
  */
 namespace TP_Content\Themes\Tailored_One;
 use TP_Core\CoreSettings;
+//use TP_Content\Themes\TP_Library\Templates\Header;
+//use TP_Content\Themes\Tailored_One\ThemeSrc\Templates\Tailored_One_Header;
+
+
+
 if(ABSPATH){
     class Theme_Index extends CoreSettings {
-        protected $_args;
-        protected $_html;
-        protected $_get_a_footer;
-        protected $_footer_args;
-        protected $_get_a_header;
-        protected $_header_args;
+        private $__footer_args;
+        private $__header_args;
+        private $__partial_args = [];
+        private $__sidebar_args = [];
+
+
         protected $_get_a_partial = [];
         protected $_partial_args = [];
         protected $_get_a_sidebar;
         protected $_sidebar_args;
-        public function __construct(...$args){
+        public function __construct($args = null){
             parent::__construct();
-            //$this->_args = $args;
-            $this->_footer_args = [
-                'name' => 'get_footer',
-                'theme_name' => 'Tailored_One',
-                'class_name' => 'DT_Default_Footer'
-            ];
-            $this->_get_a_footer = $this->_get_footer($args,$this->_footer_args);
-            $this->_header_args = [
-                'name' => 'get_header',
-                'theme_name' => 'Tailored_One',
-                'class_name' => 'DT_Default_Header'
-            ];
-            $this->_get_a_header = $this->_get_header($args,$this->_header_args);
-            $this->_partial_args['one'] =[
-                'name' => 'get_partial_one',
-                'theme_name' => 'Tailored_One',
-                'class_name' => 'DT_Partial_One'
-            ];
-            $this->_get_a_partial['one'] = $this->_get_partial($args,$this->_partial_args['one']);
+            //$index_args = $args;
+            $this->__footer_args = ['theme_name' => 'Tailored_One', 'class_name' => 'Special'];
+            $this->__header_args = ['theme_name' => 'Tailored_One', 'class_name' => 'Special'];
+            $this->__partial_args[1] = ['theme_name' => 'Tailored_One'];
+            $this->__partial_args[0] = ['theme_name' => 'Tailored_One', 'class_name' => 'Special'];
+            $this->__partial_args[2] = [];
+            $this->__sidebar_args[1] = ['theme_name' => 'Tailored_One'];
+            $this->__sidebar_args[0] = ['theme_name' => 'Tailored_One', 'class_name' => 'Special'];
 
-            $this->_partial_args['two'] =[
-                'name' => 'get_partial_two',
-                'theme_name' => 'Tailored_One',
-                'class_name' => 'DT_Partial_Two'
-            ];
-            $this->_get_a_partial['two'] = $this->_get_partial($args,$this->_partial_args['two']);
-
-            $this->_sidebar_args = [
-                'name' => 'get_header',
-                'theme_name' => 'Tailored_One',
-                'class_name' => 'DT_Default_Sidebar'
-            ];
-            $this->_get_a_sidebar = $this->_get_sidebar($args,$this->_sidebar_args);
         }
         private function __to_string():string{
-            //$this->_html = $this->_get_a_header;
-            //$this->_html .= $this->_get_a_partial['one'];
-            $this->_html .= "";
-            $this->_html .= "";
-            $this->_html .= "";
-            $this->_html .= "<br/>Tailored_One/Theme_Index";
-            //$this->_html .= $this->_get_a_sidebar;
-            //$this->_html .= $this->_get_a_partial['two'];
-            $this->_html .= "";
-            $this->_html .= "";
-            $this->_html .= "";
-            //$this->_html .= $this->_get_a_footer;
-            return (string) $this->_html;
+
+            $output  = $this->_get_header($this->__header_args);
+            $output .= "<br/>Tailored_One/Theme_Index";
+            $output .= $this->_get_sidebar($this->__sidebar_args[1]);
+            $output .= "<br/>";
+            $output .= $this->_get_sidebar($this->__sidebar_args[0]);
+            $output .= "<br/>";
+            $output .= $this->_get_partial($this->__partial_args[0]);
+            $output .= "<br/>";
+            $output .= $this->_get_partial($this->__partial_args[1]);
+            $output .= "<br/>";
+            $output .= $this->_get_partial($this->__partial_args[2]);
+            $output .= "";
+            $output .= "";
+            $output .= $this->_get_footer($this->__footer_args);
+            return $output;
         }
         public function __toString(){
             return $this->__to_string();
