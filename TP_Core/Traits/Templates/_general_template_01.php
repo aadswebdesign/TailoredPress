@@ -9,8 +9,8 @@ namespace TP_Core\Traits\Templates;
 use TP_Content\Themes\TP_Library\Templates\DefaultFooter;
 use TP_Content\Themes\TP_Library\Templates\DefaultHeader;
 use TP_Content\Themes\TP_Library\Templates\DefaultPartial;
+use TP_Content\Themes\TP_Library\Templates\DefaultSearchForm;
 use TP_Content\Themes\TP_Library\Templates\DefaultSidebar;
-use TP_Core\Forms\TP_Default_Search_Form;
 if(ABSPATH){
     trait _general_template_01 {
         /**
@@ -110,11 +110,11 @@ if(ABSPATH){
          * @param array|null $search_args
          * @return null|string
          */
-        protected function _get_search_form($args,$search_args = null):?string{
-            $name = $search_args['name'] ?? null;
+        protected function _get_search_form($search_args = null, $args = null):?string{
+            //$name = $search_args['name'] ?? null;
             $theme_name = $search_args['theme_name'] ?? null;
             $class_name = $search_args['class_name'] ?? null;
-            $form = $this->_do_action( 'pre_get_search_form', $args );
+            $output = "";
             $defaults = ['aria_label' => '',];
             $args = $this->_tp_parse_args( $args, $defaults );
             $args = $this->_apply_filters( 'search_form_args', $args );
@@ -123,29 +123,24 @@ if(ABSPATH){
                 $aria_label = " aria-label='{$this->_esc_attr( $args['aria_label'] )}'";
             } else { $aria_label = '';}
             $args['attr_aria_label'] = $aria_label;
+            $output .= $this->_get_action( 'pre_get_search_form', $args );
             $template = null;
-            if ( $name !== null || $theme_name !== null || $class_name !== null ){
-                //$template = $this->_tp_load_class($name,TP_NS_THEMES. $theme_name .TP_NS_TEMPLATE_PATH, $class_name,$args);
-            }else{ $template =  new TP_Default_Search_Form($args);}
-            $form .= $template;
-            return $this->_apply_filters( 'get_search_form', $form, $args );
-        }
-        protected function _print_search_form($args, ...$class_args):void{
-            echo $this->_get_search_form($args, $class_args);
+            if (null === $theme_name && null === $class_name ){
+                $template = new DefaultSearchForm($args);
+            }elseif(null !== $theme_name && null === $class_name){
+                $template = $this->_tp_load_class('theme_search',TP_NS_THEMES.$theme_name.TP_NS_THEME_TEMPLATE, 'SearchForm',$args);
+            }
+            $output .= $template;
+            return $this->_apply_filters( 'get_search_form', $output, $args );
         }
         /**
          * @description Display the Log In/Out link.
          * @param string $redirect
-         * @param bool $echo
          * @return mixed
          */
-        protected function _tp_login_logout( $redirect = '', $echo = true ){
+        protected function _tp_get_login_logout( $redirect = ''){
             if ( ! $this->_is_user_logged_in() ) $link ="<a href='{$this->_esc_url($this->_tp_login_url($redirect))}'>{$this->__('Log in')}</a>";
             else $link ="<a href='{$this->_esc_url($this->_tp_logout_url($redirect))}'>{$this->__('Log out')}</a>";
-            if ( $echo ){
-                echo $this->_apply_filters( 'login_logout', $link );
-                return null;
-            }
             return $this->_apply_filters( 'login_logout', $link );
         }//376 from general-template
         /**

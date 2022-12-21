@@ -13,8 +13,8 @@ if(ABSPATH){
             //$this->__pts_args = $args;
         }
         private function __to_string():string{
-            $output = "<br/>";
-            $output .= "DefaultPartial";
+            $output = "";
+            $output .= "</br>TP_Content\Themes\TP_Library\Templates/DefaultPartial</br>";
             return $output;
         }
         public function __toString(){

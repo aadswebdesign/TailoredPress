@@ -14,7 +14,7 @@ if(ABSPATH){
         }
         private function __to_string():string{
             $output  = "";
-            $output .= "</br>Footer";
+            $output .= "</br>Themes\Tailored_One\ThemeSrc\Templates\Footer";
             $output .= "</body></html>";
             return $output;
         }

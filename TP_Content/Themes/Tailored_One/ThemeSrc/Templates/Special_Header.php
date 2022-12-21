@@ -17,7 +17,7 @@ if(ABSPATH){
             $output .= "<html><head>";
             $output .= "";
             $output .= "</head><body>";
-            $output .= "Special Header";
+            $output .= "</br>Themes\Tailored_One\ThemeSrc\Templates\Special_Header";
             return $output;
         }
         public function __toString(){

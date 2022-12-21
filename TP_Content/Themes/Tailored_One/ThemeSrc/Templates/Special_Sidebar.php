@@ -13,8 +13,8 @@ if(ABSPATH){
             //$this->__sdb_args = $args;
         }
         private function __to_string():string{
-            $output = "<br/>";
-            $output .= "Special Sidebar";
+            $output = "";
+            $output .= "</br>Themes\Tailored_One\ThemeSrc\Templates\Special_Sidebar";
             return $output;
         }
         public function __toString(){

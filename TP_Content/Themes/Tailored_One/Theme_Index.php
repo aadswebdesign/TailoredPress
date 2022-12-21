@@ -17,6 +17,7 @@ if(ABSPATH){
         private $__footer_args;
         private $__header_args;
         private $__partial_args = [];
+        private $__search_args = [];
         private $__sidebar_args = [];
 
 
@@ -32,6 +33,9 @@ if(ABSPATH){
             $this->__partial_args[1] = ['theme_name' => 'Tailored_One'];
             $this->__partial_args[0] = ['theme_name' => 'Tailored_One', 'class_name' => 'Special'];
             $this->__partial_args[2] = [];
+            $this->__search_args[0] = [];
+            $this->__search_args[1] = ['theme_name' => 'Tailored_One'];
+
             $this->__sidebar_args[1] = ['theme_name' => 'Tailored_One'];
             $this->__sidebar_args[0] = ['theme_name' => 'Tailored_One', 'class_name' => 'Special'];
 
@@ -49,8 +53,11 @@ if(ABSPATH){
             $output .= $this->_get_partial($this->__partial_args[1]);
             $output .= "<br/>";
             $output .= $this->_get_partial($this->__partial_args[2]);
-            $output .= "";
-            $output .= "";
+            $output .= "<br/>";
+            $output .= $this->_get_search_form($this->__search_args[1]);
+            $output .= "<br/>";
+            $output .= $this->_get_search_form($this->__search_args[0]);
+            $output .= "<br/>";
             $output .= $this->_get_footer($this->__footer_args);
             return $output;
         }

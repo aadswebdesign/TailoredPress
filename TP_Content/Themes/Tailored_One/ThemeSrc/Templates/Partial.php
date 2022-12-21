@@ -13,8 +13,8 @@ if(ABSPATH){
             //$this->__pts_args = $args;
         }
         private function __to_string():string{
-            $output = "<br/>";
-            $output .= "Partial";
+            $output = "";
+            $output .= "</br>Themes\Tailored_One\ThemeSrc\Templates\Partial";
             return $output;
         }
         public function __toString(){
