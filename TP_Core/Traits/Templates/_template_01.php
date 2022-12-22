@@ -12,11 +12,11 @@ if(ABSPATH){
     trait _template_01 {
         protected function _get_query_template($type,...$templates):string{
             $type = preg_replace( '|[^a-z0-9-]+|', '', $type );
-            var_dump('</br>$type: ',$type);
+            //var_dump('<br>$type: ',$type);
             if ( empty( $templates ) ) {
                 $templates = [$this, $type];
             }
-            var_dump('</br>$templates1: ',$templates);
+            //var_dump('<br>$templates1: ',$templates);
             $templates = $this->_apply_filters( "{$type}_template_hierarchy", $templates );
             //var_dump('</br>$templates2: ',$templates);
             //$template = $this->_locate_template( $templates );
@@ -32,13 +32,7 @@ if(ABSPATH){
             return $output;
         }//23
         protected function _get_index_template():string{
-            $output  = "";
-            $output .= "";
-            $output .= "";
-            $output .= "</br>_get_index_template";
-            $output .= "";
-            $output .= "";
-            return $output;
+            return $this->_get_query_template('index');
         }//118
         protected function _get_404_template():string{
             $output  = "";

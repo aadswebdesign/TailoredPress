@@ -27,6 +27,7 @@ if(ABSPATH){
             if (!defined( 'TP_NS_POST_TYPE' ) ) define('TP_NS_POST_TYPE',TP_NS_LIBRARY.'PostTypes\\');
             if (!defined( 'TP_NS_TEMPLATE' ) ) define('TP_NS_TEMPLATE',TP_NS_LIBRARY.'Templates\\');
             //todo need Theme related
+            if (!defined( 'TP_NS_THEME_COMPONENTS' ) ) define('TP_NS_THEME_COMPONENTS','\\ThemeSrc\\COMPONENTS\\');
             if (!defined( 'TP_NS_THEME_TEMPLATE' ) ) define('TP_NS_THEME_TEMPLATE','\\ThemeSrc\\Templates\\');
             if (!defined( 'TP_NS_THEME_POST_TYPE' ) ) define('TP_NS_THEME_POST_TYPE','\\ThemeSrc\\PostTypes\\');
 

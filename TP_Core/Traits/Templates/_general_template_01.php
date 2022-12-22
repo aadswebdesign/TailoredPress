@@ -6,11 +6,7 @@
  * Time: 17:17
  */
 namespace TP_Core\Traits\Templates;
-use TP_Content\Themes\TP_Library\Templates\DefaultFooter;
-use TP_Content\Themes\TP_Library\Templates\DefaultHeader;
-use TP_Content\Themes\TP_Library\Templates\DefaultPartial;
-use TP_Content\Themes\TP_Library\Templates\DefaultSearchForm;
-use TP_Content\Themes\TP_Library\Templates\DefaultSidebar;
+
 if(ABSPATH){
     trait _general_template_01 {
         /**
@@ -25,12 +21,10 @@ if(ABSPATH){
             $class_name = $header_args['class_name'] ?? null;
             $output  = "";
             $template = null;
-            if (null === $theme_name && null === $class_name ){
-                $template =  new DefaultHeader($args);
-            }elseif(null !== $theme_name && null === $class_name){
-                $template = $this->_tp_load_class('theme_header',TP_NS_THEMES.$theme_name.TP_NS_THEME_TEMPLATE, 'Header',$args);
+            if(null !== $theme_name && null === $class_name){
+                $template = $this->_tp_load_class('theme_header',TP_NS_THEMES.$theme_name.TP_NS_THEME_COMPONENTS, 'Header',$args);
             }elseif( null !== $class_name ){
-                $template = $this->_tp_load_class('theme_header',TP_NS_THEMES.$theme_name.TP_NS_THEME_TEMPLATE, $class_name . '_Header',$args);
+                $template = $this->_tp_load_class('theme_header',TP_NS_THEMES.$theme_name.TP_NS_THEME_COMPONENTS, $class_name . '_Header',$args);
             }
             $output .= $this->_get_action( 'get_header', $name, $args );
             $output .= $template;
@@ -48,12 +42,10 @@ if(ABSPATH){
             $class_name = $footer_args['class_name'] ?? null;
             $output  = "";
             $template = null;
-            if (null === $theme_name && null === $class_name ){
-                $template = new DefaultFooter($args);
-            }elseif(null !== $theme_name && null === $class_name){
-                $template = $this->_tp_load_class('theme_footer',TP_NS_THEMES.$theme_name.TP_NS_THEME_TEMPLATE, 'Footer',$args);
+            if(null !== $theme_name && null === $class_name){
+                $template = $this->_tp_load_class('theme_footer',TP_NS_THEMES.$theme_name.TP_NS_THEME_COMPONENTS, 'Footer',$args);
             }elseif( null !== $class_name ){
-                $template = $this->_tp_load_class('theme_footer',TP_NS_THEMES.$theme_name.TP_NS_THEME_TEMPLATE, $class_name . '_Footer',$args);
+                $template = $this->_tp_load_class('theme_footer',TP_NS_THEMES.$theme_name.TP_NS_THEME_COMPONENTS, $class_name . '_Footer',$args);
             }
             $output .= $this->_get_action( 'get_footer', $name, $args );
             $output .= $template;
@@ -71,12 +63,10 @@ if(ABSPATH){
             $class_name = $sidebar_args['class_name'] ?? null;
             $output  = "";
             $template = null;
-            if (null === $theme_name && null === $class_name ){
-                $template = new DefaultSidebar($args);
-            }elseif(null !== $theme_name && null === $class_name){
-                $template = $this->_tp_load_class('theme_sidebar',TP_NS_THEMES.$theme_name.TP_NS_THEME_TEMPLATE, 'Sidebar',$args);
+            if(null !== $theme_name && null === $class_name){
+                $template = $this->_tp_load_class('theme_sidebar',TP_NS_THEMES.$theme_name.TP_NS_THEME_COMPONENTS, 'Sidebar',$args);
             }elseif( null !== $class_name ){
-                $template = $this->_tp_load_class('theme_sidebar',TP_NS_THEMES.$theme_name.TP_NS_THEME_TEMPLATE, $class_name . '_Sidebar',$args);
+                $template = $this->_tp_load_class('theme_sidebar',TP_NS_THEMES.$theme_name.TP_NS_THEME_COMPONENTS, $class_name . '_Sidebar',$args);
             }
             $output .= $this->_get_action( 'get_sidebar', $name, $args );
             $output .= $template;
@@ -94,12 +84,10 @@ if(ABSPATH){
             $class_name = $partial_args['class_name'] ?? null;
             $output  = "";
             $template = null;
-            if (null === $theme_name && null === $class_name ){
-                $template = new DefaultPartial($args);
-            }elseif(null !== $theme_name && null === $class_name){
-                $template = $this->_tp_load_class('theme_partial',TP_NS_THEMES.$theme_name.TP_NS_THEME_TEMPLATE, 'Partial',$args);
+            if(null !== $theme_name && null === $class_name){
+                $template = $this->_tp_load_class('theme_partial',TP_NS_THEMES.$theme_name.TP_NS_THEME_COMPONENTS, 'Partial',$args);
             }elseif( null !== $class_name ){
-                $template = $this->_tp_load_class('theme_partial',TP_NS_THEMES.$theme_name.TP_NS_THEME_TEMPLATE, $class_name . '_Partial',$args);
+                $template = $this->_tp_load_class('theme_partial',TP_NS_THEMES.$theme_name.TP_NS_THEME_COMPONENTS, $class_name . '_Partial',$args);
             }
             $output .= $this->_get_action( 'get_partial', $name, $args );
             $output .= $template;
@@ -125,10 +113,8 @@ if(ABSPATH){
             $args['attr_aria_label'] = $aria_label;
             $output .= $this->_get_action( 'pre_get_search_form', $args );
             $template = null;
-            if (null === $theme_name && null === $class_name ){
-                $template = new DefaultSearchForm($args);
-            }elseif(null !== $theme_name && null === $class_name){
-                $template = $this->_tp_load_class('theme_search',TP_NS_THEMES.$theme_name.TP_NS_THEME_TEMPLATE, 'SearchForm',$args);
+            if(null !== $theme_name && null === $class_name){
+                $template = $this->_tp_load_class('theme_search',TP_NS_THEMES.$theme_name.TP_NS_THEME_COMPONENTS, 'SearchForm',$args);
             }
             $output .= $template;
             return $this->_apply_filters( 'get_search_form', $output, $args );

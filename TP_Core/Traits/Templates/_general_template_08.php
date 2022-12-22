@@ -432,8 +432,8 @@ if(ABSPATH){
         /**
          * @description Displays the contents of the search query variable.
          */
-        public function the_search_query():void{
-            echo $this->_esc_attr( $this->_apply_filters( 'the_search_query', $this->_get_search_query( false ) ) );
+        public function get_the_search_query(){
+            return $this->_esc_attr( $this->_apply_filters( 'the_search_query', $this->_get_search_query( false ) ) );
         }//4056 from general-template
         /**
          * @description Gets the language attributes for the 'html' tag.
@@ -450,15 +450,6 @@ if(ABSPATH){
             }
             $output_atts = implode( ' ', $attributes );
            return $this->_apply_filters( 'language_attributes', $output_atts, $doctype );
-            //return ''; //todo
-
         }//4077 from general-template
-        /**
-         * @description  Displays the language attributes for the 'html' tag.
-         * @param string $doctype
-         */
-        protected function _language_attributes( $doctype = 'html' ):void{
-            echo $this->_get_language_attributes( $doctype );
-        }//4120 from general-template
     }
 }else die;

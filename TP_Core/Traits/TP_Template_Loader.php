@@ -51,16 +51,16 @@ if(ABSPATH){
         use _theme_01,_theme_02,_theme_07;
         use _user_03;
         use _user_05;
-        public $tp_template;
+        public $tp_filter,$tp_template;
         private function __tpl_construct($args = null):void{
             $this->_tp_content_constants();
             $this->_args = $args;
+            $this->_add_action('do_favicon',[$this,'theme_loader_stuff']);
         }
         private function __tpl_to_string():string{
             $output  = "";
             if ($this->_tp_using_themes() ){
                 $output .= $this->_get_action( 'template_redirect' );
-                $output .= "template_redirect</br>";//todo temporary
             }
             if ( 'HEAD' === $_SERVER['REQUEST_METHOD'] && $this->_apply_filters( 'exit_on_http_head', true ) ) {
                 echo "</br>REQUEST_METHOD";//todo temporary
@@ -68,16 +68,14 @@ if(ABSPATH){
             }
             if ($this->_is_robots() ) {
                 $output .= $this->_get_action( 'do_robots' );
-                $output .= "do_robots</br>";//todo temporary
             }elseif ($this->_is_favicon() ) {
                 $output .= $this->_get_action( 'do_favicon' );
-                $output .= "do_favicon</br>";//todo temporary
             } elseif ( $this->_is_feed() ) {
                 $output .= $this->_do_feed();
             }elseif ($this->_is_trackback() ) {
                 $output .= new TP_Trackback();
             }
-            if (! $this->_tp_using_themes() ) {//todo
+            if (! $this->_tp_using_themes() ) {//todo removing !
                 $tag_templates = [
                     'get_embed'             => [$this,'_get_embed_template'],
                     'is_404'                => [$this,'_get_404_template'],
@@ -109,7 +107,7 @@ if(ABSPATH){
                         break;
                     }
                 }
-                if ( ! $template ) {
+                if (! $template ) {
                     $template = $this->_get_index_template();
                 }
                 $template = $this->_apply_filters( 'template_include', $template );
@@ -122,8 +120,8 @@ if(ABSPATH){
                     }
                 }
             }
-            $output .= "";
-            $output .= "</br>TP_Template_Loader";
+            $output .= $this->_get_index_template();
+            $output .= "<br>TP_Template_Loader";
             $output .= "";
             $output .= "";
             return $output;

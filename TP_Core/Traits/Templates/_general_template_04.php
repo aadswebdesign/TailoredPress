@@ -62,9 +62,6 @@ if(ABSPATH){
             if ( empty( $my_month ) ) return false;
             return $prefix . $my_month . $prefix . $my_year;
         }//1641 from general-template
-        protected function _single_month_title( $prefix = ''):void{
-            echo $this->_get_single_month_title( $prefix);
-        }
         /**
          *  @description Display the archive title based on the queried object.
          * @param string $before
@@ -76,9 +73,6 @@ if(ABSPATH){
             if (empty( $title ) ) return false;
             return $before . $title . $after;
         }//1678 from general-template
-        protected function _print_the_assembled_archive_title( $before = '', $after = '' ):void{
-            echo $this->_get_the_assembled_archive_title( $before, $after);
-        }
         /**
          * @description Retrieve the archive title based on the queried object.
          * @return mixed
@@ -160,9 +154,6 @@ if(ABSPATH){
             if ( !$description ) return false;
             return $before . $description . $after;
         }//1794 from general-template
-        protected function _print_the_assembled_archive_description( $before = '', $after = '' ):void{
-            echo $this->_get_the_assembled_archive_description( $before, $after);
-        }
         /**
          * @description Retrieves the description for an author, post type, or term archive.
          * @return mixed
@@ -378,8 +369,5 @@ if(ABSPATH){
             if(!$output) return false;
             return $output;
         }//1974 from general-template
-        protected function _tp_print_archives( $args = '' ):void{
-            echo $this->_tp_get_archives( $args);
-        }
     }
 }else die;

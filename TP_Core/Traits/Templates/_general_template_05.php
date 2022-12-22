@@ -130,9 +130,6 @@ if(ABSPATH){
             $this->_tp_cache_set( 'get_calendar', $cache, 'calendar' );
             return $this->_apply_filters( 'get_calendar', $calendar_output );
         }//2226 from general-template
-        protected function _print_calendar( $initial = true):void{
-            echo $this->_get_calendar( $initial);
-        }//2226 from general-template
         protected function _delete_get_calendar_cache():void{
             $this->_tp_cache_delete( 'get_calendar', 'calendar' );
         }//2454 from general-template
@@ -177,9 +174,6 @@ if(ABSPATH){
             $the_date = $this->_apply_filters( 'the_date', $the_date, $format, $before, $after );
             return $the_date;
         }//2519 from general-template
-        protected function _print_the_assembled_date( $format = '', $before = '', $after = ''):void{
-            echo $this->_get_the_assembled_date( $format, $before, $after);
-        }//2519 from general-template
         /**
          * @description Retrieve the date on which the post was written.
          * @param string $format
@@ -204,9 +198,6 @@ if(ABSPATH){
             $the_modified_date = $before . $this->_get_the_modified_date( $format ) . $after;
             return $this->_apply_filters( 'the_modified_date',$the_modified_date, $format, $before, $after );
         }//2594 from general-template
-        protected function _print_the_assembled_modified_date( $format = '', $before = '', $after = ''):void{
-            echo $this->_get_the_assembled_modified_date( $format, $before, $after);
-        }//2594 from general-template
         /**
          * @description Retrieve the date on which the post was last modified.
          * @param string $format
@@ -225,6 +216,6 @@ if(ABSPATH){
          */
         public function the_time( $format = '' ):void{
             echo $this->_apply_filters( 'the_time', $this->_get_the_time( $format ), $format );
-        }//2661 from general-template
+        }//2661 from general-template //todo
     }
 }else die;

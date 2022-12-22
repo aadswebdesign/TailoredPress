@@ -129,7 +129,6 @@ if(ABSPATH){
          * @description Registers the default admin color schemes.
          */
         protected function _register_admin_color_schemes():void{
-
             $suffix  = $this->_is_rtl() ? '-rtl' : '';
             $suffix .= TP_SCRIPT_DEBUG ? '' : '.min';
             $this->_tp_admin_css_color(
@@ -274,10 +273,6 @@ if(ABSPATH){
             }
             return $get_style;
         }//4599 todo testing
-        protected function _tp_admin_css( $file = 'tp-admin'):void{
-            echo $this->_tp_get_admin_css( $file);
-        }//4599
-
         /**
          * @description Enqueues the default ThickBox js and css.
          */

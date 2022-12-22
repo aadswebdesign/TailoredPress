@@ -6,16 +6,4 @@
 - README.md
 
 **Files/ClassMethods and Vars:** 
-
-- .php: //todo 	
-	*  
-	*  
-	*  
-	*  
-	*  
-	*  
-	*  
-	*  
-	*  
-	*  
-
+- The direct classes here are temporary and will be removed when the time is right

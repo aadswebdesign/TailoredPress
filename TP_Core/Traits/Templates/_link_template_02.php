@@ -72,7 +72,7 @@ if(ABSPATH){
         protected function _the_feed_link( $anchor, $feed = '' ):void{
             $link = "<a href='{$this->_esc_url( $this->_get_feed_link( $feed ) )}'>$anchor</a>";
             echo $this->_apply_filters( 'the_feed_link', $link, $feed );
-        }//662 from link-template
+        }//662 from link-template //todo 1
         /**
          * @description Retrieves the permalink for the feed type.
          * @param string $feed

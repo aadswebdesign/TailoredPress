@@ -49,9 +49,6 @@ if(ABSPATH){
             if ( ! $form) { return false;}
             return $form;
         }//511 from general-template
-        protected function _tp_login_form( $args = [] ):void{
-            echo $this->_tp_get_login_form( ...$args);
-        }
         /**
          * @description Returns the URL that allows the user to retrieve the lost password
          * @param string $redirect
@@ -106,7 +103,7 @@ if(ABSPATH){
          */
         protected function _bloginfo( $show = '' ):void {
             echo $this->_get_bloginfo( $show, 'display' );
-        }//742 from general-template
+        }//742 from general-template //todo
         /**
          * @description Retrieves information about the current site.
          * @param string $show

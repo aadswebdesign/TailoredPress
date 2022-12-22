@@ -86,9 +86,9 @@ if(ABSPATH){
          * @description Display the time at which the post was last modified.
          * @param string $format
          */
-        public function the_modified_time( $format = '' ):void{
-            echo $this->_apply_filters( 'the_modified_time',[$this,'_get_the_modified_time'] , $format );//$this->_get_the_modified_time( $format )
-        }//2848 from general-template
+        public function get_modified_time( $format = '' ){
+            return $this->_apply_filters( 'the_modified_time',[$this,'_get_the_modified_time'] , $format );//$this->_get_the_modified_time( $format )
+        }//2848 from general-template //todo renamed
         /**
          * @description Retrieve the time at which the post was last modified.
          * @param string $format
@@ -126,9 +126,6 @@ if(ABSPATH){
             $the_weekday = $tp_locale->get_weekday( $this->_get_post_time( 'w', false, $post ) );
             return $this->_apply_filters( 'the_weekday', $the_weekday );
         }//2963 from general-template
-        protected function _the_weekday():void{
-            echo $this->_get_the_weekday();
-        }
         /**
          * @description Display the day of the weekday on which the post was written.
          * @param string $before
@@ -148,14 +145,11 @@ if(ABSPATH){
             }
             return $this->_apply_filters( 'the_weekday_date', $the_weekday_date, $before, $after );
         }//2999 from general-template
-        protected function _the_weekday_date( $before = '', $after = '' ):void{
-            echo $this->_get_the_weekday_date( $before, $after);
-        }
         /**
          * @description Fire the tp_head action.
          */
-        protected function _tp_head():void{
-            $this->_do_action( 'tp_head' );
-        }//3036 from general-template //todo possible double
+        protected function _tp_get_head(){
+           return $this->_get_action( 'tp_head' );
+        }//3036 from general-template //todo edited
     }
 }else die;
