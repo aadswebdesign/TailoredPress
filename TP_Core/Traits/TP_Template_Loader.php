@@ -75,7 +75,7 @@ if(ABSPATH){
             }elseif ($this->_is_trackback() ) {
                 $output .= new TP_Trackback();
             }
-            if (! $this->_tp_using_themes() ) {//todo removing !
+            if (!$this->_tp_using_themes() ) {//todo removing !
                 $tag_templates = [
                     'get_embed'             => [$this,'_get_embed_template'],
                     'is_404'                => [$this,'_get_404_template'],
@@ -97,8 +97,10 @@ if(ABSPATH){
                 ];
                 $template = false;
                 foreach ( $tag_templates as $tag => $template_getter ) {
+
                     if ([$this,$tag]) { //original call_user_func( $tag )
                         $template = $template_getter();
+                        //var_dump('$template1:', $template);
                     }
                     if ( $template ) {
                         if ( 'is_attachment' === $tag ) {
@@ -108,7 +110,7 @@ if(ABSPATH){
                     }
                 }
                 if (! $template ) {
-                    $template = $this->_get_index_template();
+                    $template  = $this->_get_index_template();
                 }
                 $template = $this->_apply_filters( 'template_include', $template );
                 if (! $template ) {//todo
@@ -120,9 +122,9 @@ if(ABSPATH){
                     }
                 }
             }
-            $output .= $this->_get_index_template();
-            $output .= "<br>TP_Template_Loader";
-            $output .= "";
+            //$output .= $this->_get_index_template();
+            //$output .= "<br>TP_Template_Loader";
+            $output .= $template;
             $output .= "";
             return $output;
         }

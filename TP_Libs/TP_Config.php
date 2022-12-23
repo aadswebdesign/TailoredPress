@@ -30,7 +30,7 @@ if(ABSPATH){
             define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
             define( 'NONCE_SALT',       'put your unique phrase here' );
             $this->table_prefix = 'tp_';
-            define( 'TP_DEBUG', false );
+            if (!defined('TP_DEBUG')) define( 'TP_DEBUG', false );
             if ( ! defined( 'ABSPATH' ) ) {
                 define( 'ABSPATH', __DIR__ . '/' );
             }

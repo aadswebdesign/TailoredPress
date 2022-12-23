@@ -30,6 +30,7 @@ if(ABSPATH){
             if (!defined( 'TP_NS_THEME_COMPONENTS' ) ) define('TP_NS_THEME_COMPONENTS','\\ThemeSrc\\COMPONENTS\\');
             if (!defined( 'TP_NS_THEME_TEMPLATE' ) ) define('TP_NS_THEME_TEMPLATE','\\ThemeSrc\\Templates\\');
             if (!defined( 'TP_NS_THEME_POST_TYPE' ) ) define('TP_NS_THEME_POST_TYPE','\\ThemeSrc\\PostTypes\\');
+            if (!defined( 'TP_NS_DEFAULT_THEME' ) ) define('TP_NS_DEFAULT_THEME','Tailored_One');
 
             //if(!defined( 'TP_NS_STYLESHEET_PATH' ) ) define('TP_NS_CONTENT',TP_NS_CONTENT.'\\');
             //themes

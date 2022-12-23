@@ -10,8 +10,7 @@ use TP_Core\Traits\TP_Template_Loader;
 use TP_Core\Traits\User\_user_02;
 use TP_Core\Traits\User\_user_03;
 //for now
-use TP_Content\Themes\Tailored_One\Theme_Index;
-
+//use TP_Content\Themes\Tailored_One\Theme_Index;
 if(ABSPATH){
     class ThemePanel{
         use TP_Template_Loader;
@@ -20,10 +19,10 @@ if(ABSPATH){
         protected $_theme;
         public function __construct($args = null){
             $this->__tpl_construct($args);
-            $this->_theme = new Theme_Index();
+            //$this->_theme = new Theme_Index();
         }
         private function __to_string():string{
-            return $this->_theme; //todo This has to become a theme loader method
+            return $this->__tpl_to_string(); //todo This has to become a theme loader method
         }
         public function __toString(){
             return $this->__to_string();
